@@ -1,0 +1,43 @@
+.containerForm {
+	color: black;
+	padding: 30px;
+	background-color: white;
+	border: solid black 1px;
+	border-radius: 24px;
+}
+
+
+.buttonForm {
+	margin: 7px 0;
+	padding: 10px 0px;
+	width: 75%;
+	border-radius: 1000px;
+
+}
+
+h2 {
+	margin-bottom: 15px;
+	font-size: bold;
+	text-align: center
+}
+
+p {
+	text-align: right;
+}
+
+/* Hr with text "or create account using email" */
+.hr {
+	color: #606060;
+	margin: 20px 0;
+    align-items: center;
+    display: flex;
+    text-align: center;
+}
+
+.hr::before,
+.hr::after {
+    border-top: .0625em solid;
+    content: "";
+    flex: 1;
+    margin: 0 .5em;
+}

@@ -29,13 +29,11 @@ export default function ButtonAppBar() {
     <div className={classes.root}>
       <AppBar position="static" className={classes.AppBar}>
         <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton>
           <Typography variant="h6" className={classes.title}>
             Hypertube
           </Typography>
           <Button color="inherit">Login</Button>
+          <Button color="inherit">Sign Up</Button>
         </Toolbar>
       </AppBar>
     </div>
