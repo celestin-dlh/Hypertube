@@ -19,19 +19,19 @@ export default function SignUp() {
 
 	return (
 		<Container>
-		  <Row className="justify-content-md-center">
+		  <Row className="justify-content-center">
 		    <Col md="8" className="containerForm">
 		    	<h2>Hypertube Sign Up</h2>
-				<Row className="justify-content-md-center">
+				<Row className="justify-content-center">
 					<Button
 						variant="danger" type="submit" size="lg" block className="buttonForm"
 					>
 						Sign up with Google
 					</Button>
 				</Row>
-				<Row className="justify-content-md-center">
+				<Row className="justify-content-center">
 					<Button
-							variant="primary" type="submit" size="lg" block className="buttonForm"
+						variant="primary" type="submit" size="lg" block className="buttonForm"
 					>
 						Sign up with Facebook
 					</Button>

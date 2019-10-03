@@ -3,11 +3,8 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 
 /* Layout */
-import Header from './components/layout/Header';
-import Footer from './components/layout/Footer';
 
 /* Style */
-import Grid from '@material-ui/core/Grid';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
