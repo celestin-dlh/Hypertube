@@ -1,18 +1,27 @@
-import Joi from '@hapi/joi';
+import bcrypt from 'bcryptjs';
+import multer from 'multer';
 
 /* Model */
-import  Users from '../../models/register.model';
-
+import User from '../../models/user.model';
+import uploadPic from '../../services/uploadPic';
 
 const register = function(req, res) {
-    // console.log(req.body)
-    const newUser = new Users(req.body);
 
-    newUser.save()
-        .then((response) => {
-			res.status(200).send("Account created successfully")
-        })
-        .catch(err => console.log(err));
+	uploadPic(req, res)
+		.then((res) => {
+			req.body.profilepicture = res;
+			const newUser = new User(req.body);
+			let hash = bcrypt.hashSync(req.body.password, 10);
+			newUser.password = hash;
+
+			return newUser.save()
+		})
+		.then (() => {
+			res.end("Account created successfully");
+		})
+		.catch((err) => {
+			return res.status(400).send(err);
+		})
 }
 
 export default register;

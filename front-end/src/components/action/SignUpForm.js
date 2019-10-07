@@ -5,12 +5,18 @@ import axios from 'axios';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Form from 'react-bootstrap/Form';
+
 import Button from 'react-bootstrap/Button';
 import '../style/sign.css';
 
-
 export default function SignUpForm() {
-	const [inputs, setInputs] = useState({});
+	const [inputs, setInputs] = useState({
+		'firstname': '',
+		'lastname': '',
+		'username': '',
+		'email': '',
+		'password': ''
+	});
 	const [picture, setPicture] = useState(null);
 
 	const handleOnChange = (event) => {
@@ -24,8 +30,17 @@ export default function SignUpForm() {
   	}
 
 	const handleSubmit = (event) => {
+		let formData = new FormData();
+		formData.append('avatar', picture);
+		formData.append('firstname', inputs.firstname);
+		formData.append('lastname', inputs.lastname);
+		formData.append('username', inputs.username);
+		formData.append('email', inputs.email);
+		formData.append('password', inputs.password);
+
 		event.preventDefault();
-		axios.post('http://localhost:5000/auth/register', inputs)
+
+		axios.post('http://localhost:5000/auth/register', formData)
 			.then((res) => {
 				console.log(res)
 			})
