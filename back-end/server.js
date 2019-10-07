@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const passport = require('passport');
 
 require('dotenv').config();
 
@@ -9,6 +10,8 @@ const port = process.env.port || 5000;
 
 app.use(cors());
 app.use(express.json());
+app.use(passport.initialize());
+app.use(passport.session());
 
 const uri = process.env.ATLAS_URI;
 mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true,  useUnifiedTopology: true});

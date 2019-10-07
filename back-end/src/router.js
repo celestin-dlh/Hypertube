@@ -1,7 +1,11 @@
 import express from 'express';
 
+
 /* auth */
 import register from './controllers/auth/register';
+import passport from './controllers/auth/passport';
+
+
 
 
 /* user */
@@ -12,6 +16,12 @@ class Router {
 		let router = express.Router();
 		console.log('auth routes..');
 		router.post('/register', register);
+        router.get('/google', passport.authenticate('google', {
+            scope: ['profile', 'email']
+        }));
+        router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
+            res.redirect('/user');
+        });
 		return router;
 	}
 
@@ -19,7 +29,6 @@ class Router {
 		let router = express.Router();
 		console.log('auth routes..');
 		//router.post('/uploadpic', uploadPic);
-
 		return router;
 	}
 
