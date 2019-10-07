@@ -30,7 +30,7 @@ export default function SignUp() {
 					<Button
 						variant="primary" type="submit" size="lg" block className="buttonForm"
 					>
-						Sign in with Facebook
+						Sign in with 42
 					</Button>
 				</Row>
 				<h5 className="hr">or create account using email</h5>
