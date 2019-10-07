@@ -1,8 +1,8 @@
+import bcrypt from 'bcryptjs';
 import passport from 'passport';
 import GoogleStrategy from 'passport-google-oauth20';
 import FortyTwoStrategy from 'passport-42';
 import User from '../../models/user.model';
-
 
 require('dotenv').config();
 
@@ -77,5 +77,6 @@ passport.use(
         });
     })
 );
+
 
 export default passport;

@@ -21,7 +21,7 @@ export default function SignUpForm() {
 
 	const onSubmit = (event) => {
 		event.preventDefault();
-		axios.post('http://localhost:5000/auth/register', inputs)
+		axios.post('http://localhost:5000/auth/login', inputs)
 			.then((res) => {
 				console.log(res)
 			})
