@@ -19,7 +19,6 @@ export default function SignUpForm() {
 		'password': ''
 	});
 
-	let disabled = (inputs.firstname && inputs.lastname && inputs.username) ? 1 : 0
 	const [picture, setPicture] = useState(null);
 
 	const handleOnChange = (event) => {
@@ -33,7 +32,6 @@ export default function SignUpForm() {
   	}
 
 	const handleSubmit = (event) => {
-		console.log(disabled)
 		let formData = new FormData();
 			formData.append('avatar', picture);
 			formData.append('firstname', inputs.firstname);
