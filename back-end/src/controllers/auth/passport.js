@@ -1,7 +1,9 @@
 import passport from 'passport';
 import GoogleStrategy from 'passport-google-oauth20';
 import FortyTwoStrategy from 'passport-42';
+import LocalStrategy from 'passport-local';
 import User from '../../models/user.model';
+import bcrypt from 'bcryptjs';
 
 
 require('dotenv').config();
@@ -77,5 +79,23 @@ passport.use(
         });
     })
 );
+
+
+
+passport.use(
+    new LocalStrategy(
+        function(username, password, done) {
+            User.findOne({ username: username }, function (err, user) {
+                if (err) {
+                    return done(err);
+                }
+                else {
+                    bcrypt.compare(password, user.password, function(err, res) {
+                        console.log(res)
+                    });
+                }
+            });
+        }
+    ));
 
 export default passport;

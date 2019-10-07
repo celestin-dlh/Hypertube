@@ -16,6 +16,11 @@ class Router {
 		let router = express.Router();
 		console.log('auth routes..');
 		router.post('/register', register);
+		//local
+        router.post('/login', passport.authenticate('local', { failureRedirect: '/login?error' }),
+            function(req, res) {
+                res.redirect('/');
+        });
 		// google
         router.get('/google', passport.authenticate('google', {
             scope: ['profile', 'email']
