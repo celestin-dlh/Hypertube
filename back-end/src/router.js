@@ -16,10 +16,16 @@ class Router {
 		let router = express.Router();
 		console.log('auth routes..');
 		router.post('/register', register);
+		// google
         router.get('/google', passport.authenticate('google', {
             scope: ['profile', 'email']
         }));
         router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
+            res.redirect('/user');
+        });
+        // 42
+        router.get('/42', passport.authenticate('42'));
+        router.get('/42/redirect', passport.authenticate('42'), (req, res) => {
             res.redirect('/user');
         });
 		return router;
