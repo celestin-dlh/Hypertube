@@ -37,6 +37,7 @@ export default function SignUp() {
 
 		    	<SignInForm />
 		    	<p className="link">Create your account ? <a href="/signup">Sign Up</a></p>
+		    	<p className="link">Forgot your password ? <a href="/forgetpassword">Click here</a></p>
 		    	
 		    </Col>
 		  </Row>
