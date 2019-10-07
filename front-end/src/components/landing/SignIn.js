@@ -36,7 +36,7 @@ export default function SignUp() {
 				<h5 className="hr">or create account using email</h5>
 
 		    	<SignInForm />
-		    	<p>Create your account ? <a href="/signup">Sign Up</a></p>
+		    	<p className="link">Create your account ? <a href="/signup">Sign Up</a></p>
 		    	
 		    </Col>
 		  </Row>

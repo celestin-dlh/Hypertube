@@ -14,15 +14,21 @@
 
 }
 
+.link {
+	margin-top: 20px;
+	text-align: right;
+}
+
 h2 {
 	margin-bottom: 15px;
 	font-size: bold;
 	text-align: center
 }
 
-p {
-	margin-top: 20px;
-	text-align: right;
+
+a {
+	text-decoration: underline;
+	color: black;
 }
 
 /* Hr with text "or create account using email" */
