@@ -45,7 +45,7 @@ export default function SignUp() {
 				<h5 className="hr">or create account using email</h5>
 
 		    	<SignUpForm />
-		    	<p>Already have an account? <a href="/signin">Sign in</a></p> 
+		    	<p className="link">Already have an account? <a href="/signin">Sign in</a></p> 
 		    </Col>
 		  </Row>
 		</Container>

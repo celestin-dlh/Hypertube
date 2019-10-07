@@ -10,6 +10,7 @@ import Button from 'react-bootstrap/Button';
 import '../style/sign.css';
 
 export default function SignUpForm() {
+
 	const [inputs, setInputs] = useState({
 		'firstname': '',
 		'lastname': '',
@@ -17,6 +18,7 @@ export default function SignUpForm() {
 		'email': '',
 		'password': ''
 	});
+
 	const [picture, setPicture] = useState(null);
 
 	const handleOnChange = (event) => {
@@ -31,12 +33,12 @@ export default function SignUpForm() {
 
 	const handleSubmit = (event) => {
 		let formData = new FormData();
-		formData.append('avatar', picture);
-		formData.append('firstname', inputs.firstname);
-		formData.append('lastname', inputs.lastname);
-		formData.append('username', inputs.username);
-		formData.append('email', inputs.email);
-		formData.append('password', inputs.password);
+			formData.append('avatar', picture);
+			formData.append('firstname', inputs.firstname);
+			formData.append('lastname', inputs.lastname);
+			formData.append('username', inputs.username);
+			formData.append('email', inputs.email);
+			formData.append('password', inputs.password);
 
 		event.preventDefault();
 
@@ -92,18 +94,25 @@ export default function SignUpForm() {
 		                    alt="avatar" />
 		               	</div>        
 		            </label>
-		              <input
-		                variant="outlined"
-		                type="file"
-		                id="file-input"
-		                name="file"
-		                onChange={handleOnFileChange}
-		                className="imageUpload"
-		              />
+					<input
+						variant="outlined"
+						type="file"
+						id="file-input"
+						name="file"
+						onChange={handleOnFileChange}
+						className="imageUpload"
+					/>
 				</Form.Group>
-			</Row>
+
+			</Row>			
 			<Row className="justify-content-center">
-				<Button type="submit" size="lg" block className="buttonForm" style={{border: "none", backgroundColor: "#e5a00d"}}>
+				<p className="text-muted">Don't forget to choose a profile pic</p>
+			</Row>
+
+			<Row className="justify-content-center">
+				<Button
+					disabled={!(inputs.firstname && inputs.lastname && inputs.username && inputs.email && inputs.password && picture)}
+					type="submit" size="lg" block className="buttonForm" style={{border: "none", backgroundColor: "#e5a00d"}}>
 				    Create
 				</Button>
 			</Row>
