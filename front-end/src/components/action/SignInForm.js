@@ -26,7 +26,7 @@ export default function SignUpForm() {
 	const handleOnChange = (event) => {
 		const {name, value} = event.target;
 		setInputs({ ...inputs, [name]: value});
-	}
+	};
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
@@ -37,7 +37,7 @@ export default function SignUpForm() {
 			.catch((err) => {
 				console.log(err)
 			})
-	}
+	};
 
 	return (
 		<Form onSubmit={handleSubmit}>

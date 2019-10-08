@@ -90,7 +90,8 @@ export default function SignUpForm() {
 		                    id="avatar"
 		                    className="avatar"
 		                    alt="avatar" />
-		               	</div>        
+		               	</div>
+                        <p>Upload your profil image</p>
 		            </label>
 		              <input
 		                variant="outlined"
