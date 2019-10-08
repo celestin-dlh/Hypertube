@@ -1,9 +1,15 @@
 import express from 'express';
 
+import session from './middlewares/session';
 
 /* auth */
 import register from './controllers/auth/register';
-import passport from './controllers/auth/passport';
+import login from './controllers/auth/login';
+import forgetpassword from './controllers/auth/forgetpassword';
+import resetpassword from './controllers/auth/resetpassword';
+
+
+import getuser from './controllers/user/getuser';
 
 
 
@@ -16,11 +22,6 @@ class Router {
 		let router = express.Router();
 		console.log('auth routes..');
 		router.post('/register', register);
-		//local
-        router.post('/login', passport.authenticate('local', { failureRedirect: '/login?error' }),
-            function(req, res) {
-                res.redirect('/');
-        });
 		// google
         router.get('/google', passport.authenticate('google', {
             scope: ['profile', 'email']
@@ -33,12 +34,18 @@ class Router {
         router.get('/42/redirect', passport.authenticate('42'), (req, res) => {
             res.redirect('/user');
         });
+		router.post('/login', login);
+		router.post('/forgetpassword', forgetpassword);
+		router.post('/resetpassword', resetpassword);
 		return router;
 	}
 
 	static user() {
 		let router = express.Router();
-		console.log('auth routes..');
+
+		console.log('user routes..');
+		router.use('/', session)
+		router.get('/getuser', getuser);
 		//router.post('/uploadpic', uploadPic);
 		return router;
 	}

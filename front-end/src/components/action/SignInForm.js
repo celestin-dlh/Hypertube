@@ -9,53 +9,55 @@ import '../style/sign.css';
 
 
 export default function SignUpForm() {
-
 	const [inputs, setInputs] = useState({
 		'username': '',
 		'password': '',
 	});	
-
-	const [errors, setInputsErrors] = useState({
-		'error_username': '',
-		'error_password': ''
-	});
-
-
-
 
 	const handleOnChange = (event) => {
 		const {name, value} = event.target;
 		setInputs({ ...inputs, [name]: value});
 	};
 
-	const handleSubmit = (event) => {
+	const onSubmit = (event) => {
 		event.preventDefault();
 		axios.post('http://localhost:5000/auth/login', inputs)
-			.then((res) => {
-				console.log(res)
-			})
-			.catch((err) => {
-				console.log(err)
-			})
-	};
+			.then((res) =>
+				localStorage.setItem('token', res.data.accessToken))
+			.catch((err) => 
+				console.log(err))
+	}
 
 	return (
-		<Form onSubmit={handleSubmit}>
+		<Form onSubmit={onSubmit}>
 			<Form.Group controlId="formGridUsername">
 				<Form.Label>Username</Form.Label>
-				<Form.Control type="text" name="username" placeholder="Username" onChange={handleOnChange} value={inputs.username}/>
-				<Form.Text className="text-muted" >
-			      {errors.error_username}
-			    </Form.Text>
+				<Form.Control 
+					type="text" 
+					name="username" 
+					placeholder="Username" 
+					onChange={handleOnChange} 
+					value={inputs.username}
+					required
+				/>
 			</Form.Group>			
 
 			<Form.Group controlId="formBasicPassword">
 			    <Form.Label>Password</Form.Label>
-			    <Form.Control type="password" name="password" placeholder="Password" onChange={handleOnChange} value={inputs.password}/>
+			    <Form.Control 
+				    type="password" 
+				    name="password" 
+				    placeholder="Password" 
+				    onChange={handleOnChange} 
+				    value={inputs.password}
+				    required
+				/>
 			</Form.Group>
 
 			<Row className="justify-content-center">
-				<Button type="submit" size="lg" block className="buttonForm" style={{border: "none", backgroundColor: "#e5a00d"}}>
+				<Button 
+					disabled={!(inputs.username && inputs.password)}
+					type="submit" size="lg" block className="buttonForm" style={{border: "none", backgroundColor: "#e5a00d"}}>
 				    Sign in
 				</Button>
 			</Row>

@@ -63,7 +63,11 @@ export default function SignUp() {
 				<h5 className="hr">Or create account using email</h5>
 
 		    	<SignUpForm />
+<<<<<<< HEAD
 		    	<p>Already have an account ? <a href="/signin" style={{color: "black"}}>Sign in</a></p>
+=======
+		    	<p className="link">Already have an account? <a href="/signin">Sign in</a></p> 
+>>>>>>> master
 		    </Col>
 		  </Row>
 		</Container>
