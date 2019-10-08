@@ -1,4 +1,5 @@
 {
+  "name": "hypertube",
   "dependencies": {
     "@hapi/joi": "^16.1.5",
     "bcryptjs": "^2.4.3",

@@ -10,7 +10,6 @@ import Form from 'react-bootstrap/Form';
 import '../style/sign.css';
 
 /* Form */
-		
 
 export default function ForgetPasswordForm() {
 	const [inputs, setEmail] = useState({
@@ -24,7 +23,7 @@ export default function ForgetPasswordForm() {
 	const onSubmit = (event) => {
 		event.preventDefault();
 		console.log(inputs)
-		axios.post('http://localhost:5000/user/forgetpassword', inputs)
+		axios.post('http://localhost:5000/auth/forgetpassword', inputs)
 			.then((res) => {
 				console.log(res)
 			})
