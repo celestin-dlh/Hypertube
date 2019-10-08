@@ -21,13 +21,11 @@ export default function SignUpForm() {
 
 	const onSubmit = (event) => {
 		event.preventDefault();
-		axios.post('http://localhost:5000/auth/register', inputs)
-			.then((res) => {
-				console.log(res)
-			})
-			.catch((err) => {
-				console.log(err)
-			})
+		axios.post('http://localhost:5000/auth/login', inputs)
+			.then((res) =>
+				localStorage.setItem('token', res.data.accessToken))
+			.catch((err) => 
+				console.log(err))
 	}
 
 	return (

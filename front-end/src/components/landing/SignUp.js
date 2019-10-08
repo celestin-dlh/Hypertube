@@ -19,7 +19,7 @@ const ButtonContainer = () => {
 				<Button
 					variant="danger" type="submit" size="lg" block className="buttonForm"
 				>
-					Sign up with Google<a class="google-btn" href="http://localhost:5000/auth/google">Google+</a>
+					Sign up with Google<a className="google-btn" href="http://localhost:5000/auth/google">Google+</a>
 				</Button>
    				
 			</Row>
