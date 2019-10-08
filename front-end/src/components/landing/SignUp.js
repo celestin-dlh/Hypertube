@@ -12,27 +12,45 @@ import '../style/sign.css';
 /* Form */
 import SignUpForm from '../action/SignUpForm';
 
+const ButtonLogin = (props) => {
+    return (
+        <React.Fragment>
+            <Button variant={props.color} type="submit" size="lg" block className="buttonForm">
+                <a className="google-btn" href={props.link} style={{display: "flex", flexDirection: "row", justifyContent: "center"}}>
+                    <div>
+                        <i className={props.logo} style={{marginRight: "-30px"}}></i>
+                        <img src={props.image} alt={props.alt} style={{width: "30px", marginRight: "60px"}}/>
+                    </div>
+                    <div> {props.text}</div>
+                </a>
+            </Button>
+        </React.Fragment>
+    )
+};
+
 const ButtonContainer = () => {
 	return (
 		<React.Fragment>
 			<Row className="justify-content-center">
-				<Button
-					variant="danger" type="submit" size="lg" block className="buttonForm"
-				>
-					Sign up with Google<a className="google-btn" href="http://localhost:5000/auth/google">Google+</a>
-				</Button>
-   				
+                    <ButtonLogin
+                        color="danger"
+                        link="http://localhost:5000/auth/google"
+                        text="Sign up with Google"
+                        logo="fab fa-google"
+                    />
 			</Row>
 			<Row className="justify-content-center">
-				<Button
-					variant="primary" type="submit" size="lg" block className="buttonForm"
-				>
-					Sign up with Facebook
-				</Button>
+                    <ButtonLogin
+                        color="primary"
+                        link="http://localhost:5000/auth/42"
+                        text="Sign up with 42"
+                        image="/images/42-icon.svg"
+                        alt="42 logo"
+                    />
 			</Row>
 		</React.Fragment>
 	)
-}
+};
 
 export default function SignUp() {
 
@@ -42,10 +60,14 @@ export default function SignUp() {
 		    <Col md="8" className="containerForm">
 		    	<h2>Hypertube Sign Up</h2>
 		    	<ButtonContainer />
-				<h5 className="hr">or create account using email</h5>
+				<h5 className="hr">Or create account using email</h5>
 
 		    	<SignUpForm />
+<<<<<<< HEAD
+		    	<p>Already have an account ? <a href="/signin" style={{color: "black"}}>Sign in</a></p>
+=======
 		    	<p className="link">Already have an account? <a href="/signin">Sign in</a></p> 
+>>>>>>> master
 		    </Col>
 		  </Row>
 		</Container>

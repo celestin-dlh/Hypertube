@@ -17,7 +17,7 @@ export default function SignUpForm() {
 	const handleOnChange = (event) => {
 		const {name, value} = event.target;
 		setInputs({ ...inputs, [name]: value});
-	}
+	};
 
 	const onSubmit = (event) => {
 		event.preventDefault();

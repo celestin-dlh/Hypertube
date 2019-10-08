@@ -12,46 +12,60 @@ import '../style/sign.css';
 /* Form */
 import SignInForm from '../action/SignInForm';
 
+const ButtonLogin = (props) => {
+    return (
+        <React.Fragment>
+            <Button variant={props.color} type="submit" size="lg" block className="buttonForm">
+                <a className="google-btn" href={props.link} style={{display: "flex", flexDirection: "row", justifyContent: "center"}}>
+                    <div>
+                        <i className={props.logo} style={{marginRight: "-30px"}}></i>
+                        <img src={props.image} alt={props.alt} style={{width: "30px", marginRight: "60px"}}/>
+                    </div>
+                    <div> {props.text}</div>
+                </a>
+            </Button>
+        </React.Fragment>
+    )
+};
+
 const ButtonContainer = () => {
-	return (
-		<React.Fragment>				
-			<Row className="justify-content-center">
-				<Button
-					variant="danger" type="submit" size="lg" block className="buttonForm"
-				>
-					Sign in with Google
-				</Button>
-			</Row>
-			<Row className="justify-content-center">
-				<Button
-					variant="primary" type="submit" size="lg" block className="buttonForm"
-				>
-					Sign in with Facebook
-				</Button>
-			</Row>
-		</React.Fragment>
-	)
-}
+    return (
+        <React.Fragment>
+            <Row className="justify-content-center">
+                <ButtonLogin
+                    color="danger"
+                    link="http://localhost:5000/auth/google"
+                    text="Sign up with Google"
+                    logo="fab fa-google"
+                />
+            </Row>
+            <Row className="justify-content-center">
+                <ButtonLogin
+                    color="primary"
+                    link="http://localhost:5000/auth/42"
+                    text="Sign up with 42"
+                    image="/images/42-icon.svg"
+                    alt="42 logo"
+                />
+            </Row>
+        </React.Fragment>
+    )
+};
 
 export default function SignUp() {
 
-	return (
-		<Container>
-		  <Row className="justify-content-center">
-		    <Col md="8" className="containerForm">
-		    	<h2>Hypertube Sign In</h2>
+    return (
+        <Container>
+            <Row className="justify-content-center">
+                <Col md="8" className="containerForm">
+                    <h2>Hypertube Sign In</h2>
+                    <ButtonContainer />
+                    <h5 className="hr">or create account using email</h5>
+                    <SignInForm />
+                    <p>Create your account ? <a href="/signup" style={{color: "black"}}>Sign Up</a></p>
+                </Col>
+            </Row>
+        </Container>
+    )
 
-		    	<ButtonContainer />
-				<h5 className="hr">or log here</h5>
-
-		    	<SignInForm />
-		    	<p className="link">LOGOUT<a href="/logout">LOGOUT</a></p>
-		    	<p className="link">Create your account ? <a href="/signup">Sign Up</a></p>
-		    	<p className="link">Forgot your password ? <a href="/forgetpassword">Click here</a></p>
-		    	
-		    </Col>
-		  </Row>
-		</Container>
-	)
-
-}			
+}
