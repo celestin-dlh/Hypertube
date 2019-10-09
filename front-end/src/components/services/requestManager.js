@@ -1,11 +1,11 @@
 import axios from 'axios';
 
-let token;
-const getToken = () => {
-	if (!token)
-		token = localStorage.getItem('token') 
-	return (token)
-}
+// let token;
+// const getToken = () => {
+// 	if (!token)
+// 		token = localStorage.getItem('token') 
+// 	return (token)
+// }
 
 const _axios = axios.create();
 
@@ -24,7 +24,11 @@ export function updateEmail(email) {
 	return _axios.post('http://localhost:5000/user/updateemail', email)
 }
 
-export function updatePassword(fullname) {
-	return _axios.post('http://localhost:5000/user/updatepassword', fullname)
+export function updatePassword(password) {
+	return _axios.post('http://localhost:5000/user/updatepassword', password)
+}
+
+export function updateProfilePic(profilePic) {
+	return _axios.post('http://localhost:5000/user/updateprofilepic', profilePic)
 }
 

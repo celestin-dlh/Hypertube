@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Redirect } from 'react-router-dom'
+import { withRouter } from "react-router";
 
 /* Bootstrap */
 import Row from 'react-bootstrap/Row';
@@ -9,7 +9,7 @@ import Button from 'react-bootstrap/Button';
 import '../style/sign.css';
 
 
-export default function SignUpForm() {
+function SignInForm({ history }) {
 	const [inputs, setInputs] = useState({
 		'username': '',
 		'password': '',
@@ -26,8 +26,7 @@ export default function SignUpForm() {
 			.then((res) =>
 			{
 				localStorage.setItem('token', res.data.accessToken)
-				console.log('redicrect')
-				return <Redirect to='/profile' />
+				history.push('/profile');
 			})
 			.catch((err) => 
 				console.log(err))
@@ -69,4 +68,6 @@ export default function SignUpForm() {
 		</Form>
 	)
 
-}			
+}
+
+export default withRouter(SignInForm);

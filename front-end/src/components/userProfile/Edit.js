@@ -9,7 +9,10 @@ import Col from 'react-bootstrap/Col';
 import '../style/sign.css';
 
 /* Form */
-import EditForm from './EditForm';
+import FullNameForm from './FullNameForm';
+import EmailForm from './EmailForm';
+import PasswordForm from './PasswordForm';
+import ProfilePicForm from './ProfilePicForm';
 
 export default function ForgetPassword() {
 
@@ -21,7 +24,10 @@ export default function ForgetPassword() {
 
 				<h2>Edit</h2>
 
-				<EditForm />
+				<FullNameForm />
+				<EmailForm />
+				<PasswordForm />
+				<ProfilePicForm />
 
 		    	
 		    </Col>

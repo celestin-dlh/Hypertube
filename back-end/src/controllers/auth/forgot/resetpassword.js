@@ -1,7 +1,7 @@
 import bcrypt from 'bcryptjs';
 
 /* Model */
-import User from '../../models/user.model';
+import User from '../../../models/user.model';
 
 const resetpassword = function(req, res) {
    const password = req.body.password

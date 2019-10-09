@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { withRouter } from "react-router";
 
 /* Bootstrap */
 import Col from 'react-bootstrap/Col';
@@ -9,7 +10,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import '../style/sign.css';
 
-export default function SignUpForm() {
+function SignUpForm({ history }) {
 
 	const [inputs, setInputs] = useState({
 		'firstname': '',
@@ -45,6 +46,7 @@ export default function SignUpForm() {
 		axios.post('http://localhost:5000/auth/register', formData)
 			.then((res) => {
 				console.log(res)
+				//history.push('/signin')
 			})
 			.catch((err) => {
 				console.log(err)
@@ -121,3 +123,5 @@ export default function SignUpForm() {
 	)
 
 }			
+
+export default withRouter(SignUpForm)

@@ -1,16 +1,21 @@
 import express from 'express';
+import passport from 'passport';
 
 import session from './middlewares/session';
 
 /* auth */
 import register from './controllers/auth/register';
 import login from './controllers/auth/login';
-import forgetpassword from './controllers/auth/forgetpassword';
-import resetpassword from './controllers/auth/resetpassword';
+import forgetpassword from './controllers/auth/forgot/forgetpassword';
+import resetpassword from './controllers/auth/forgot/resetpassword';
 
 
 import getuser from './controllers/user/getuser';
 
+import updateFullName from './controllers/user/UpdateFullName';
+import updateEmail from './controllers/user/updateEmail';
+import updatePassword from './controllers/user/updatePassword';
+import updateProfilePic from './controllers/user/updateProfilePic';
 
 
 
@@ -21,7 +26,11 @@ class Router {
 	static auth() {
 		let router = express.Router();
 		console.log('auth routes..');
-		router.post('/register', register);
+		router.post('/register', register);		
+		router.post('/login', login);
+		router.post('/forgetpassword', forgetpassword);
+		router.post('/resetpassword', resetpassword);
+
 		// google
         router.get('/google', passport.authenticate('google', {
             scope: ['profile', 'email']
@@ -29,14 +38,13 @@ class Router {
         router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
             res.redirect('/user');
         });
+
         // 42
         router.get('/42', passport.authenticate('42'));
         router.get('/42/redirect', passport.authenticate('42'), (req, res) => {
             res.redirect('/user');
         });
-		router.post('/login', login);
-		router.post('/forgetpassword', forgetpassword);
-		router.post('/resetpassword', resetpassword);
+
 		return router;
 	}
 
@@ -46,7 +54,11 @@ class Router {
 		console.log('user routes..');
 		router.use('/', session)
 		router.get('/getuser', getuser);
-		//router.post('/uploadpic', uploadPic);
+		router.post('/updatefullname', updateFullName);
+		router.post('/updateemail', updateEmail);
+		router.post('/updatepassword', updatePassword);
+		router.post('/updateprofilepic', updateProfilePic);
+
 		return router;
 	}
 

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 
 /* Bootstrap */
 import Row from 'react-bootstrap/Row';
@@ -12,7 +11,7 @@ import '../style/sign.css';
 import { updateFullName } from '../services/requestManager';
 import { getProfile } from '../services/requestManager';
 
-export default function EditForm() {
+export default function FullNameForm() {
 	const [fullname, setFullname] = useState({
 		'firstname': '',
 		'lastname': '',
