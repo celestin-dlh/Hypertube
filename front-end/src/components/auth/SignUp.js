@@ -10,7 +10,7 @@ import Button from 'react-bootstrap/Button';
 import '../style/sign.css';
 
 /* Form */
-import SignInForm from '../action/SignInForm';
+import SignUpForm from './SignUpForm';
 
 const ButtonLogin = (props) => {
     return (
@@ -29,17 +29,17 @@ const ButtonLogin = (props) => {
 };
 
 const ButtonContainer = () => {
-    return (
-        <React.Fragment>
-            <Row className="justify-content-center">
+	return (
+		<React.Fragment>
+			<Row className="justify-content-center">
                 <ButtonLogin
                     color="danger"
                     link="http://localhost:5000/auth/google"
                     text="Sign up with Google"
                     logo="fab fa-google"
                 />
-            </Row>
-            <Row className="justify-content-center">
+			</Row>
+			<Row className="justify-content-center">
                 <ButtonLogin
                     color="primary"
                     link="http://localhost:5000/auth/42"
@@ -47,25 +47,26 @@ const ButtonContainer = () => {
                     image="/images/42-icon.svg"
                     alt="42 logo"
                 />
-            </Row>
-        </React.Fragment>
-    )
+			</Row>
+		</React.Fragment>
+	)
 };
 
 export default function SignUp() {
 
-    return (
-        <Container>
-            <Row className="justify-content-center">
-                <Col md="8" className="containerForm">
-                    <h2>Hypertube Sign In</h2>
-                    <ButtonContainer />
-                    <h5 className="hr">or create account using email</h5>
-                    <SignInForm />
-                    <p>Create your account ? <a href="/signup" style={{color: "black"}}>Sign Up</a></p>
-                </Col>
-            </Row>
-        </Container>
-    )
+	return (
+		<Container>
+		  <Row className="justify-content-center">
+		    <Col md="8" className="containerForm">
+		    	<h2>Hypertube Sign Up</h2>
+		    	<ButtonContainer />
+				<h5 className="hr">Or create account using email</h5>
 
-}
+		    	<SignUpForm />
+		    	<p>Already have an account ? <a href="/signin" style={{color: "black"}}>Sign in</a></p>
+		    </Col>
+		  </Row>
+		</Container>
+	)
+
+}			

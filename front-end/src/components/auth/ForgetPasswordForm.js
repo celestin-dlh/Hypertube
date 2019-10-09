@@ -22,7 +22,6 @@ export default function ForgetPasswordForm() {
 
 	const onSubmit = (event) => {
 		event.preventDefault();
-		console.log(inputs)
 		axios.post('http://localhost:5000/auth/forgetpassword', inputs)
 			.then((res) => {
 				console.log(res)

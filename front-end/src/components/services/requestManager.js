@@ -12,7 +12,19 @@ const _axios = axios.create();
 _axios.defaults.headers.common['Authorization'] = localStorage.getItem('token');
 
 
- const getProfile = (username) => {
-	return _axios.get('http://localhost:5000/user/getuser', 'zeeratul')
+export function getProfile(username) {
+	return _axios.get('http://localhost:5000/user/getuser', username)
 }
-export default getProfile
+
+export function updateFullName(fullname) {
+	return _axios.post('http://localhost:5000/user/updatefullname', fullname)
+}
+
+export function updateEmail(email) {
+	return _axios.post('http://localhost:5000/user/updateemail', email)
+}
+
+export function updatePassword(fullname) {
+	return _axios.post('http://localhost:5000/user/updatepassword', fullname)
+}
+
