@@ -9,11 +9,12 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 /* Landing */
-import SignUp from './components/landing/SignUp';
-import SignIn from './components/landing/SignIn';
-import ForgetPassword from './components/landing/ForgetPassword';
-import ResetPassword from './components/landing/ResetPassword';
-import Profile from './components/landing/Profile';
+import SignUp from './components/auth/SignUp';
+import SignIn from './components/auth/SignIn';
+import ForgetPassword from './components/auth/ForgetPassword';
+import ResetPassword from './components/auth/ResetPassword';
+import Profile from './components/userProfile/Profile';
+import Edit from './components/userProfile/Edit';
 
 import './App.css';
 
@@ -31,6 +32,9 @@ function App() {
             <Route exact path="/resetpassword/:token" render={ResetPassword} />
             <Route exact path="/profile">
               <Profile />
+            </Route>
+            <Route exact path="/edit">
+              <Edit />
             </Route>
             <Route path="/">
               <SignUp />

@@ -8,7 +8,7 @@ import Col from 'react-bootstrap/Col';
 /* Style */
 import '../style/sign.css';
 
-import ResetPasswordForm from '../action/ResetPasswordForm';
+import ResetPasswordForm from './ResetPasswordForm';
 
 export default function ResetPassword(props) {
     let token = props.match.params.token;

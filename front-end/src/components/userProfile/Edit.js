@@ -9,7 +9,7 @@ import Col from 'react-bootstrap/Col';
 import '../style/sign.css';
 
 /* Form */
-import ForgetPasswordForm from '../action/ForgetPasswordForm';
+import EditForm from './EditForm';
 
 export default function ForgetPassword() {
 
@@ -19,11 +19,10 @@ export default function ForgetPassword() {
 		  <Row className="justify-content-center">
 		    <Col md="8" className="containerForm">
 
-			<h2>Forget password?</h2>
+				<h2>Edit</h2>
 
-			<ForgetPasswordForm />
+				<EditForm />
 
-		    <p className="link">Already have an account? <a href="/signin">Sign in</a></p> 
 		    	
 		    </Col>
 		  </Row>

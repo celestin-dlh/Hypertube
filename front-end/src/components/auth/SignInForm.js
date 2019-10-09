@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Redirect } from 'react-router-dom'
 
 /* Bootstrap */
 import Row from 'react-bootstrap/Row';
@@ -23,7 +24,11 @@ export default function SignUpForm() {
 		event.preventDefault();
 		axios.post('http://localhost:5000/auth/login', inputs)
 			.then((res) =>
-				localStorage.setItem('token', res.data.accessToken))
+			{
+				localStorage.setItem('token', res.data.accessToken)
+				console.log('redicrect')
+				return <Redirect to='/profile' />
+			})
 			.catch((err) => 
 				console.log(err))
 	}
