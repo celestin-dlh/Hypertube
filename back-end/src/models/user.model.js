@@ -24,6 +24,9 @@ const userSchema = new Schema({
     googleId: {
         type: String,
     },
+    ftId: {
+        type: String,
+    },
     email: {
         type: String,
         unique: true,

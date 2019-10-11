@@ -1,5 +1,6 @@
 import express from 'express';
-import passport from 'passport';
+import jwt from "jsonwebtoken";
+
 
 import session from './middlewares/session';
 
@@ -17,9 +18,11 @@ import updateEmail from './controllers/user/updateEmail';
 import updatePassword from './controllers/user/updatePassword';
 import updateProfilePic from './controllers/user/updateProfilePic';
 
+import passport from './controllers/auth/passport';
 
 
 /* user */
+
 
 class Router {
 
@@ -41,11 +44,25 @@ class Router {
 
         // 42
         router.get('/42', passport.authenticate('42'));
-        router.get('/42/redirect', passport.authenticate('42'), (req, res) => {
-            res.redirect('/user');
+        router.get('/42/redirect', function (req, res) {    passport.authenticate('42', {session: false}, (err, user, info) => {
+            if (err || !user) {
+                return res.status(400).json({
+                    message: 'Something is not right',
+                    user   : user
+                });
+            }       req.login(user, {session: false}, (err) => {
+                if (err) {
+                    res.send(err);
+                }
+                const username = user.username;
+                const accessToken = jwt.sign({ username }, process.env.ACCESS_TOKEN_SECRET);
+                res.redirect('http://localhost:3000/jwt/' + accessToken)
+            });
+        })(req, res);
         });
 
-		return router;
+
+        return router;
 	}
 
 	static user() {
