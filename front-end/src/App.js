@@ -14,9 +14,10 @@ import SignIn from './components/auth/SignIn';
 import ForgetPassword from './components/auth/ForgetPassword';
 import ResetPassword from './components/auth/ResetPassword';
 import Profile from './components/userProfile/Profile';
+import User from './components/userProfile/UserProfile';
 import Edit from './components/userProfile/Edit';
-
 import Jwt from './components/auth/Jwt';
+
 
 import './App.css';
 
@@ -30,6 +31,11 @@ function App() {
             </Route>               
             {/*  passport 42 google*/}
             <Route exact path="/jwt/:token" render={Jwt} />
+
+            <Route exact path="/user/:username">
+                <User />
+            </Route>
+
             <Route exact path="/forgetpassword">
               <ForgetPassword />
             </Route>                

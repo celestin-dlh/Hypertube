@@ -38,10 +38,6 @@ class Router {
         router.get('/google', passport.authenticate('google', {
             scope: ['profile', 'email']
         }));
-        // router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
-        //     res.redirect('/user');
-        // });
-
         router.get('/google/redirect', function (req, res) {    passport.authenticate('google', {session: false}, (err, user, info) => {
             if (err || !user) {
                 return res.status(400).json({
@@ -86,7 +82,7 @@ class Router {
 		let router = express.Router();
 
 		console.log('user routes..');
-		router.use('/', session)
+		router.use('/', session);
 		router.get('/getuser', getuser);
 		router.post('/updatefullname', updateFullName);
 		router.post('/updateemail', updateEmail);
@@ -100,6 +96,7 @@ class Router {
 		console.log('initialize router..');
 		let router = express.Router();
 
+        router.post('/getuser', getuser);
 		router.use('/auth/', Router.auth());
 		router.use('/user/', Router.user());
 

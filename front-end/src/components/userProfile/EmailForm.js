@@ -18,7 +18,7 @@ export default function EmailForm() {
 
 	const handleOnChange = (event) => {
 		setEmail({[event.target.name]: event.target.value})
-	}
+	};
 
 	const onSubmit = (event) => {
 		event.preventDefault();
@@ -29,7 +29,7 @@ export default function EmailForm() {
 			.catch((err) => {
 				console.log(err)
 			})
-	}
+	};
 
 	return (
 		<div>

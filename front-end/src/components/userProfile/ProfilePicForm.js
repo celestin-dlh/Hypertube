@@ -17,7 +17,7 @@ export default function FullNameForm() {
 	const handleOnChange = (event) => {
 		const file = event.target.files[0];
 	    setPicture(file)
-	}
+	};
 
 	const onSubmit = (event) => {
 		let formData = new FormData();
@@ -31,7 +31,7 @@ export default function FullNameForm() {
 		// 	.catch((err) => {
 		// 		console.log(err)
 		// 	})
-	}
+	};
 
 	return (
 		<div>
