@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { withRouter } from "react-router";
 
+/* redux */
+import { useSelector, useDispatch } from 'react-redux'
+import { username } from '../../redux/actions'
+
 /* Bootstrap */
 import Row from 'react-bootstrap/Row';
 import Form from 'react-bootstrap/Form';
@@ -10,7 +14,8 @@ import '../style/sign.css';
 
 
 function SignInForm({ history }) {
-	const [inputs, setInputs] = useState({
+	const dispatch = useDispatch();
+    const [inputs, setInputs] = useState({
 		'username': '',
 		'password': '',
 	});	
@@ -22,10 +27,14 @@ function SignInForm({ history }) {
 
 	const onSubmit = (event) => {
 		event.preventDefault();
+		console.log(inputs)
 		axios.post('http://localhost:5000/auth/login', inputs)
 			.then((res) =>
 			{
+				console.log(res.data.accessToken)
 				localStorage.setItem('token', res.data.accessToken)
+				/* redux */
+				dispatch(username(inputs.username))
 				history.push('/profile');
 			})
 			.catch((err) => 
@@ -33,6 +42,7 @@ function SignInForm({ history }) {
 	}
 
 	return (
+
 		<Form onSubmit={onSubmit}>
 			<Form.Group controlId="formGridUsername">
 				<Form.Label>Username</Form.Label>

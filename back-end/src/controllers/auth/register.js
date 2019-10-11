@@ -5,6 +5,7 @@ import fs from 'fs';
 /* Model */
 import User from '../../models/user.model';
 import uploadPic from '../../services/uploadPic';
+import { UserManager } from '../../services/UserManager';
 import Joi from '@hapi/joi';
 
 const schema = Joi.object({
@@ -45,22 +46,35 @@ const register = function(req, res) {
 
 	uploadPic(req, res)
 		.then((res) => {
-			file = res
+			file = res;
+			const { error } = schema.validate(req.body)
+			if (error) throw ('Inputs does not respect the schema')
 			req.body.profilepicture = res.filename;
-			console.log(schema.validate(req.body));
-			const newUser = new User(req.body);
-			let hash = bcrypt.hashSync(req.body.password, 10);
-			newUser.password = hash;
-			return newUser.save()
+			return UserManager.usernameExists(req.body.username)
 		})
-		.then (() => {
-			return res.end("Account created successfully");
+		.then((exist_username) => {
+			if (exist_username) throw ('Username taken')
+			return UserManager.emailExists(req.body.email)
+		}) 
+		.then((exist_email) => {
+			if (exist_email) throw ('Email taken')
+			return (req.body)
+		})
+		.then((data) => {
+			const newUser = new User(data);
+			let hash = bcrypt.hashSync(data.password, 10);
+			newUser.password = hash;
+			newUser.save();
+			return res.json('success')
 		})
 		.catch((err) => {
+
+			console.log(err)
+
 			if (file) {
 				trydelete(file.path)
 			}
-			return res.status(400).json(err.errmsg);
+			return res.json(err);
 		});
 }
 

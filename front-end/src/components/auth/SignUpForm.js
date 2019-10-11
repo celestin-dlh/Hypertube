@@ -22,6 +22,8 @@ function SignUpForm({ history }) {
 
 	const [picture, setPicture] = useState(null);
 
+	const [error, setError] = useState('');
+
 	const handleOnChange = (event) => {
 		const {name, value} = event.target;
 		setInputs({ ...inputs, [name]: value});
@@ -46,7 +48,10 @@ function SignUpForm({ history }) {
 		axios.post('http://localhost:5000/auth/register', formData)
 			.then((res) => {
 				console.log(res)
-				//history.push('/signin')
+				if (res.data === "success")
+					history.push('/signin')
+				else
+					setError(res.data)
 			})
 			.catch((err) => {
 				console.log(err)
@@ -55,6 +60,7 @@ function SignUpForm({ history }) {
 
 	return (
 		<Form onSubmit={handleSubmit}>
+			{error !== "" ? <p>{error}</p> : ""}
 			<Form.Row>
 				<Form.Group as={Col} controlId="formBasicFirstName">
 				    <Form.Label>First Name</Form.Label>

@@ -8,7 +8,7 @@ const UpdateFullName = function(req, res) {
 	if (password === "" || password_confirm === "")
 		return res.status(400);
 	else if (password !== password_confirm)
-		return res.status(401);
+		return res.status(402);
 
 	let hash = bcrypt.hashSync(password, 10);
 	console.log(hash)

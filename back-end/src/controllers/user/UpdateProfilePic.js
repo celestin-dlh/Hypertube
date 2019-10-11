@@ -8,13 +8,13 @@ var appDir = path.dirname(require.main.filename);
 
 const UpdateProfilePic = function(req, res) {
 	const { username } = req.user;
-	
+	let old_filename;
 	
 	/* remove the old picture */
 	User.findOne({ username: username }, 'profilepicture', function(err, user) {
 		if (user.profilepicture !== "") {
-			let filePath = appDir + '/public/profile_pic/' + user.profilepicture; 
-			fs.unlinkSync(filePath);
+			old_filename = user.profilepicture;
+			
 		}
 	});
 
@@ -28,6 +28,8 @@ const UpdateProfilePic = function(req, res) {
 					return res.status(401).send(err);
 				}
 			})
+			let filePath = appDir + '/public/profile_pic/' + user.profilepicture; 
+			fs.unlinkSync(filePath);
 			console.log('200')
 			return res.status(200);
 		})
