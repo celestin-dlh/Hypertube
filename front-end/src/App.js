@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 
 /* Layout */
@@ -11,29 +11,37 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 /* Landing */
 import SignUp from './components/auth/SignUp';
 import SignIn from './components/auth/SignIn';
+import Jwt from './components/auth/Jwt';
 import ForgetPassword from './components/auth/ForgetPassword';
 import ResetPassword from './components/auth/ResetPassword';
+
 import Profile from './components/userProfile/Profile';
 import Edit from './components/userProfile/Edit';
 
-import Jwt from './components/auth/Jwt';
+import ChangeLanguage from './components/services/ChangeLanguage';
 
 import './App.css';
 
 function App() {
   return (
     <div className="App">
+      {/* change language button */}
+      <ChangeLanguage />
         <Router>
           <Switch>            
             <Route exact path="/signin">
               <SignIn />
             </Route>               
             {/*  passport 42 google*/}
-            <Route exact path="/jwt/:token" render={Jwt} />
+            <Route exact path="/jwt/:token" >
+              <Jwt />
+            </Route>
             <Route exact path="/forgetpassword">
               <ForgetPassword />
-            </Route>                
-            <Route exact path="/resetpassword/:token" render={ResetPassword} />
+            </Route>
+            <Route exact path="/resetpassword/:token" >
+              <ResetPassword />
+            </Route>
             <Route exact path="/profile">
               <Profile />
             </Route>
@@ -45,6 +53,7 @@ function App() {
             </Route>
           </Switch>
         </Router>
+      }
     </div>
   );
 }

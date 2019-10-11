@@ -1,7 +1,9 @@
 import React, { usestate, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 export default function Jwt(props) {
-	let token = props.match.params.token;
-	localStorage.setItem('token', token)
+	let { token } = useParams();
+	localStorage.setItem('token', token);
 	window.location.replace("http://localhost:3000/");
+	return (null);
 }

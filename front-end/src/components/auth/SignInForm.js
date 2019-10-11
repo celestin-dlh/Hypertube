@@ -27,7 +27,6 @@ function SignInForm({ history }) {
 
 	const onSubmit = (event) => {
 		event.preventDefault();
-		console.log(inputs)
 		axios.post('http://localhost:5000/auth/login', inputs)
 			.then((res) =>
 			{
@@ -38,7 +37,7 @@ function SignInForm({ history }) {
 				history.push('/profile');
 			})
 			.catch((err) => 
-				console.log(err))
+				console.log(Object.values(err)))
 	}
 
 	return (

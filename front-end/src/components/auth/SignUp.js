@@ -10,6 +10,9 @@ import Button from 'react-bootstrap/Button';
 /* Style */
 import '../style/sign.css';
 
+/* Lang */
+import { signup, signin } from '../services/textLang';
+
 /* Form */
 import SignUpForm from './SignUpForm';
 
@@ -54,16 +57,18 @@ const ButtonContainer = () => {
 };
 
 export default function SignUp() {
+    let lang = localStorage.getItem('language') || 'en'
+    console.log(lang)
 	return (
 		<Container>
 		  <Row className="justify-content-center">
 		    <Col md="8" className="containerForm">
-		    	<h2>Hypertube Sign Up</h2>
+		    	<h2>Hypertube {signup[lang]}</h2>
 		    	<ButtonContainer />
 				<h5 className="hr">Or create account using email</h5>
 
 		    	<SignUpForm />
-		    	<p>Already have an account ? <a href="/signin" style={{color: "black"}}>Sign in</a></p>
+		    	<p>Already have an account ? <a href="/signin" style={{color: "black"}}>{signin[lang]}</a></p>
 		    </Col>
 		  </Row>
 		</Container>
