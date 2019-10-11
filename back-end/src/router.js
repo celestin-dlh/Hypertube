@@ -38,8 +38,25 @@ class Router {
         router.get('/google', passport.authenticate('google', {
             scope: ['profile', 'email']
         }));
-        router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
-            res.redirect('/user');
+        // router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
+        //     res.redirect('/user');
+        // });
+
+        router.get('/google/redirect', function (req, res) {    passport.authenticate('google', {session: false}, (err, user, info) => {
+            if (err || !user) {
+                return res.status(400).json({
+                    message: 'Something is not right',
+                    user   : user
+                });
+            }       req.login(user, {session: false}, (err) => {
+                if (err) {
+                    res.send(err);
+                }
+                const username = user.username;
+                const accessToken = jwt.sign({ username }, process.env.ACCESS_TOKEN_SECRET);
+                res.redirect('http://localhost:3000/jwt/' + accessToken)
+            });
+        })(req, res);
         });
 
         // 42
