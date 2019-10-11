@@ -1,16 +1,15 @@
 import multer from 'multer';
 
 const uploadPic = function(req, res) {
-
 	return new Promise((resolve, reject) => {
-	    var fileupload = multer({ dest: 'uploads/' }).single('avatar');
+	    let fileupload = multer({ dest: 'public/profile_pic' }).single('avatar');
 	    fileupload(req, res, function(err) {
-	        if(err) {
+	        if (err) {
 	            return reject(err);
 	        }
-	        resolve(req.file.filename);
+	        resolve(req.file);
 	    });
     })
 }
 
-export default uploadPic
+export default uploadPic;

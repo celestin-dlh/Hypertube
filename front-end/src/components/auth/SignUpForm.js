@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { withRouter } from "react-router";
 
 /* Bootstrap */
 import Col from 'react-bootstrap/Col';
@@ -9,7 +10,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import '../style/sign.css';
 
-export default function SignUpForm() {
+function SignUpForm({ history }) {
 
 	const [inputs, setInputs] = useState({
 		'firstname': '',
@@ -20,6 +21,8 @@ export default function SignUpForm() {
 	});
 
 	const [picture, setPicture] = useState(null);
+
+	const [error, setError] = useState('');
 
 	const handleOnChange = (event) => {
 		const {name, value} = event.target;
@@ -45,6 +48,10 @@ export default function SignUpForm() {
 		axios.post('http://localhost:5000/auth/register', formData)
 			.then((res) => {
 				console.log(res)
+				if (res.data === "success")
+					history.push('/signin')
+				else
+					setError(res.data)
 			})
 			.catch((err) => {
 				console.log(err)
@@ -53,6 +60,7 @@ export default function SignUpForm() {
 
 	return (
 		<Form onSubmit={handleSubmit}>
+			{error !== "" ? <p>{error}</p> : ""}
 			<Form.Row>
 				<Form.Group as={Col} controlId="formBasicFirstName">
 				    <Form.Label>First Name</Form.Label>
@@ -121,3 +129,5 @@ export default function SignUpForm() {
 	)
 
 }			
+
+export default withRouter(SignUpForm)

@@ -1,10 +1,8 @@
-import bcrypt from 'bcryptjs';
 import passport from 'passport';
 import GoogleStrategy from 'passport-google-oauth20';
 import FortyTwoStrategy from 'passport-42';
 import LocalStrategy from 'passport-local';
 import User from '../../models/user.model';
-import bcrypt from 'bcryptjs';
 
 require('dotenv').config();
 

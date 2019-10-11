@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Redirect } from 'react-router-dom'
+import { withRouter } from "react-router";
+
+/* redux */
+import { useSelector, useDispatch } from 'react-redux'
+import { username } from '../../redux/actions'
 
 /* Bootstrap */
 import Row from 'react-bootstrap/Row';
@@ -9,8 +13,9 @@ import Button from 'react-bootstrap/Button';
 import '../style/sign.css';
 
 
-export default function SignUpForm() {
-	const [inputs, setInputs] = useState({
+function SignInForm({ history }) {
+	const dispatch = useDispatch();
+    const [inputs, setInputs] = useState({
 		'username': '',
 		'password': '',
 	});	
@@ -22,18 +27,22 @@ export default function SignUpForm() {
 
 	const onSubmit = (event) => {
 		event.preventDefault();
+		console.log(inputs)
 		axios.post('http://localhost:5000/auth/login', inputs)
 			.then((res) =>
 			{
+				console.log(res.data.accessToken)
 				localStorage.setItem('token', res.data.accessToken)
-				console.log('redicrect')
-				return <Redirect to='/profile' />
+				/* redux */
+				dispatch(username(inputs.username))
+				history.push('/profile');
 			})
 			.catch((err) => 
 				console.log(err))
 	}
 
 	return (
+
 		<Form onSubmit={onSubmit}>
 			<Form.Group controlId="formGridUsername">
 				<Form.Label>Username</Form.Label>
@@ -69,4 +78,6 @@ export default function SignUpForm() {
 		</Form>
 	)
 
-}			
+}
+
+export default withRouter(SignInForm);

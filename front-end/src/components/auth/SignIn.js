@@ -52,8 +52,7 @@ const ButtonContainer = () => {
     )
 };
 
-export default function SignUp() {
-
+export default function SignIn() {
     return (
         <Container>
             <Row className="justify-content-center">

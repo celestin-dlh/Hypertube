@@ -1,5 +1,5 @@
 {
-  "name": "hypertube",
+  "name": "back-end",
   "dependencies": {
     "@hapi/joi": "^16.1.5",
     "bcryptjs": "^2.4.3",
@@ -10,6 +10,7 @@
     "esm": "^3.2.25",
     "express": "^4.17.1",
     "express-fileupload": "^1.1.6-alpha.5",
+    "fs": "^0.0.1-security",
     "install": "^0.13.0",
     "joi": "^14.3.1",
     "jsonwebtoken": "^8.5.1",
@@ -19,7 +20,9 @@
     "passport": "^0.4.0",
     "passport-42": "^1.2.6",
     "passport-google-oauth20": "^2.0.0",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "react-redux": "^7.1.1",
+    "redux": "^4.0.4"
   },
   "devDependencies": {
     "nodemon": "^1.19.3"
@@ -27,7 +30,6 @@
   "scripts": {
     "start": "node server.js"
   },
-  "name": "back-end",
   "version": "1.0.0",
   "main": "server.js",
   "author": "",

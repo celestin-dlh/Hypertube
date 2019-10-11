@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 /* Bootstrap */
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -53,7 +54,6 @@ const ButtonContainer = () => {
 };
 
 export default function SignUp() {
-
 	return (
 		<Container>
 		  <Row className="justify-content-center">
