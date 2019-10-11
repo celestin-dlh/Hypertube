@@ -8,6 +8,8 @@ import Form from 'react-bootstrap/Form';
 /* Style */
 import '../style/sign.css';
 
+
+
 import { updateProfilePic } from '../services/requestManager';
 import { getProfile } from '../services/requestManager';
 

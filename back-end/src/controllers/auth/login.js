@@ -9,11 +9,11 @@ const login = function(req, res) {
     if (username === "" || password === "")
         return res.status(400)
     User.findOne({ username: username },'password', function (err, user) {
-        if (user === null) return res.status(500).send({ error: "boo:(" });
+        if (user === null) return res.send('Bad credentials');
         bcrypt.compare(password, user.password, function(err, result) {
             if (result) {
                 const accessToken = jwt.sign({ username }, process.env.ACCESS_TOKEN_SECRET)
-                res.json({ accessToken })
+                res.json({ error: 'success', accessToken })
             }
             else {
                 return res.send('Bad credentials')

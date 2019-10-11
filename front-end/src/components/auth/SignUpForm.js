@@ -101,7 +101,6 @@ function SignUpForm({ history }) {
 		                    className="avatar"
 		                    alt="avatar" />
 		               	</div>
-                        <p>Upload your profil image</p>
 		            </label>
 					<input
 						variant="outlined"

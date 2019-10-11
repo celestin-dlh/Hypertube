@@ -5,7 +5,8 @@ import axios from 'axios';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-	
+
+import { store } from 'react-notifications-component';
 /* Style */
 import '../style/sign.css';
 
@@ -22,8 +23,19 @@ export default function ForgetPasswordForm() {
 
 	const onSubmit = (event) => {
 		event.preventDefault();
+				store.addNotification({
+					title: "Email send",
+					message: "Check your emails !",
+					type: "success",
+					insert: "top",
+					container: "top-center",
+					dismiss: {
+					duration: 5000,
+					}
+				});
 		axios.post('http://localhost:5000/auth/forgetpassword', inputs)
 			.then((res) => {
+
 				console.log(res)
 			})
 			.catch((err) => {

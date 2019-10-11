@@ -1,7 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-
+import ReactNotification from 'react-notifications-component'
+import 'react-notifications-component/dist/theme.css'
 /* Layout */
 
 /* Style */
@@ -25,6 +26,9 @@ import './App.css';
 function App() {
   return (
     <div className="App">
+      {/* notifications */}
+      <ReactNotification />
+
       {/* change language button */}
       <ChangeLanguage />
         <Router>
@@ -53,7 +57,6 @@ function App() {
             </Route>
           </Switch>
         </Router>
-      }
     </div>
   );
 }
