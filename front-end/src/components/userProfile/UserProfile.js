@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import {getProfile} from "../services/requestManager";
 import {useParams } from 'react-router-dom';
 
+import Header from '../layout/Header';
+
 export default function User() {
     let {username} = useParams();
 

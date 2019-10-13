@@ -19,7 +19,7 @@ import Edit from './components/userProfile/Edit';
 import Jwt from './components/auth/Jwt';
 
 
-import './App.css';
+//import './App.css';
 
 function App() {
   return (
