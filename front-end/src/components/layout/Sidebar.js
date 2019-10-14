@@ -1,29 +1,51 @@
 import React from 'react';
 
-/* Bootstrap */
-import Container    from 'react-bootstrap/Container';
-import Navbar       from 'react-bootstrap/Navbar';
-import Nav          from 'react-bootstrap/Nav';
-import NavDropdown  from 'react-bootstrap/NavDropdown';
-import Form         from 'react-bootstrap/Form';
-import FormControl  from 'react-bootstrap/FormControl';
-import Col          from 'react-bootstrap/Col';
-
-
-
 /* Style */
 import '../style/sidebar.css';
+
+import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
+import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 
 
 export default function Sidebar() {
 
     return (
-            <div className="bg-success" id="sidebar">
-                <div><a href="#home">Home</a></div>
-                <div><a href="#Movies">Movies</a></div>
-                <div><a href="#Settings">Settings</a></div>
-                <div><a href="#Search">Search</a></div>
-            </div>
+        <SideNav
+            onSelect={(selected) => {
+                // Add your code here
+            }}
+            className="bg-dark dark"
+        >
+            <SideNav.Toggle />
+            <SideNav.Nav defaultSelected="home">
+                <NavItem eventKey="home">
+                    <NavIcon>
+                        <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />
+                    </NavIcon>
+                    <NavText>
+                        Home
+                    </NavText>
+                </NavItem>
+                <NavItem eventKey="charts">
+                    <NavIcon>
+                        <i className="fa fa-fw fa-line-chart" style={{ fontSize: '1.75em' }} />
+                    </NavIcon>
+                    <NavText>
+                        Charts
+                    </NavText>
+                    <NavItem eventKey="charts/linechart">
+                        <NavText>
+                            Line Chart
+                        </NavText>
+                    </NavItem>
+                    <NavItem eventKey="charts/barchart">
+                        <NavText>
+                            Bar Chart
+                        </NavText>
+                    </NavItem>
+                </NavItem>
+            </SideNav.Nav>
+        </SideNav>
     )
 
 }

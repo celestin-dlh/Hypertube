@@ -7,7 +7,6 @@ import Nav          from 'react-bootstrap/Nav';
 import NavDropdown  from 'react-bootstrap/NavDropdown';
 import Form         from 'react-bootstrap/Form';
 import FormControl  from 'react-bootstrap/FormControl';
-import Col          from 'react-bootstrap/Col';
 
 
 
@@ -16,13 +15,13 @@ import '../style/header.css';
 
 export default function Header() {
 
-function sidebarToogle(props) {
+function sidebarToogle() {
     console.log("sidebar");
-    const sidebarToogle = 1;
+
 }
     return (
         <Container fluid={true}>
-            <Navbar bg="dark bg-dark justify-content-between navbar-collapse " sticky="top">
+            <Navbar bg="dark bg-dark justify-content-between navbar-collapse " sticky="top" style={{zIndex: "0"}}>
                 <Navbar.Brand href="" onClick={sidebarToogle}><i className="fas fa-2x fa-bars text-white"></i></Navbar.Brand>
                     <Form inline className="d-none d-sm-block">
                         <FormControl type="text" placeholder="Search Movie"/>

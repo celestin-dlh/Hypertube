@@ -9,7 +9,7 @@ import Form from 'react-bootstrap/Form';
 import '../style/sign.css';
 
 import { updateEmail } from '../services/requestManager';
-import { getProfile } from '../services/requestManager';
+//import { getProfile } from '../services/requestManager';
 
 export default function EmailForm() {
 	const [email, setEmail] = useState({

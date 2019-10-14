@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import {getProfile} from "../services/requestManager";
-import {useParams } from 'react-router-dom';
+//import {useParams } from 'react-router-dom';
 
 import Header from '../layout/Header';
 
 export default function User() {
-    let {username} = useParams();
+    //let {username} = useParams();
 
     const [user, setUser] = useState({
         username: '',
@@ -13,7 +13,8 @@ export default function User() {
         lastname: ''
     });
 
-    useEffect(() => {
+    //useEffect(() => {
+    useEffect((username) => {
         getProfile({ username }).then((res) => {
            console.log(res);
            setUser(res.data)
@@ -24,10 +25,11 @@ export default function User() {
 
     return (
         <>
-        <p>{user.username}</p>
-        <p>{user.firstname}</p>
-        <p>{user.lastname}</p>
-        <p>user profile </p>
+            <Header/>
+            <p>{user.username}</p>
+            <p>{user.firstname}</p>
+            <p>{user.lastname}</p>
+            <p>user profile </p>
         </>
     )
 }
