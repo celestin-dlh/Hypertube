@@ -14,15 +14,9 @@ import FormControl  from 'react-bootstrap/FormControl';
 import '../style/header.css';
 
 export default function Header() {
-
-function sidebarToogle() {
-    console.log("sidebar");
-
-}
     return (
         <Container fluid={true}>
-            <Navbar bg="dark bg-dark justify-content-between navbar-collapse " sticky="top" style={{zIndex: "0"}}>
-                <Navbar.Brand href="" onClick={sidebarToogle}><i className="fas fa-2x fa-bars text-white"></i></Navbar.Brand>
+            <Navbar bg="dark bg-dark justify-content-end navbar-collapse " sticky="top" style={{zIndex: "0", height: "64px"}}>
                     <Form inline className="d-none d-sm-block">
                         <FormControl type="text" placeholder="Search Movie"/>
                     </Form>

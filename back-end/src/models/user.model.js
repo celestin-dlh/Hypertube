@@ -35,7 +35,9 @@ const userSchema = new Schema({
     },
     profilepicture: {
       type: String,
-      required: true,
+    },
+    profilePictureGoogleFt: {
+        type: String,
     },
     reset_password_token: {
         type: String,

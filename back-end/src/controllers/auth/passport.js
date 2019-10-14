@@ -35,7 +35,7 @@ passport.use(
                     username: profile.displayName,
                     firstname: profile.name.givenName,
                     lastname: profile.name.familyName,
-                    profilepicture: profile.photos[0].value,
+                    profilePictureGoogleFt: profile.photos[0].value,
                     email: profile.emails[0].value,
                 }).save().then((newUser) => {
                     console.log('new user created: ', newUser);
@@ -67,7 +67,7 @@ passport.use(
                     firstname: profile.name.givenName,
                     lastname: profile.name.familyName,
                     email: profile.emails[0].value,
-                    profilepicture: profile.photos[0].value
+                    profilePictureGoogleFt: profile.photos[0].value
                 }).save().then((newUser) => {
                     console.log('new user created: ', newUser);
                     done(null, newUser);
