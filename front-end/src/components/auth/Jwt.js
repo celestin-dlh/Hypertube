@@ -1,4 +1,3 @@
-import React, { usestate, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 export default function Jwt(props) {

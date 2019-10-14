@@ -22,8 +22,8 @@ export default function ChangeLostPassForm(props) {
 
     useEffect(() => {
         console.log(props.token)
-        setInputs({ ...inputs, 'token': props.token})
-    },[]);
+        setInputs({ 'password': '' ,'token': props.token})
+    },[props.token]);
 
     const handleSubmit = (event) => {
         event.preventDefault();

@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{ useState, useEffect } from 'react';
 
 /* Bootstrap */
 import Container from 'react-bootstrap/Container';
@@ -14,8 +14,25 @@ import EmailForm from './EmailForm';
 import PasswordForm from './PasswordForm';
 import ProfilePicForm from './ProfilePicForm';
 
-export default function ForgetPassword() {
+import { getProfile } from '../services/requestManager';
 
+function Edit() {
+
+	// const [userData, setUserData] = useState({
+	// 	username: '',
+	// 	firstname: '',
+	// 	lastname: '',
+	// 	profilepic: '',
+	// 	email: '',
+	// })
+
+	// useEffect(() => {
+	// 	getProfile()
+	// 	.then((res) => {
+	// 		setUserData(res.data)
+	// 	})
+	// }, [])
+	// console.log(userData)
 
 	return (
 		<Container>
@@ -36,3 +53,5 @@ export default function ForgetPassword() {
 	)
 
 }			
+
+export default Edit

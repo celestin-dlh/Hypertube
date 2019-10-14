@@ -11,7 +11,6 @@ import '../style/sign.css';
 
 
 import { updateProfilePic } from '../services/requestManager';
-import { getProfile } from '../services/requestManager';
 
 export default function FullNameForm() {
 	const [picture, setPicture] = useState(null);
