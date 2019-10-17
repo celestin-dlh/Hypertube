@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import ReactNotification from 'react-notifications-component'
+// import ReactNotification from 'react-notifications-component'
 import 'react-notifications-component/dist/theme.css'
 /* Layout */
 
@@ -19,18 +19,15 @@ import ResetPassword from './components/auth/ResetPassword';
 import Profile from './components/userProfile/Profile';
 import Edit from './components/userProfile/Edit';
 
-import ChangeLanguage from './components/services/ChangeLanguage';
+//import ChangeLanguage from './components/services/ChangeLanguage';
 
 import './App.css';
 
 function App() {
   return (
     <div className="App" style={{minHeight: "100vh", display: "flex", alignItems: "center"}}>
-      {/* notifications */}
-      <ReactNotification />
+      {/* <ReactNotification /> */}
 
-      {/* change language button */}
-      {/* <ChangeLanguage /> */}
         <Router>
           <Switch>            
             <Route exact path="/login">

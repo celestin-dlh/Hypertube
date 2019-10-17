@@ -1,4 +1,4 @@
-import React,{ useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { withRouter } from "react-router";
 
 /* Bootstrap */
@@ -6,51 +6,64 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 	
-/* Style */
+import Sidebar from '../layout/sidebar';
 
-/* Form */
-import FullNameForm from './FullNameForm';
-import EmailForm from './EmailForm';
-import PasswordForm from './PasswordForm';
-import ProfilePicForm from './ProfilePicForm';
 
-import { getProfile } from '../services/requestManager';
-import {CheckLogged} from '../services/CheckLogged.js';
+
+function UpdateInfos() {
+	return (
+		<div>
+			Updates Infos
+		</div>
+	)
+}
+	
+function Second() {
+	return (
+		<p>second component</p>
+	)
+}
+	
+function Third() {
+	return (
+		<p>third component</p>
+	)
+}
+
+
+function CallComponent(props) {
+	let index = props.index;
+
+	switch (index) {
+		case 0:
+			return <UpdateInfos />
+	  	case 1:
+			return <Second />
+	  	case 2:
+			return <Third />
+	  	default:
+			return (null);
+	}
+}
 
 function Edit({ history }) {
+	const [index, setIndex] = useState(0);
 
-	if (!CheckLogged()) {
-		history.push('/signin')
+	const handleClick = () => {
+		if (index >= 3) {
+			setIndex(0)
+		} else {
+			setIndex(index + 1)
+		}
 	}
-	// const [userData, setUserData] = useState({
-	// 	username: '',
-	// 	firstname: '',
-	// 	lastname: '',
-	// 	profilepic: '',
-	// 	email: '',
-	// })
-
-	// useEffect(() => {
-	// 	getProfile()
-	// 	.then((res) => {
-	// 		setUserData(res.data)
-	// 	})
-	// }, [])
-	// console.log(userData)
 
 	return (
-		<Container>
+		<Container fluid>
 		  <Row className="justify-content-center">
+			<Sidebar />
 		    <Col md="8" className="containerForm">
-
-				<h2>Edit</h2>
-
-				<FullNameForm />
-				<EmailForm />
-				<PasswordForm />
-				<ProfilePicForm />
-
-		    	
+				<button onClick={handleClick}>Change index</button>
+				<CallComponent index={index} />
 		    </Col>
 		  </Row>
 		</Container>
