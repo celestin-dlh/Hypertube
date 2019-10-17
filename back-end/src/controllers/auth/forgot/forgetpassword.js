@@ -6,7 +6,9 @@ import User from '../../../models/user.model';
 
 const forgetpassword = function(req, res) {
    if (req.body.email === "")
-      res.sensStatus(400)
+   {
+      return res.json({"error": "empty email"})
+   }
    const token = crypto.randomBytes(20).toString('hex')
 	User.findOneAndUpdate({email: req.body.email}, { reset_password_token: token}, function (err, user) {
    	if (user) {

@@ -4,9 +4,7 @@ export const log = () => {
 	}
 }
 
-export const username = (username) => {
-	return {
-		type: 'CREATE',
-		payload: username,
-	}
-}
+export const createUser = (payload) => ({
+	type: 'CREATE',
+	payload,
+});

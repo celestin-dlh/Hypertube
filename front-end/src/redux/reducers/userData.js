@@ -1,9 +1,15 @@
-const userData = (username = '', action) => {
+const initialState = {
+	isLogged: false,
+	data: null
+}
+
+const userData = (user = initialState, action) => {
+	console.log(user, action);
 	switch(action.type) {
 		case 'CREATE':
-			return action.payload;
+			return { isLogged: true, data: action.payload };
 		default:
-			return '';
+			return { ...user };
 	}
 }
 

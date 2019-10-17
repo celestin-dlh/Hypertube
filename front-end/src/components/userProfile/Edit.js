@@ -1,4 +1,5 @@
-import React from 'react';
+import React,{ useState, useEffect } from 'react';
+import { withRouter } from "react-router";
 
 /* Bootstrap */
 import Container from 'react-bootstrap/Container';
@@ -6,7 +7,6 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 	
 /* Style */
-import '../style/sign.css';
 
 /* Form */
 import FullNameForm from './FullNameForm';
@@ -14,8 +14,29 @@ import EmailForm from './EmailForm';
 import PasswordForm from './PasswordForm';
 import ProfilePicForm from './ProfilePicForm';
 
-export default function ForgetPassword() {
+import { getProfile } from '../services/requestManager';
+import {CheckLogged} from '../services/CheckLogged.js';
 
+function Edit({ history }) {
+
+	if (!CheckLogged()) {
+		history.push('/signin')
+	}
+	// const [userData, setUserData] = useState({
+	// 	username: '',
+	// 	firstname: '',
+	// 	lastname: '',
+	// 	profilepic: '',
+	// 	email: '',
+	// })
+
+	// useEffect(() => {
+	// 	getProfile()
+	// 	.then((res) => {
+	// 		setUserData(res.data)
+	// 	})
+	// }, [])
+	// console.log(userData)
 
 	return (
 		<Container>
@@ -36,3 +57,5 @@ export default function ForgetPassword() {
 	)
 
 }			
+
+export default withRouter(Edit)

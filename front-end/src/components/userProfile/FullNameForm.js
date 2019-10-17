@@ -6,10 +6,8 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 	
 /* Style */
-import '../style/sign.css';
 
 import { updateFullName } from '../services/requestManager';
-import { getProfile } from '../services/requestManager';
 
 export default function FullNameForm() {
 	const [fullname, setFullname] = useState({
@@ -34,7 +32,6 @@ export default function FullNameForm() {
 
 	return (
 		<div>
-			<p>First name Last name</p>
 		<Form onSubmit={onSubmit}>
 			<Form.Group controlId="formGridFirstName">
 				<Form.Label>First Name</Form.Label>

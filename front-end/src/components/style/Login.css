@@ -1,0 +1,75 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.App {
+    background-image: linear-gradient(52deg, rgba(34,193,195,1) 0%, rgba(234,220,52,1) 44%, rgba(247,173,9,1) 90%);
+}
+
+body {
+    font-family: 'Roboto Slab', serif;
+}
+
+.login-container {    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.12), 0 1px 4px rgba(0,0,0,0.12);
+    text-align: center;
+    background-color: white;
+    border-radius: 6px;
+    padding: 35px 10px;
+}
+
+.login-text {
+    margin-bottom: 25px;
+    font-weight: bold;
+}
+
+.login-form {
+    margin: auto;
+    width: 85%;
+    margin-bottom: 40px;
+}
+
+.input-form {
+    margin: 25px 0px;
+}
+
+.forgot {
+    text-align: right;
+}
+
+.link a {
+    text-decoration: none;
+    color: black;
+}
+
+.submit-button {
+    margin-top: 25px;
+    border-radius: 24px;
+    background-image: linear-gradient(52deg, rgba(34,193,195,1) 0%, rgba(234,220,52,1) 44%, rgba(247,173,9,1) 90%);
+    border: none;
+}
+
+.submit-button:hover {
+    background-position: right center;
+}
+
+.login-social {
+    margin-bottom: 35px;
+}
+
+.login-social a {
+    margin: 0 5px;
+}
+
+.images {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.login-social img{
+    width: 30px;
+}

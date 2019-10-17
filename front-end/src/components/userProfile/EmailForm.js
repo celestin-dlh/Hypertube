@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 /* Bootstrap */
 import Row from 'react-bootstrap/Row';
@@ -6,10 +6,8 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 	
 /* Style */
-import '../style/sign.css';
 
 import { updateEmail } from '../services/requestManager';
-import { getProfile } from '../services/requestManager';
 
 export default function EmailForm() {
 	const [email, setEmail] = useState({
