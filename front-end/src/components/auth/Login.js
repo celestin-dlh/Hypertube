@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { withRouter } from "react-router";
 import axios from 'axios';
 
 /* Style */
@@ -7,7 +8,7 @@ import '../style/Input.css';
 import { Button, Container, Col, Row } from 'react-bootstrap';
 
 
-function Login() {
+function Login({ history }) {
     const [inputs, setInputs] = useState({
 		'username': '',
 		'password': '',
@@ -28,7 +29,7 @@ function Login() {
 				if (res.data.error === 'success') {
 					console.log(res.data.accessToken)
 					localStorage.setItem('token', res.data.accessToken)
-					//history.push('/profile');					
+					history.push('/profile');					
 				}
 				else
 					console.log("BAD CREDENTIAL")
@@ -92,4 +93,4 @@ function Login() {
     )
 }
 
-export default Login;
+export default withRouter(Login);
