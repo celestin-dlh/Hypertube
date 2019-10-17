@@ -4,24 +4,23 @@ import jwt from "jsonwebtoken";
 
 import session from './middlewares/session';
 
-/* auth */
+/* Auth */
 import register from './controllers/auth/register';
 import login from './controllers/auth/login';
 import forgetpassword from './controllers/auth/forgot/forgetpassword';
 import resetpassword from './controllers/auth/forgot/resetpassword';
-
-
+/* User */
 import getuser from './controllers/user/getuser';
-
 import updateFullName from './controllers/user/UpdateFullName';
 import updateEmail from './controllers/user/updateEmail';
 import updatePassword from './controllers/user/updatePassword';
 import updateProfilePic from './controllers/user/updateProfilePic';
-
+/* Passport */
 import passport from './controllers/auth/passport';
-
-
-/* user */
+/* Movie */
+import searchMovies from './controllers/movies/searchMovies';
+import searchTorrents from './controllers/movies/searchTorrents';
+import streamMovies from './controllers/movies/streamMovies';
 
 
 class Router {
@@ -81,7 +80,6 @@ class Router {
 	static user() {
 		let router = express.Router();
 
-		console.log('user routes..');
 		router.use('/', session);
 		router.get('/getuser', getuser);
 		router.post('/updatefullname', updateFullName);
@@ -92,15 +90,25 @@ class Router {
 		return router;
 	}
 
+    static movies() {
+        let router = express.Router();
+
+        router.get('/search/:title', searchMovies);
+        router.get('/torrent/:title', searchTorrents);
+        router.get('/stream/', streamMovies);
+
+
+        return router;
+    }
+
 	static getRouter() {
-		console.log('initialize router..');
 		let router = express.Router();
 
         router.post('/getuser', getuser);
 		router.use('/auth/', Router.auth());
 		router.use('/user/', Router.user());
+		router.use('/movies/', Router.movies());
 
-        console.log('end routing operations..');
 		return router;
 	}
 }
