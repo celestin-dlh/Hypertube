@@ -6,7 +6,6 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 	
 /* Style */
-import '../style/sign.css';
 
 import { updateFullName } from '../services/requestManager';
 

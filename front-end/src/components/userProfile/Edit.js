@@ -1,4 +1,5 @@
 import React,{ useState, useEffect } from 'react';
+import { withRouter } from "react-router";
 
 /* Bootstrap */
 import Container from 'react-bootstrap/Container';
@@ -6,7 +7,6 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 	
 /* Style */
-import '../style/sign.css';
 
 /* Form */
 import FullNameForm from './FullNameForm';
@@ -15,9 +15,13 @@ import PasswordForm from './PasswordForm';
 import ProfilePicForm from './ProfilePicForm';
 
 import { getProfile } from '../services/requestManager';
+import {CheckLogged} from '../services/CheckLogged.js';
 
-function Edit() {
+function Edit({ history }) {
 
+	if (!CheckLogged()) {
+		history.push('/signin')
+	}
 	// const [userData, setUserData] = useState({
 	// 	username: '',
 	// 	firstname: '',
@@ -54,4 +58,4 @@ function Edit() {
 
 }			
 
-export default Edit
+export default withRouter(Edit)

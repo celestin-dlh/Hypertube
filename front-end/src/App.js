@@ -10,8 +10,8 @@ import 'react-notifications-component/dist/theme.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 /* Landing */
-import SignUp from './components/auth/SignUp';
-import SignIn from './components/auth/SignIn';
+import Register from './components/auth/Register';
+import Login from './components/auth/Login';
 import Jwt from './components/auth/Jwt';
 import ForgetPassword from './components/auth/ForgetPassword';
 import ResetPassword from './components/auth/ResetPassword';
@@ -25,16 +25,16 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" style={{minHeight: "100vh", display: "flex", alignItems: "center"}}>
       {/* notifications */}
       <ReactNotification />
 
       {/* change language button */}
-      <ChangeLanguage />
+      {/* <ChangeLanguage /> */}
         <Router>
           <Switch>            
-            <Route exact path="/signin">
-              <SignIn />
+            <Route exact path="/login">
+              <Login />
             </Route>               
             {/*  passport 42 google*/}
             <Route exact path="/jwt/:token" >
@@ -53,7 +53,7 @@ function App() {
               <Edit />
             </Route>
             <Route path="/">
-              <SignUp />
+              <Register />
             </Route>
           </Switch>
         </Router>
