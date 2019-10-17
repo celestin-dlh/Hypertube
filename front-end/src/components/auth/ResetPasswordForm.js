@@ -20,14 +20,14 @@ export default function ChangeLostPassForm(props) {
         setInputs({ ...inputs, [name]: value});
     }; 
 
-    useEffect(() => {
-        console.log('check')
+    useEffect((props, inputs) => {
+        console.log('check');
         setInputs({ ...inputs, 'token': props.token})
     },[]);
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(inputs)
+        console.log(inputs);
         axios.post('http://localhost:5000/auth/resetpassword', inputs)
             .then((res) => {
                 console.log(res)

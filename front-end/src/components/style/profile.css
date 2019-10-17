@@ -1,0 +1,30 @@
+.profileDisplay {
+    text-align: center;
+    color: darkorange;
+    margin-left: 69px;
+    max-width: 95%;
+    height: 92vh;
+}
+
+.profileDisplay h1 {
+    color: orange;
+    font-size: 5vw;
+    padding-bottom: 10px;
+    border-bottom: 1px solid darkorange;
+}
+
+.profileDisplay h4 {
+    color: white;
+}
+
+.profileDisplay section {
+    border-bottom: 1px solid darkorange;
+    padding-bottom: 10px;
+}
+
+.profileDisplay img {
+    border-radius: 50%;
+    border: 1px solid darkorange;
+    margin-top: 20px;
+    max-width: 20%;
+}
