@@ -4,4 +4,8 @@ back-end/node_modules/
 # ignore .DS_STORE
 *.DS_STORE
 
+# ignore webstorm config files
 .idea/
+
+# ignore package-lock.json
+package-lock.json
