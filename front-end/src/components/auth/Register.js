@@ -19,7 +19,8 @@ function Register() {
 		'password': ''
 	});
 
-	const [picture, setPicture] = useState(null);
+    const [picture, setPicture] = useState(null);
+    const [passwordType, setPasswordType] = useState('password');
 
 	const handleOnChange = (event) => {
 		const {name, value} = event.target;
@@ -28,8 +29,17 @@ function Register() {
 
 	const handleOnFileChange = (event) => {
 	    const file = event.target.files[0];
-	    setPicture(file)
-  	}
+	    setPicture(file);
+    }
+
+    const handleClick = () => {
+        if (passwordType === 'password') {
+            setPasswordType('text');
+        }
+        else {
+            setPasswordType('password');
+        }
+    }
 
     const handleSubmit = (event) => {
 		let formData = new FormData();
@@ -59,7 +69,7 @@ function Register() {
 
     return (
         <Container>
-            <Row className="justify-content-center">
+            <Row className="justify-content-center" style={{width: "100%"}}>
                 <Col xs="12" md="9" lg="5">
                     <div className="login-container">
                         <h1>Register</h1>
@@ -102,12 +112,12 @@ function Register() {
 
                                 <div className="input-form">
                                     <label htmlFor="inp" className="inp">
-                                        <input type="password" placeholder="&nbsp;" name="password" onChange={handleOnChange} value={inputs.password}/>
+                                        <input type={passwordType} placeholder="&nbsp;" name="password" onChange={handleOnChange} value={inputs.password}/>
                                         <span className="label">Password</span>
+                                        <img className="eyePassword" onClick={handleClick} width="25" src={passwordType === "password" ? "./images/eye-close.png" :"./images/eye-open.png"}/>
                                         <span className="border"></span>
                                     </label>
                                 </div>
-
                                 <div>
                                     <label htmlFor="file-input">
                                         <div className="pictureContainer">

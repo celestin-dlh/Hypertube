@@ -19,34 +19,14 @@ import '../style/profile.css';
 export default function Profil() {
 
     return (
-        <Container fluid={true}>
-            <Navbar bg="dark bg-dark justify-content-between" sticky="top">
-                    <div style={{display: "flex", flexDirection: "row"}}>
-                        <NavDropdown title={
-                            <i className="fas fa-2x fa-bars" style={{marginRight: "10px"}}></i>
-                        }>
-                            <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                        </NavDropdown>
-                        <Form inline>
-                            <FormControl type="text" placeholder="Search Movie" className="mr-sm-2" />
-                        </Form>
-                    </div>
-                    <Nav className="mr-sm-2 dropleft">
-                        <NavDropdown title={
-                                <img className="thumbnail-image"
-                                     src="https://lh3.googleusercontent.com/a-/AAuE7mCts4KTGMveAvrcHBPVqQxz_uv48aFixYQu6XrCIA"
-                                     alt="user pic"
-                                     style={{height: "50px", borderRadius: "50%", border: "2px solid white"}}
-                                /> }
-                                     id="basic-nav-dropdown"
-                        >
-                            <NavDropdown.Item href="#action/3.1">Settings</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.3">Logout</NavDropdown.Item>
-                        </NavDropdown>
-                    </Nav>
+        <Container fluid={true} style={{paddingLeft: "0px", paddingRight: "0px"}}> 
+            <Navbar bg="light" sticky="top">
+                <Navbar.Brand href="/home">Hypertube</Navbar.Brand>
+                    <Form inline>
+                        <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+                        <Button variant="light">Search</Button>
+                    </Form>
+                <img width="32" src="./images/default_avatar.png" />
             </Navbar>
         </Container>
     )

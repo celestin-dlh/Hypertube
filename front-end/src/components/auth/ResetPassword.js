@@ -41,7 +41,7 @@ function ResetPassword(props) {
 
 	return (
 		<Container>
-		  <Row className="justify-content-center">
+		  <Row className="justify-content-center" style={{width: "100%"}}>
 		    <Col xs="12" md="9" lg="6">
 				<div className="login-container">
 					<h1>Change <br/> Your Password</h1>
@@ -59,7 +59,7 @@ function ResetPassword(props) {
                             </Button> 
 						</form>
 					</div>
-                    <div>
+                    <div className="link">
                         <a href="/login"><p>Home</p></a>
                     </div>
 				</div>

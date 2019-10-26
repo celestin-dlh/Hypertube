@@ -33,7 +33,7 @@ function ForgetPassword() {
 
 	return (
 		<Container>
-		  <Row className="justify-content-center">
+		  <Row className="justify-content-center" style={{width: "100%"}}>
 		    <Col xs="12" md="9" lg="6">
 				<div className="login-container">
 					<h1>Reset <br/> Your Password</h1>
@@ -51,7 +51,7 @@ function ForgetPassword() {
                             </Button> 
 						</form>
 					</div>
-					<div>
+					<div className="link">
 						<a href="/login"><p>Back to login page</p></a>
 					</div>
 				</div>

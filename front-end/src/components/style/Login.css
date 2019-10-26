@@ -11,6 +11,12 @@ body {
     font-family: 'Roboto Slab', serif;
 }
 
+.container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
 .login-container {    
     display: flex;
     flex-direction: column;
@@ -35,6 +41,13 @@ body {
 
 .input-form {
     margin: 25px 0px;
+}
+
+.eyePassword {
+   position: absolute;
+   right: 5px;
+   bottom: 5px;
+   cursor: pointer;
 }
 
 .forgot {

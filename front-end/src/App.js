@@ -25,7 +25,7 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App" style={{minHeight: "100vh", display: "flex", alignItems: "center"}}>
+    <div className="App">
       {/* notifications */}
       <ReactNotification />
 
