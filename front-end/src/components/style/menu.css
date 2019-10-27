@@ -1,0 +1,67 @@
+.menu {
+    position: absolute;
+    top: 55.60px;
+    left: 0;
+    height: 100vh;
+    background-color: grey;
+}
+
+.menu-not-toggle {
+    width: 72px;
+}
+
+.menu-toggle {
+    width: 240px;
+}
+
+.menu a {
+    display: block;
+    text-decoration: none;
+    color: black;
+}
+
+.menuCell {
+    width: 100%;
+    height: 72px;
+    background-color: #3E3E3E;
+}
+
+.menu-toggle .menuCell {
+    height: 40px;
+}
+
+.content {
+    margin: 0;
+    position: relative;
+    top: 25%;
+}
+
+.menuCell:hover {
+    background-color: grey;
+    cursor: pointer;
+}
+
+.menuCell img {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.menu-not-toggle .menuCell img {
+    margin-left: auto;
+}
+
+.menu-toggle .menuCell img {
+    margin-left: 24px;
+}
+
+.menuCell p {
+    text-align: center;
+    font-size: 10px;
+}
+
+.menu-toggle .menuCell p {
+    position: relative;
+    bottom: 22px;
+    font-size: 16px;
+}
