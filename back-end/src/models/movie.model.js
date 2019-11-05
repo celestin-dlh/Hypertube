@@ -2,35 +2,75 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const movieSchema = new Schema({
-    imdbId: {
+    movieDbId: {
         type: String,
+    },
+    imdb_id: {
+        type: String,
+    },
+    original_language: {
+        type: String,
+    },
+    original_title: {
+        type: String,
+    },
+    popularity: {
+        type: String,
+    },
+    video: {
+        type: Boolean,
+    },
+    vote_count: {
+        type: Number,
+    },
+    poster_path: {
+        type: String,
+    },
+    adult: {
+        type: Boolean,
+    },
+    backdrop_path: {
+        type: String,
+    },
+    genre_ids: {
+        type: Array,
     },
     title: {
         type: String,
     },
-    synopsis: {
+    title_fr: {
         type: String,
     },
-    year: {
+    title_es: {
         type: String,
     },
-    length: {
+    tagline: {
         type: String,
     },
-    imdbRating: {
+    tagline_fr: {
+        type: String,
+    },
+    tagline_es: {
+        type: String,
+    },
+    vote_average: {
         type: Number,
-        min: 0,
-        max: 10,
     },
-    director: {
+    overview: {
         type: String,
     },
-    stars: {
+    overview_fr: {
+        type: String,
+    },
+    overview_es: {
+        type: String,
+    },
+    release_date: {
+        type: String,
+    },
+    torrents: {
         type: Array,
-    },
-    trailer: {
-        type: String,
-    },
+    }
 }, {
     timestamps: true,
 });

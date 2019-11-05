@@ -1,7 +1,6 @@
 import express from 'express';
 import jwt from "jsonwebtoken";
 
-
 import session from './middlewares/session';
 
 /* Auth */
@@ -19,15 +18,14 @@ import updateProfilePic from './controllers/user/updateProfilePic';
 import passport from './controllers/auth/passport';
 /* Movie */
 import searchMovies from './controllers/movies/searchMovies';
-import searchTorrents from './controllers/movies/searchTorrents';
 import streamMovies from './controllers/movies/streamMovies';
-
+import infoMovie from "./controllers/movies/infoMovie";
+import updateMovie from "./controllers/movies/updateMovie";
 
 class Router {
 
 	static auth() {
 		let router = express.Router();
-		console.log('auth routes..');
 		router.post('/register', register);		
 		router.post('/login', login);
 		router.post('/forgetpassword', forgetpassword);
@@ -49,7 +47,7 @@ class Router {
                 }
                 const username = user.username;
                 const accessToken = jwt.sign({ username }, process.env.ACCESS_TOKEN_SECRET);
-                res.redirect('http://localhost:3000/jwt/' + accessToken)
+                res.redirect(process.env.URL + ':' + process.env.PORT_FRONT + '/jwt/' + accessToken)
             });
         })(req, res);
         });
@@ -68,7 +66,7 @@ class Router {
                 }
                 const username = user.username;
                 const accessToken = jwt.sign({ username }, process.env.ACCESS_TOKEN_SECRET);
-                res.redirect('http://localhost:3000/jwt/' + accessToken)
+                res.redirect(process.env.URL + ':' + process.env.PORT_FRONT + '/jwt/' + accessToken)
             });
         })(req, res);
         });
@@ -93,10 +91,14 @@ class Router {
     static movies() {
         let router = express.Router();
 
-        router.get('/search/:title', searchMovies);
-        router.get('/torrent/:title', searchTorrents);
-        router.get('/stream/', streamMovies);
+        router.get('/search/:title/', searchMovies);
 
+        router.get('/infos/:id/', infoMovie);
+
+        router.get('/update/:id', updateMovie);
+
+
+        router.get('/stream/', streamMovies);                       // todo
 
         return router;
     }

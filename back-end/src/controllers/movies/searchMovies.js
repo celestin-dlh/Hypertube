@@ -1,34 +1,26 @@
-const puppeteer = require('puppeteer');
+const MovieDb = require('moviedb-promise');
+const moviedb = new MovieDb(process.env.MOVIEDB_API_KEY);
+import Movie from "../../models/movie.model";
+import newMovie from "./newMovie";
 
 const searchmovie = function(req, res) {
+    const search = req.params.title;
 
-    console.log("search movie route");
-    console.log(req.params.title);
-
-    const IMDB_URL = (movie) => `https://www.imdb.com/search/title/?title=${movie}&title_type=feature`;
-    const movie = req.params.title;
-    (async () => {
-        /* Initiate the Puppeteer browser */
-        const browser = await puppeteer.launch({});
-        const page = await browser.newPage();
-        /* Go to the IMDB Movie page and wait for it to load */
-        await page.goto(IMDB_URL(movie), { waitUntil: 'networkidle0' });
-
-
-        /* Run javascript inside of the page */
-        let data = await page.evaluate(() =>
-            Array.from(document.querySelectorAll('div[class="lister-item mode-advanced"]')).map(item => ({
-                title: item.querySelector('div[class="lister-item-content"] > h3 > a').innerText,
-                imdbId: item.querySelector('div[class="lister-item-content"] > h3 > a').getAttribute('href').slice(7, 15),
-                year: item.querySelector('span[class="lister-item-year text-muted unbold"]').innerText.slice(1,-1),
-                synopsis: item.querySelector('p[class="text-muted"]').innerText,
-            })));
-        /* Outputting what we scraped */
-        console.log(data);
-        res.send(data);
-        await browser.close();
-    })();
-
+    moviedb.searchMovie({ query: search }).then(result => {
+        for(let i= 0; i < result.results.length; i++)
+        {
+           Movie.findOne({movieDbId: result.results[i].id}, function(err, movieFind)  {
+            if (movieFind) {
+                // already have the movie
+                console.log('movie is ', movieFind.title);
+                console.log('movie imdbid is ', movieFind.id);
+            } else {
+                // if not save movie
+                newMovie(result.results[i]);
+            }});
+        }
+        res.json(result);
+    })
 };
 
 export default searchmovie;
