@@ -1,11 +1,31 @@
 .menu-settings .cell {
-    text-decoration: none;
-    color: black;
     padding: 5px;
-    margin: 1px;
-    border: 1px solid black;
+    padding-left: 50px;
 }
+
+.menu-settings .cell:hover {
+    background-color: grey;
+}
+
+h3 {
+    color: white;
+}
+
+.input-form label .label {
+    color: white;
+}
+
+.input-form input {
+    color: white;
+}
+
 
 .menu-settings p {
     color: white;
+    vertical-align: center;
+
+}
+
+.settings-form {
+    width: 50%;
 }
