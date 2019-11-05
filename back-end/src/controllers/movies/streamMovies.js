@@ -2,7 +2,7 @@ const fs = require('fs');
 
 const streamMovies = function(req, res) {
 
-    const path = '/tmp/sample.mp4';
+    const path = './public/movies/sample.mp4';
     const stat = fs.statSync(path);
     const fileSize = stat.size;
     const range = req.headers.range;
@@ -28,7 +28,7 @@ const streamMovies = function(req, res) {
             'Content-Type': 'video/mp4',
         };
         res.writeHead(200, head);
-        fs.createReadStream(path).pipe(res)
+        fs.createReadStream(path).pipe(res);
     }
 };
 

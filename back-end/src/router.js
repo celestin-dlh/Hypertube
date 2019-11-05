@@ -21,6 +21,7 @@ import searchMovies from './controllers/movies/searchMovies';
 import streamMovies from './controllers/movies/streamMovies';
 import infoMovie from "./controllers/movies/infoMovie";
 import updateMovie from "./controllers/movies/updateMovie";
+import ddlMovie from "./controllers/movies/ddlMovie";
 
 class Router {
 
@@ -97,8 +98,8 @@ class Router {
 
         router.get('/update/:id', updateMovie);
 
-
-        router.get('/stream/', streamMovies);                       // todo
+        router.get('/stream/', streamMovies);             // todo
+        router.get('/ddl/', ddlMovie);                    // todo
 
         return router;
     }
