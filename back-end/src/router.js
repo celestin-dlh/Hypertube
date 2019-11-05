@@ -1,34 +1,32 @@
 import express from 'express';
 import jwt from "jsonwebtoken";
 
-
 import session from './middlewares/session';
 
-/* auth */
+/* Auth */
 import register from './controllers/auth/register';
 import login from './controllers/auth/login';
 import forgetpassword from './controllers/auth/forgot/forgetpassword';
 import resetpassword from './controllers/auth/forgot/resetpassword';
-
-
+/* User */
 import getuser from './controllers/user/getuser';
-
 import updateFullName from './controllers/user/UpdateFullName';
 import updateEmail from './controllers/user/updateEmail';
 import updatePassword from './controllers/user/updatePassword';
 import updateProfilePic from './controllers/user/updateProfilePic';
-
+/* Passport */
 import passport from './controllers/auth/passport';
-
-
-/* user */
-
+/* Movie */
+import searchMovies from './controllers/movies/searchMovies';
+import streamMovies from './controllers/movies/streamMovies';
+import infoMovie from "./controllers/movies/infoMovie";
+import updateMovie from "./controllers/movies/updateMovie";
+import ddlMovie from "./controllers/movies/ddlMovie";
 
 class Router {
 
 	static auth() {
 		let router = express.Router();
-		console.log('auth routes..');
 		router.post('/register', register);		
 		router.post('/login', login);
 		router.post('/forgetpassword', forgetpassword);
@@ -38,10 +36,6 @@ class Router {
         router.get('/google', passport.authenticate('google', {
             scope: ['profile', 'email']
         }));
-        // router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
-        //     res.redirect('/user');
-        // });
-
         router.get('/google/redirect', function (req, res) {    passport.authenticate('google', {session: false}, (err, user, info) => {
             if (err || !user) {
                 return res.status(400).json({
@@ -54,7 +48,7 @@ class Router {
                 }
                 const username = user.username;
                 const accessToken = jwt.sign({ username }, process.env.ACCESS_TOKEN_SECRET);
-                res.redirect('http://localhost:3000/jwt/' + accessToken)
+                res.redirect(process.env.URL + ':' + process.env.PORT_FRONT + '/jwt/' + accessToken)
             });
         })(req, res);
         });
@@ -73,7 +67,7 @@ class Router {
                 }
                 const username = user.username;
                 const accessToken = jwt.sign({ username }, process.env.ACCESS_TOKEN_SECRET);
-                res.redirect('http://localhost:3000/jwt/' + accessToken)
+                res.redirect(process.env.URL + ':' + process.env.PORT_FRONT + '/jwt/' + accessToken)
             });
         })(req, res);
         });
@@ -85,8 +79,7 @@ class Router {
 	static user() {
 		let router = express.Router();
 
-		console.log('user routes..');
-		router.use('/', session)
+		router.use('/', session);
 		router.get('/getuser', getuser);
 		router.post('/updatefullname', updateFullName);
 		router.post('/updateemail', updateEmail);
@@ -96,14 +89,29 @@ class Router {
 		return router;
 	}
 
+    static movies() {
+        let router = express.Router();
+
+        router.get('/search/:title/', searchMovies);
+
+        router.get('/infos/:id/', infoMovie);
+
+        router.get('/update/:id', updateMovie);
+
+        router.get('/stream/', streamMovies);             // todo
+        router.get('/ddl/', ddlMovie);                    // todo
+
+        return router;
+    }
+
 	static getRouter() {
-		console.log('initialize router..');
 		let router = express.Router();
 
+        router.post('/getuser', getuser);
 		router.use('/auth/', Router.auth());
 		router.use('/user/', Router.user());
+		router.use('/movies/', Router.movies());
 
-        console.log('end routing operations..');
 		return router;
 	}
 }

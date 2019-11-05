@@ -10,6 +10,6 @@ const uploadPic = function(req, res) {
 	        resolve(req.file);
 	    });
     })
-}
+};
 
 export default uploadPic;

@@ -17,7 +17,7 @@ const userSchema = new Schema({
         required: true,
         unique: true,
         trim: true,
-    },    
+    },
     googleId: {
         type: String,
     },
@@ -31,11 +31,11 @@ const userSchema = new Schema({
         trim: true
     },
     password: {
-      type: String,
+        type: String,
     },
     profilepicture: {
-      type: String,
-      required: true,
+        type: String,
+        required: true,
     },
     reset_password_token: {
         type: String,
