@@ -1,5 +1,4 @@
 import bcrypt from 'bcryptjs';
-import multer from 'multer';
 import fs from 'fs';
 
 /* Model */
@@ -39,7 +38,7 @@ const trydelete = (file_path) => {
 	catch (err) {
 		console.log(err);
 	}
-}
+};
 
 const register = function(req, res) {
 	let file;
@@ -47,17 +46,17 @@ const register = function(req, res) {
 	uploadPic(req, res)
 		.then((res) => {
 			file = res;
-			const { error } = schema.validate(req.body)
-			if (error) throw ('Inputs does not respect the schema')
+			const { error } = schema.validate(req.body);
+			if (error) throw ('Inputs does not respect the schema');
 			req.body.profilepicture = res.filename;
 			return UserManager.usernameExists(req.body.username)
 		})
 		.then((exist_username) => {
-			if (exist_username) throw ('Username taken')
+			if (exist_username) throw ('Username taken');
 			return UserManager.emailExists(req.body.email)
 		}) 
 		.then((exist_email) => {
-			if (exist_email) throw ('Email taken')
+			if (exist_email) throw ('Email taken');
 			return (req.body)
 		})
 		.then((data) => {
@@ -69,13 +68,13 @@ const register = function(req, res) {
 		})
 		.catch((err) => {
 
-			console.log(err)
+			console.log(err);
 
 			if (file) {
 				trydelete(file.path)
 			}
 			return res.json(err);
 		});
-}
+};
 
 export default register;
