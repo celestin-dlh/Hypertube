@@ -54,12 +54,12 @@ function Settings() {
 			<Row className="justify-content-center" style={{height: "95vh"}}>
 				<Col md="2" className="">
 
-					<div className="menu-settings" style={{display: "flex", flexDirection: "column"}}>
+					<div className="menu-settings" style={{display: "flex", flexDirection: "column", backgroundColor: "#272727"}}>
 						<div onClick={handleClick} id="infos" className="cell">
 							<p>Update Infos</p>
 						</div>
-						<div className="cell">
-							<p onClick={handleClick} id="password">Update Password</p>
+						<div onClick={handleClick} id="password" className="cell">
+							<p>Update Password</p>
 						</div>
 						<div className="cell">
 							<p>Change background</p>
