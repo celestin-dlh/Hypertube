@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 /* Style */
-import '../style/Login.css';
+import '../style/Auth.css';
 import '../style/Input.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -79,7 +79,7 @@ function Register() {
                                     <Col>
                                         <div className="input-form">
                                             <label htmlFor="inp" className="inp">
-                                                <input type="text" placeholder="&nbsp;" name="firstname" onChange={handleOnChange} value={inputs.firstname}/>
+                                                <input className="input" type="text" placeholder="&nbsp;" name="firstname" onChange={handleOnChange} value={inputs.firstname}/>
                                                 <span className="label">First Name</span>
                                                 <span className="border"></span>
                                             </label>  
@@ -88,7 +88,7 @@ function Register() {
                                     <Col>
                                         <div className="input-form">
                                             <label htmlFor="inp" className="inp">
-                                                <input type="text" placeholder="&nbsp;" name="lastname" onChange={handleOnChange} value={inputs.lastname}/>
+                                                <input className="input" type="text" placeholder="&nbsp;" name="lastname" onChange={handleOnChange} value={inputs.lastname}/>
                                                 <span className="label">Last Name</span>
                                                 <span className="border"></span>
                                             </label>  
@@ -97,14 +97,14 @@ function Register() {
                                 </Row>
                                 <div className="input-form" style={{marginTop: "0px"}}>
                                     <label htmlFor="inp" className="inp">
-                                        <input type="text" placeholder="&nbsp;" name="username" onChange={handleOnChange} value={inputs.username}/>
+                                        <input className="input" type="text" placeholder="&nbsp;" name="username" onChange={handleOnChange} value={inputs.username}/>
                                         <span className="label">Username</span>
                                         <span className="border"></span>
                                     </label>  
                                 </div>
                                 <div className="input-form">
                                     <label htmlFor="inp" className="inp">
-                                        <input type="email" placeholder="&nbsp;" name="email" onChange={handleOnChange} value={inputs.email}/>
+                                        <input className="input" type="email" placeholder="&nbsp;" name="email" onChange={handleOnChange} value={inputs.email}/>
                                         <span className="label">Email</span>
                                         <span className="border"></span>
                                     </label>  
@@ -112,7 +112,7 @@ function Register() {
 
                                 <div className="input-form">
                                     <label htmlFor="inp" className="inp">
-                                        <input type={passwordType} placeholder="&nbsp;" name="password" onChange={handleOnChange} value={inputs.password}/>
+                                        <input className="input" type={passwordType} placeholder="&nbsp;" name="password" onChange={handleOnChange} value={inputs.password}/>
                                         <span className="label">Password</span>
                                         <img className="eyePassword" onClick={handleClick} width="25" src={passwordType === "password" ? "./images/eye-close.png" :"./images/eye-open.png"}/>
                                         <span className="border"></span>
@@ -157,7 +157,7 @@ function Register() {
                             </a>
                         </div>
                         <div className="link">
-                            <p className="text-muted">Already have an account?</p><a href="/login">Login</a>
+                            <p className="text-muted">Already have an account?</p><a href="/login">Auth</a>
                         </div>
                     </div>
                 </Col>

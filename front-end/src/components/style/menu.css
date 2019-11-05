@@ -4,7 +4,7 @@
     left: 0;
     height: 100vh;
     width: 72px;
-    background-color: #282828;
+    background-color: #272727;
 }
 
 .menu a {
@@ -14,15 +14,20 @@
 }
 
 .menuCell {
-    width: 100%;
+    max-width: 100vh;
     height: 72px;
-    background-color: #282828;
+    background-color: #272727;
 }
 
 .content {
     margin: 0;
     position: relative;
     top: 25%;
+}
+
+.navbar-brand {
+    color: white;
+    text-decoration: none;
 }
 
 .menuCell:hover {
@@ -39,4 +44,23 @@
 .menuCell p {
     text-align: center;
     font-size: 10px;
+}
+
+.form-search {
+    width: 50%;
+    display: flex;
+    align-items: center;
+}
+
+.input-search {
+    width: 100%;
+    height: 34px;
+    padding: 2px 8px;
+    border: 1px solid black;
+}
+
+.button-search {
+    width: 65px;
+    height: 34px;
+    padding: 1px 7px;
 }

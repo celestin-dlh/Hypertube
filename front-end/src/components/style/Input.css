@@ -27,7 +27,7 @@
       transition: all .15s ease;
 }
   
-input {
+.input {
       -webkit-appearance: none;
       width: 100%;
       border: 0;
@@ -43,21 +43,21 @@ input {
       transition: all .15s ease;
 }
   
-input:hover {
+.input:hover {
       background: rgba(#223254,.03);
 }
   
-input:not(:placeholder-shown) + span {
+.input:not(:placeholder-shown) + span {
       color: #5A667F;
       transform: translateY(-26px) scale(.75);       
 }
   
-input:focus {
+.input:focus {
       background: none;
       outline: none; 
 } 
   
-input:focus + .border {
+.input:focus + .border {
       transform: scaleX(1);
 }
 

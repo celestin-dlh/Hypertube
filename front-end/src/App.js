@@ -16,7 +16,6 @@ import Jwt from './components/auth/Jwt';
 import ForgetPassword from './components/auth/ForgetPassword';
 import ResetPassword from './components/auth/ResetPassword';
 
-import Profile from './components/userProfile/Profile';
 import Edit from './components/userProfile/Edit';
 import Settings from './components/userProfile/Settings';
 
@@ -46,9 +45,6 @@ function App() {
             </Route>
             <Route exact path="/resetpassword/:token" >
               <ResetPassword />
-            </Route>
-            <Route exact path="/profile">
-              <Profile />
             </Route>
             <Route exact path="/edit">
               <Edit />

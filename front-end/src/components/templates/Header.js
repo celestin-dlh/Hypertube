@@ -1,11 +1,7 @@
 import React, { useState } from 'react';
 
 /* Bootstrap */
-import Container    from 'react-bootstrap/Container';
 import Navbar       from 'react-bootstrap/Navbar';
-import Form         from 'react-bootstrap/Form';
-import FormControl  from 'react-bootstrap/FormControl';
-import Button       from 'react-bootstrap/Button';
 
 import { logout } from '../services/requestManager';
 
@@ -13,7 +9,7 @@ import { logout } from '../services/requestManager';
 import '../style/menu.css';
 
 export default function Profile() {
-    const [enableMenu, setEnableMenu] = useState('none');
+    const [enableMenu, setEnableMenu] = useState('');
 
     const handleClick = () => {
         if (enableMenu === "none") {
@@ -22,13 +18,13 @@ export default function Profile() {
         else {
             setEnableMenu('none')            
         }
-
     }
 
     return (
-        <Container fluid={true} style={{paddingLeft: "0px", paddingRight: "0px"}}> 
-            <Navbar sticky="top" style={{backgroundColor: "grey", display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
-                <div>
+        <div style={{paddingLeft: "0px", paddingRight: "0px"}}> 
+            <Navbar sticky="top" style={{backgroundColor: "#999", display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
+                
+                <div id="menu-div">
                     <img onClick={handleClick} width="32" src="./images/toggle-button.jpg"/>
                         
                     <div style={{display: enableMenu}} className="menu">
@@ -57,8 +53,7 @@ export default function Profile() {
                                 </div>
                             </div>
                         </a>
-
-                        <a href="/logout" onClick={logout}>
+                        <a href="/login" onClick={logout}>
                             <div className="menuCell">
                                 <div className="content">
                                     <img width="24" src="./images/logout.png"/>
@@ -67,20 +62,19 @@ export default function Profile() {
                             </div>
                         </a>
                     </div>
-                    <Navbar.Brand href="/home">Hypertube</Navbar.Brand>        
+                    <Navbar.Brand href="/" className="brand">Hypertube</Navbar.Brand>        
                 </div>
 
-                <Form inline>
-                    <FormControl type="text" placeholder="Search a movie..." className="mr-sm-2" />
-                    <Button variant="light">Search</Button>
-                </Form>
+                <form className="form-search" >
+                    <input type="text" placeholder="Search a movie..." className="input-search" />
+                    <button className="button-search"><img width="25" src="./images/search-icon.png"/></button>
+                </form>
+                
                 <div>
                     <img style={{textAlign: "right"}} width="32" src="./images/default_avatar.png" />
-
                 </div>
 
             </Navbar>
-        </Container>
+        </div>
     )
-
 }

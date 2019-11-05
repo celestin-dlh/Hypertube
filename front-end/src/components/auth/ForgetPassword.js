@@ -8,7 +8,7 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 	
 /* Style */
-import '../style/Login.css';
+import '../style/Auth.css';
 
 function ForgetPassword() {
 
@@ -41,7 +41,7 @@ function ForgetPassword() {
 						<form onSubmit={handleSubmit}>
 							<div className="input-form" style={{marginTop: "15px"}}>
 								<label htmlFor="inp" className="inp">
-									<input type="email" placeholder="&nbsp;" name="email" onChange={handleOnChange} value={inputs.email}/>
+									<input className="input" type="email" placeholder="&nbsp;" name="email" onChange={handleOnChange} value={inputs.email}/>
 									<span className="label">Email</span>
 									<span className="border"></span>
 								</label>  

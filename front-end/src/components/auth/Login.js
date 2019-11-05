@@ -3,7 +3,7 @@ import { withRouter } from "react-router";
 import axios from 'axios';
 
 /* Style */
-import '../style/Login.css';
+import '../style/Auth.css';
 import '../style/Input.css';
 import { Button, Container, Col, Row } from 'react-bootstrap';
 
@@ -49,14 +49,14 @@ function Login({ history }) {
                             <form onSubmit={onSubmit}>
                                 <div className="input-form">
                                     <label htmlFor="inp" className="inp">
-                                        <input type="text" placeholder="&nbsp;" name="username" onChange={handleOnChange} value={inputs.username}/>
+                                        <input className="input" type="text" placeholder="&nbsp;" name="username" onChange={handleOnChange} value={inputs.username}/>
                                         <span className="label">Username</span>
                                         <span className="border"></span>
                                     </label>  
                                 </div>
                                 <div className="input-form">
                                     <label htmlFor="inp" className="inp">
-                                        <input type="password" placeholder="&nbsp;" name="password" onChange={handleOnChange} value={inputs.password}/>
+                                        <input className="input" type="password" placeholder="&nbsp;" name="password" onChange={handleOnChange} value={inputs.password}/>
                                         <span className="label">Password</span>
                                         <span className="border"></span>
                                     </label>

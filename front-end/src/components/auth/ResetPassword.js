@@ -9,7 +9,7 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 	
 /* Style */
-import '../style/Login.css';
+import '../style/Auth.css';
 
 function ResetPassword(props) {
     let { token } = useParams();
@@ -49,7 +49,7 @@ function ResetPassword(props) {
 						<form onSubmit={handleSubmit}>
 							<div className="input-form" style={{marginTop: "15px"}}>
 								<label htmlFor="inp" className="inp">
-									<input type="password" placeholder="&nbsp;" name="password" onChange={handleOnChange} value={inputs.password}/>
+									<input className="input" type="password" placeholder="&nbsp;" name="password" onChange={handleOnChange} value={inputs.password}/>
 									<span className="label">New Password</span>
 									<span className="border"></span>
 								</label>  
