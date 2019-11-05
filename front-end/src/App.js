@@ -18,6 +18,7 @@ import ResetPassword from './components/auth/ResetPassword';
 
 import Profile from './components/userProfile/Profile';
 import Edit from './components/userProfile/Edit';
+import Settings from './components/userProfile/Settings';
 
 import ChangeLanguage from './components/services/ChangeLanguage';
 
@@ -51,6 +52,9 @@ function App() {
             </Route>
             <Route exact path="/edit">
               <Edit />
+            </Route>
+            <Route exact path="/settings">
+              <Settings />
             </Route>
             <Route path="/">
               <Register />

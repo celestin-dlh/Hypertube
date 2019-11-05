@@ -4,6 +4,10 @@ const _axios = axios.create();
 
 _axios.defaults.headers.common['Authorization'] = localStorage.getItem('token');
 
+export function logout() {
+	localStorage.clear();
+	return window.location.href = '/';
+}
 
 export function getProfile(username) {
 	return _axios.get('http://localhost:5000/user/getuser?username=' + username)
