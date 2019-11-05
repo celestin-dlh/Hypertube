@@ -6,7 +6,7 @@ import Navbar       from 'react-bootstrap/Navbar';
 import { logout } from '../services/requestManager';
 
 /* Style */
-import '../style/menu.css';
+import './Header.css';
 
 export default function Profile() {
     const [enableMenu, setEnableMenu] = useState('');
@@ -22,17 +22,17 @@ export default function Profile() {
 
     return (
         <div style={{paddingLeft: "0px", paddingRight: "0px"}}> 
-            <Navbar sticky="top" style={{backgroundColor: "#999", display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
+            <Navbar sticky="top" style={{backgroundColor: "#272727", display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
                 
                 <div id="menu-div">
-                    <img onClick={handleClick} width="32" src="./images/toggle-button.jpg"/>
+                    <img onClick={handleClick} width="25" src="./images/toggle-button.png" alt="toggle" style={{marginLeft: "7px"}}/>
                         
                     <div style={{display: enableMenu}} className="menu">
                         
                         <a href="/">
                             <div className="menuCell">
                                 <div className="content">
-                                    <img width="24" src="./images/home.png" />
+                                    <img width="24" src="./images/home-white.png" />
                                     <p>Accueil</p>                                  
                                 </div>
                             </div>
@@ -40,7 +40,7 @@ export default function Profile() {
                         <a href="/profile">
                             <div className="menuCell">
                                 <div className="content">
-                                    <img width="24" src="./images/default_avatar.png"/>
+                                    <img width="24" src="./images/default_avatar-white.png"/>
                                     <p>Profile</p>                                  
                                 </div>
                             </div>
@@ -48,7 +48,7 @@ export default function Profile() {
                         <a href="/settings">
                             <div className="menuCell">
                                 <div className="content">
-                                    <img width="24" src="./images/settings.png"/>
+                                    <img width="24" src="./images/settings-white.png"/>
                                     <p>Parametres</p>                                  
                                 </div>
                             </div>
@@ -56,13 +56,13 @@ export default function Profile() {
                         <a href="/login" onClick={logout}>
                             <div className="menuCell">
                                 <div className="content">
-                                    <img width="24" src="./images/logout.png"/>
+                                    <img width="24" src="./images/logout-white.png"/>
                                     <p>Logout</p>                                  
                                 </div>
                             </div>
                         </a>
                     </div>
-                    <Navbar.Brand href="/" className="brand">Hypertube</Navbar.Brand>        
+                    <a href="/" className="brand" style={{marginLeft: "25px", marginTop: "5px"}}>Hypertube</a>        
                 </div>
 
                 <form className="form-search" >
@@ -71,7 +71,7 @@ export default function Profile() {
                 </form>
                 
                 <div>
-                    <img style={{textAlign: "right"}} width="32" src="./images/default_avatar.png" />
+                    <img style={{textAlign: "right"}} width="32" src="./images/default_avatar-white.png" />
                 </div>
 
             </Navbar>

@@ -1,6 +1,6 @@
 .menu {
     position: absolute;
-    top: 55.60px;
+    top: 50px;
     left: 0;
     height: 100vh;
     width: 72px;
@@ -19,13 +19,17 @@
     background-color: #272727;
 }
 
+.menuCell p {
+    color: white;
+}
+
 .content {
     margin: 0;
     position: relative;
     top: 25%;
 }
 
-.navbar-brand {
+.brand {
     color: white;
     text-decoration: none;
 }
@@ -47,7 +51,7 @@
 }
 
 .form-search {
-    width: 50%;
+    width: 33%;
     display: flex;
     align-items: center;
 }
@@ -57,10 +61,14 @@
     height: 34px;
     padding: 2px 8px;
     border: 1px solid black;
+    background-color: #111111;
+    color: white;
 }
 
 .button-search {
     width: 65px;
     height: 34px;
     padding: 1px 7px;
+    background-color: #393939;
+    border: none;
 }
