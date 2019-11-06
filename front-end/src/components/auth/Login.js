@@ -25,18 +25,11 @@ function Login({ history }) {
 		axios.post('http://localhost:5000/auth/login', inputs)
 			.then((res) =>
 			{
-				console.log(res)
-				if (res.data.error === 'success') {
-					console.log(res.data.accessToken)
-					localStorage.setItem('token', res.data.accessToken)
-					history.push('/profile');					
-				}
-				else
-					console.log("BAD CREDENTIAL")
-
-			})
-			.catch((err) => 
-				console.log(Object.values(err)))
+                console.log(res.data.accessToken)
+                localStorage.setItem('token', res.data.accessToken)
+                history.push('/profile');					
+            })
+            .catch(() => console.log('BAD CREDENTIALS'))
 	}
 
     return (

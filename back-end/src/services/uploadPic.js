@@ -7,7 +7,8 @@ const uploadPic = function(req, res) {
 	        if (err) {
 	            return reject(err);
 	        }
-	        resolve(req.file);
+			console.log(req.file)
+			resolve(req.file);
 	    });
     })
 };

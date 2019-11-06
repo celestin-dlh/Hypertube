@@ -13,4 +13,4 @@ const session = (req, res, next) => {
 
 };
 
-export default session
+export default session;

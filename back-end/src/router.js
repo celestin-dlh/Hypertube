@@ -8,14 +8,15 @@ import register from './controllers/auth/register';
 import login from './controllers/auth/login';
 import forgetpassword from './controllers/auth/forgot/forgetpassword';
 import resetpassword from './controllers/auth/forgot/resetpassword';
+
 /* User */
 import getuser from './controllers/user/getuser';
-import updateFullName from './controllers/user/UpdateFullName';
-import updateEmail from './controllers/user/updateEmail';
-import updatePassword from './controllers/user/updatePassword';
+import updateInfos from './controllers/user/updateInfos';
 import updateProfilePic from './controllers/user/updateProfilePic';
+
 /* Passport */
 import passport from './controllers/auth/passport';
+
 /* Movie */
 import searchMovies from './controllers/movies/searchMovies';
 import streamMovies from './controllers/movies/streamMovies';
@@ -78,14 +79,10 @@ class Router {
 
 	static user() {
 		let router = express.Router();
-
 		router.use('/', session);
 		router.get('/getuser', getuser);
-		router.post('/updatefullname', updateFullName);
-		router.post('/updateemail', updateEmail);
-		router.post('/updatepassword', updatePassword);
+		router.post('/updateinfos', updateInfos);
 		router.post('/updateprofilepic', updateProfilePic);
-
 		return router;
 	}
 

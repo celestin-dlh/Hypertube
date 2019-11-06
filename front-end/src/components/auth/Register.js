@@ -114,7 +114,7 @@ function Register() {
                                     <label htmlFor="inp" className="inp">
                                         <input className="input" type={passwordType} placeholder="&nbsp;" name="password" onChange={handleOnChange} value={inputs.password}/>
                                         <span className="label">Password</span>
-                                        <img className="eyePassword" onClick={handleClick} width="25" src={passwordType === "password" ? "./images/eye-close.png" :"./images/eye-open.png"}/>
+                                        <img className="eyePassword" alt="see-password" onClick={handleClick} width="25" src={passwordType === "password" ? "./images/eye-close.png" :"./images/eye-open.png"}/>
                                         <span className="border"></span>
                                     </label>
                                 </div>

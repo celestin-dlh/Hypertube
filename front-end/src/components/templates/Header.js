@@ -32,7 +32,7 @@ export default function Profile() {
                         <a href="/">
                             <div className="menuCell">
                                 <div className="content">
-                                    <img width="24" src="./images/home-white.png" />
+                                    <img width="24" src="./images/home-white.png" alt="home" />
                                     <p>Accueil</p>                                  
                                 </div>
                             </div>
@@ -40,7 +40,7 @@ export default function Profile() {
                         <a href="/profile">
                             <div className="menuCell">
                                 <div className="content">
-                                    <img width="24" src="./images/default_avatar-white.png"/>
+                                    <img width="24" src="./images/default_avatar-white.png" alt="profile" />
                                     <p>Profile</p>                                  
                                 </div>
                             </div>
@@ -48,7 +48,7 @@ export default function Profile() {
                         <a href="/settings">
                             <div className="menuCell">
                                 <div className="content">
-                                    <img width="24" src="./images/settings-white.png"/>
+                                    <img width="24" src="./images/settings-white.png" alt="settings" />
                                     <p>Parametres</p>                                  
                                 </div>
                             </div>
@@ -56,7 +56,7 @@ export default function Profile() {
                         <a href="/login" onClick={logout}>
                             <div className="menuCell">
                                 <div className="content">
-                                    <img width="24" src="./images/logout-white.png"/>
+                                    <img width="24" src="./images/logout-white.png" alt="logout" />
                                     <p>Logout</p>                                  
                                 </div>
                             </div>
@@ -67,11 +67,11 @@ export default function Profile() {
 
                 <form className="form-search" >
                     <input type="text" placeholder="Search a movie..." className="input-search" />
-                    <button className="button-search"><img width="25" src="./images/search-icon.png"/></button>
+                    <button className="button-search"><img width="25" src="./images/search-icon.png" alt="search"/></button>
                 </form>
                 
                 <div>
-                    <img style={{textAlign: "right"}} width="32" src="./images/default_avatar-white.png" />
+                    <img style={{textAlign: "right"}} width="32" src="./images/default_avatar-white.png" alt="avatar" />
                 </div>
 
             </Navbar>

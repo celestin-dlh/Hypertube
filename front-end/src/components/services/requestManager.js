@@ -9,16 +9,12 @@ export function logout() {
 	return window.location.href = '/';
 }
 
-export function getProfile(username) {
+export function getUser(username) {
 	return _axios.get('http://localhost:5000/user/getuser?username=' + username)
 }
 
-export function updateFullName(fullname) {
-	return _axios.post('http://localhost:5000/user/updatefullname', fullname)
-}
-
-export function updateEmail(email) {
-	return _axios.post('http://localhost:5000/user/updateemail', email)
+export function updateInfos(infos) {
+	return _axios.post('http://localhost:5000/user/updateinfos', infos)
 }
 
 export function updatePassword(password) {

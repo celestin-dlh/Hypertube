@@ -16,10 +16,9 @@ import Jwt from './components/auth/Jwt';
 import ForgetPassword from './components/auth/ForgetPassword';
 import ResetPassword from './components/auth/ResetPassword';
 
-import Edit from './components/userProfile/Edit';
 import Settings from './components/userProfile/Settings';
 
-import ChangeLanguage from './components/services/ChangeLanguage';
+// import ChangeLanguage from './components/services/ChangeLanguage';
 
 import './App.css';
 
@@ -45,9 +44,6 @@ function App() {
             </Route>
             <Route exact path="/resetpassword/:token" >
               <ResetPassword />
-            </Route>
-            <Route exact path="/edit">
-              <Edit />
             </Route>
             <Route exact path="/settings">
               <Settings />

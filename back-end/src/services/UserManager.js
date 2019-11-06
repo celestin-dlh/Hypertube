@@ -25,19 +25,9 @@ class UserManager {
 		})
 	}
 
-	static updateFullName(username, firstname, lastname) {
+	static updateInfos(username, firstname, lastname, email) {
 		return new Promise((resolve, reject) => {
-		  User.updateOne({ username }, { firstname, lastname })
-		  .then(() => {
-		    resolve();
-		  })
-		  .catch(reject);
-		})
-	}
-
-	static updateEmail(username, email) {
-		return new Promise((resolve, reject) => {
-		  User.updateOne({ username }, { email })
+		  User.updateOne({ username }, { firstname, lastname, email })
 		  .then(() => {
 		    resolve();
 		  })
