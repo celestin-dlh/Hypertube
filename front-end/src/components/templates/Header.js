@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 /* Bootstrap */
-import Navbar       from 'react-bootstrap/Navbar';
+import Navbar from 'react-bootstrap/Navbar';
 
 import { logout } from '../services/requestManager';
 

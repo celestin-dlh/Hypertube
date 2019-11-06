@@ -6,10 +6,6 @@ import Button from 'react-bootstrap/Button';
 /* Services */
 import { getUser, updateInfos, updateProfilePic } from '../services/requestManager';
 
-/* Style */
-import '../style/Settings.css';
-import '../style/Input.css';
-
 function UpdateInfos() {
 	const [inputs, setInputs] = useState({
 		firstname: '',

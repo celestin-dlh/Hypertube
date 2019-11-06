@@ -6,10 +6,6 @@ import Button from 'react-bootstrap/Button';
 /* Services */
 import { updatePassword } from '../services/requestManager';
 
-/* Style */
-import '../style/Settings.css';
-import '../style/Input.css';
-
 function UpdatePassword() {
 
 	const [inputs, setInputs] = useState({
