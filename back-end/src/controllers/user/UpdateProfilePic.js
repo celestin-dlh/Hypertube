@@ -8,29 +8,34 @@ var appDir = path.dirname(require.main.filename);
 
 const UpdateProfilePic = function(req, res) {
 	const { username } = req.user;
-	let old_filename;
 
-	User.findOne({  username: username }, 'profilepicture', function(err, user) {
-			if (user.profilepicture !== "") {
-				old_filename = user.profilepicture;
-				
-			}
-		});
+	/* delete old pic DB and FILE */
+	User.findOne({ username: username }, 'profilepicture', function(err, user) {
+		if (user.profilepicture !== "") {	
+			let filePath = appDir + '/public/profile_pic/' + user.profilepicture; 
+			console.log('test')
+			if (filePath)
+				fs.unlinkSync(filePath);
 
 
-	// uploadPic(req, res)
-	// .then((res) => {
-	// 	console.log(res)
-	// })
-	// .catch(() => console.log('error'))
-	/* remove the old picture */
-	// User.findOne({ username: username }, 'profilepicture', function(err, user) {
-	// 	if (user.profilepicture !== "") {
-	// 		old_filename = user.profilepicture;
-			
-	// 	}
-	// });
-	// 	console.log('file: ' + old_filename)
+			// fs.unlink(filePath, (err) => {
+				// if (err) throw err;
+				// console.log('File was deleted');
+			// });
+		}
+	});
+
+
+
+	uploadPic(req, res)
+		.then((res) => {
+			console.log(res0)
+		}
+	);
+
+
+
+
 	// /* upload the new one and put it in the DB */
 	// uploadPic(req, res)
 	// 	.then((res) => {

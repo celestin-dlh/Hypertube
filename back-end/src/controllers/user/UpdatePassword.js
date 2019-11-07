@@ -10,6 +10,9 @@ const UpdatePassword = function(req, res) {
 	if (password === "" || new_password === "")
 		return res.status(400);
 
+		/* put some verification of password regex */
+
+
 	let hash = bcrypt.hashSync(new_password, 10);
 
 	User.findOne({ username }, 'password', function (err, user) {
@@ -18,15 +21,16 @@ const UpdatePassword = function(req, res) {
 				UserManager.updatePassword(username, hash)
 					.then(() => {
 						console.log('Password updated')
-						res.status(200).end()
+						res.status(200).send('Password updated')
 					})
 					.catch(() => {
-						console.log('error somewhere')
-						res.status(401).end()
+						console.log('error')
+						res.status(401).send('error')
 					})
             }
             else {
-                return res.status(403).send('Bad credentials')
+					console.log('Bad credentials')
+					return res.status(403).send('Bad credentials')
             }
        });                
     });

@@ -22,7 +22,7 @@ export default function Profile() {
 
     return (
         <Navbar className="navbar">
-    
+
             <div id="brand-toggle">
                 <img className="toggle-img" onClick={handleClick} width="24" src="./images/toggle-button.png" alt="toggle" /> 
                 <a href="/" className="brand">Hypertube</a>        
@@ -71,6 +71,7 @@ export default function Profile() {
                     </div>
                 </a>
             </div>
+            
         </Navbar>
     )
 }

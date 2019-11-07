@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { withRouter } from "react-router";
 import { useParams } from "react-router-dom";
 
 /* Bootstrap */
@@ -11,7 +12,7 @@ import { getUser } from '../services/requestManager';
 /* Templates */ 
 import Header from '../templates/Header';
  
-function Profile() {
+function Profile({ history }) {
     const [userInfos, setUserInfos] = useState({
         firstname: '',
         lastname: '',
@@ -27,7 +28,7 @@ function Profile() {
                 setUserInfos(res.data)
             })
             .catch((err) => {
-                setUserInfos({error: 'User does not exist'})
+                setUserInfos({error: 'User not found'})
             })
     }, [username])
 
@@ -36,16 +37,20 @@ function Profile() {
 			<Header />
 			<Row className="justify-content-center" style={{height: "95vh"}}>
 				<Col md="4" className="" style={{margin: "auto"}}>
-                    {userInfos.error !== '' ? <h3>{userInfos.error}</h3> : <div className="menu-settings" style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
-                        <h3>Profile of {userInfos.username}</h3>
-                        <h3>{userInfos.firstname + ' ' + userInfos.lastname}</h3>
-                        <img src=""  alt="avatar" />
-                    </div>}   
-
+                    <div className="menu-settings" style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
+                        {userInfos.error === 'User not found' ? 
+                            <div><h3>{userInfos.error}</h3></div> :
+                            <div>
+                                <h3>Profile of {userInfos.username}</h3>
+                                <h3>{userInfos.firstname + ' ' + userInfos.lastname}</h3>
+                                <img src=""  alt="avatar" />
+                            </div>
+                        }   
+                    </div>
 				</Col>
 			</Row>
 		</Container>
 	)
 }			
 
-export default Profile;
+export default withRouter(Profile);

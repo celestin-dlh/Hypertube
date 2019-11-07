@@ -41,15 +41,23 @@ function UpdateInfos() {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		console.log(inputs)
+		console.log('test')
 		updateInfos(inputs)
+			.then((res) => {
+				console.log(res)
+			})
+			.catch((error) => {
+				console.log(error.response.data)
+			})
 	}
 
 	return (
 		<div className="menu-settings" style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
 			<h3>Update your data</h3>
 			<img src="http://localhost:5000/profile_pic/4ddabd127bcfeb23dd5088a81a612b5b" alt="test"/>
-			<div>
+
+
+			<div id="profilepicture-form">
 				<label htmlFor="file-input">
 					<div className="pictureContainer">
 						<img 
@@ -70,6 +78,8 @@ function UpdateInfos() {
 					className="imageUpload"
 				/>
 			</div>
+
+
 			<form className="settings-form" onSubmit={handleSubmit}>
 				<div className="input-form">
 					<label htmlFor="inp" className="inp">
@@ -87,7 +97,7 @@ function UpdateInfos() {
 				</div>
 				<div className="input-form">
 					<label htmlFor="inp" className="inp">
-						<input className="input" type="email" placeholder="&nbsp;" name="email" onChange={handleOnChange} value={inputs.email} />
+						<input className="input" type="text" placeholder="&nbsp;" name="email" onChange={handleOnChange} value={inputs.email} />
 						<span className="label">Email</span>
 						<span className="border"></span>
 					</label>

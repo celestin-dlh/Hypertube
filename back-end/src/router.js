@@ -12,6 +12,7 @@ import resetpassword from './controllers/auth/forgot/resetpassword';
 /* User */
 import getuser from './controllers/user/getuser';
 import updateInfos from './controllers/user/updateInfos';
+import updatePassword from './controllers/user/updatePassword';
 import updateProfilePic from './controllers/user/updateProfilePic';
 
 /* Passport */
@@ -79,9 +80,10 @@ class Router {
 
 	static user() {
 		let router = express.Router();
-		router.use('/', session);
+        router.use('/', session);
 		router.get('/getuser', getuser);
 		router.post('/updateinfos', updateInfos);
+		router.post('/updatePassword', updatePassword);
 		router.post('/updateprofilepic', updateProfilePic);
 		return router;
 	}

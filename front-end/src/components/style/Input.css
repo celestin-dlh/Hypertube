@@ -69,11 +69,11 @@
 }
 
 .avatar {
-	background-color: white;
-    margin: auto;
-    max-width: 100px;
-    border-radius: 50%;
-    cursor: pointer;
+      background-color: white;
+      margin: auto;
+      max-width: 100px;
+      border-radius: 50%;
+      cursor: pointer;
 }
 
 .imageUpload {

@@ -19,7 +19,6 @@ const GetUser = function(req, res) {
 	else {
 		User.findOne({ username: username },'firstname lastname username profilepicture', 
 			function (err, user) {
-				console.log(user)
 				if (user === null) {
 					return res.status(401).send('Username not found')
 				}

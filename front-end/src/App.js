@@ -20,8 +20,8 @@ import Profile from './components/userProfile/Profile';
 import Settings from './components/userProfile/Settings';
 
 // import ChangeLanguage from './components/services/ChangeLanguage';
-
 import './App.css';
+
 
 function App() {
   return (
