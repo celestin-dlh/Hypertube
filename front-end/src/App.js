@@ -11,6 +11,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 /* Landing */
 import Register from './components/auth/Register';
+import Register2 from './components/auth/Register-new';
 import Login from './components/auth/Login';
 import Jwt from './components/auth/Jwt';
 import ForgetPassword from './components/auth/ForgetPassword';
@@ -51,6 +52,9 @@ function App() {
             </Route>
             <Route exact path="/settings">
               <Settings />
+            </Route>
+            <Route exact path="/register2">
+              <Register2 />
             </Route>
             <Route path="/">
               <Register />

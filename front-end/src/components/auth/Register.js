@@ -71,7 +71,7 @@ function Register() {
         <Container>
             <Row className="justify-content-center" style={{width: "100%"}}>
                 <Col xs="12" md="9" lg="5">
-                    <div className="login-container">
+                    <div className="auth-container">
                         <h1>Register</h1>
                         <div className="login-form">
                             <form onSubmit={handleSubmit}>
