@@ -13,12 +13,14 @@ import { getUser } from '../services/requestManager';
 import Header from '../templates/Header';
  
 function Profile({ history }) {
+
     const [userInfos, setUserInfos] = useState({
         firstname: '',
         lastname: '',
         profilepicture: '',
         error: ''
-    })
+    });
+
     let { username } = useParams();
 
 
@@ -30,7 +32,7 @@ function Profile({ history }) {
             .catch((err) => {
                 setUserInfos({error: 'User not found'})
             })
-    }, [username])
+    }, [username]);
 
 	return (
 		<Container fluid style={{padding: "0px"}} className="settings" >
