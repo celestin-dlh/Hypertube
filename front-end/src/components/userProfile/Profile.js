@@ -45,7 +45,7 @@ function Profile({ history }) {
                             <div>
                                 <h3>Profile of {userInfos.username}</h3>
                                 <h3>{userInfos.firstname + ' ' + userInfos.lastname}</h3>
-                                <img src=""  alt="avatar" />
+                                <img src={"http://localhost:5000/profile_pic/" + userInfos.profilepicture   }  alt="avatar" />
                             </div>
                         }   
                     </div>

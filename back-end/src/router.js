@@ -51,7 +51,7 @@ class Router {
                 }
                 const username = user.username;
                 const accessToken = jwt.sign({ username }, process.env.ACCESS_TOKEN_SECRET);
-                res.redirect(process.env.URL + ':' + process.env.PORT_FRONT + '/jwt/' + accessToken + '/' + username)
+                res.redirect(process.env.URL + ':' + process.env.PORT_FRONT + '/jwt/' + accessToken)
             });
         })(req, res);
         });
@@ -70,7 +70,7 @@ class Router {
                 }
                 const username = user.username;
                 const accessToken = jwt.sign({ username }, process.env.ACCESS_TOKEN_SECRET);
-                res.redirect(process.env.URL + ':' + process.env.PORT_FRONT + '/jwt/' + accessToken + '/' + username)
+                res.redirect(process.env.URL + ':' + process.env.PORT_FRONT + '/jwt/' + accessToken)
             });
         })(req, res);
         });

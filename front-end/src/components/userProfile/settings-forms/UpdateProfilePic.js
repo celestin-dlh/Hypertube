@@ -18,7 +18,7 @@ const UpdateProfilePic = function(props) {
 	const handleSubmitPicture = (event) => {
 		let formData = new FormData();
 			formData.append('avatar', picture);
-		updateProfilePic(formData)
+		updateProfilePic(formData);
 	}
 
 	return (
