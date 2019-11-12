@@ -35,6 +35,16 @@ class UserManager {
 		})
 	}
 
+	static updateLanguage(username, language) {
+		return new Promise((resolve, reject) => {
+		  User.updateOne({ username }, { language })
+		  .then(() => {
+		    resolve();
+		  })
+		  .catch(reject);
+		})
+	}
+
 	static updatePassword(username, password) {
 		return new Promise((resolve, reject) => {
 		  User.updateOne({ username }, { password })

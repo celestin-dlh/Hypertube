@@ -33,6 +33,10 @@ const userSchema = new Schema({
     password: {
         type: String,
     },
+    language: {
+        type: String,
+        default: 'en'
+    },
     profilepicture: {
         type: String,
         required: true,

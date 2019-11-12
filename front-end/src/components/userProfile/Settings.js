@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 /* Bootstrap */
 import Container from 'react-bootstrap/Container';
@@ -9,22 +9,44 @@ import Col from 'react-bootstrap/Col';
 import '../style/Settings.css';
 import '../style/Input.css';
 
+import { getUser } from '../services/requestManager';
+
+
 /* Templates */ 
-import UpdateInfos from './UpdateInfos';
-import UpdatePassword from './UpdatePassword';
+import UpdateInfos from './settings-forms/UpdateInfos';
+import UpdateProfilePic from './settings-forms/UpdateProfilePic';
+import UpdateLanguage from './settings-forms/UpdateLanguage';
+import UpdatePassword from './settings-forms/UpdatePassword';
 
 import Header from '../templates/Header';
  
 function Settings() {
 
+	const [data, setData] = useState({
+		firstname: '',
+		lastname: '',
+		email: '',
+		profilepicture: '',
+		language: '',
+	});
+
+	useEffect(() => {
+		getUser()
+		.then((res) => {
+			setData(res.data)
+		})
+	}, []);
+
 	return (
 		<Container fluid style={{padding: "0px"}} className="settings" >
 			<Header/>
 			<Row className="justify-content-center dark-row">
-				<Col md="4" className="" style={{margin: "auto"}}>
-					<UpdateInfos />
+				<Col md="4" style={{margin: "auto"}}>
+					<UpdateProfilePic profilepicture={data.profilepicture} />
+					<UpdateInfos data={data}/>
 				</Col>
-				<Col md="4" className="" style={{margin: "auto"}}>
+				<Col md="4" style={{margin: "auto"}}>
+					<UpdateLanguage language={data.language} />
 					<UpdatePassword />
 				</Col>
 			</Row>

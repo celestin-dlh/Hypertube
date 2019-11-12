@@ -17,6 +17,10 @@ export function updateInfos(infos) {
 	return _axios.post('http://localhost:5000/user/updateinfos', infos)
 }
 
+export function updateLanguage(language) {
+	return _axios.post('http://localhost:5000/user/updatelanguage', language)
+}
+
 export function updatePassword(password) {
 	return _axios.post('http://localhost:5000/user/updatepassword', password)
 }
@@ -24,4 +28,3 @@ export function updatePassword(password) {
 export function updateProfilePic(profilePic) {
 	return _axios.post('http://localhost:5000/user/updateprofilepic', profilePic)
 }
-

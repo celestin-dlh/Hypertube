@@ -4,7 +4,7 @@ import React,{ useState } from 'react';
 import Button from 'react-bootstrap/Button';
 
 /* Services */
-import { updatePassword } from '../services/requestManager';
+import { updatePassword } from '../../services/requestManager';
 
 function UpdatePassword() {
 

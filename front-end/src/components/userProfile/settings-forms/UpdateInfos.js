@@ -1,68 +1,22 @@
-import React,{ useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 /* Bootstrap */
 import Button from 'react-bootstrap/Button';
 
 /* Services */
-import { getUser, updateInfos, updateProfilePic } from '../services/requestManager';
+import { updateInfos } from '../../services/requestManager';
 
+const UpdateInfos = function(props) {
 
-const ProfilePicture = function(props) {
-	const [picture, setPicture] = useState(null);
-
-	const handleOnChangeFile = (event) => {
-		const file = event.target.files[0];
-		setPicture(file)
-	}
-
-	const handleSubmitPicture = (event) => {
-		let formData = new FormData();
-			formData.append('avatar', picture);
-		updateProfilePic(formData)
-	}
-
-	return (
-		<form className="settings-form" onSubmit={handleSubmitPicture}>
-			<label htmlFor="file-input">
-				<div className="pictureContainer">
-					<img 
-						style={{backgroundColor: "black"}}
-						src={picture ? URL.createObjectURL(picture) : 'http://localhost:5000/profile_pic/' + props.profilepicture }
-						id="avatar"
-						className="avatar"
-						alt="avatar" 
-					/>
-				</div>
-			</label>
-			<input
-				variant="outlined"
-				type="file"
-				id="file-input"
-				name="file"
-				onChange={handleOnChangeFile}
-				className="imageUpload"
-			/>		
-			<Button variant="primary" size="lg" block type="submit" className="submit-button">
-				Update profile pic
-			</Button>			
-		</form>
-	)
-}
-
-const UpdateInfos = function() {
 	const [inputs, setInputs] = useState({
 		firstname: '',
 		lastname: '',
 		email: '',
-		profilepicture: '',
 	});
 
 	useEffect(() => {
-		getUser('')
-		.then((res) => {
-			setInputs(res.data)
-		})
-	}, []);
+		setInputs(props.data)
+	}, [props])
 
 	const handleOnChangeInfos = (event) => {
 		const {name, value} = event.target;
@@ -81,8 +35,6 @@ const UpdateInfos = function() {
 
 	return (
 		<div className="menu-settings" style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
-			<h3>Update your data</h3>
-			<ProfilePicture profilepicture={inputs.profilepicture} />
 			<form className="settings-form" onSubmit={handleSubmitInfos}>
 				<div className="input-form">
 					<label htmlFor="inp" className="inp">
