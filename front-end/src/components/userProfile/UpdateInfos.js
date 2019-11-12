@@ -16,7 +16,6 @@ const ProfilePicture = function(props) {
 	}
 
 	const handleSubmitPicture = (event) => {
-		console.log(picture)
 		let formData = new FormData();
 			formData.append('avatar', picture);
 		updateProfilePic(formData)
@@ -24,12 +23,11 @@ const ProfilePicture = function(props) {
 
 	return (
 		<form className="settings-form" onSubmit={handleSubmitPicture}>
-			<h1>current name image {props.profilepicture}</h1>
 			<label htmlFor="file-input">
 				<div className="pictureContainer">
 					<img 
 						style={{backgroundColor: "black"}}
-						src={props.profilepicture !== '' ? 'http://localhost:5000/profile_pic/de604aa223dbd200b9988372fb14ca9f.png' : './images/default_avatar-white.png'}
+						src={picture ? URL.createObjectURL(picture) : 'http://localhost:5000/profile_pic/' + props.profilepicture }
 						id="avatar"
 						className="avatar"
 						alt="avatar" 
@@ -51,14 +49,7 @@ const ProfilePicture = function(props) {
 	)
 }
 
-
-
-
-
-
-
-
-function UpdateInfos() {
+const UpdateInfos = function() {
 	const [inputs, setInputs] = useState({
 		firstname: '',
 		lastname: '',
@@ -79,8 +70,6 @@ function UpdateInfos() {
 	};
 
 	const handleSubmitInfos = (event) => {
-		event.preventDefault();
-
 		updateInfos(inputs)
 			.then((res) => {
 				console.log(res)
@@ -93,7 +82,7 @@ function UpdateInfos() {
 	return (
 		<div className="menu-settings" style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
 			<h3>Update your data</h3>
-			<ProfilePicture/>
+			<ProfilePicture profilepicture={inputs.profilepicture} />
 			<form className="settings-form" onSubmit={handleSubmitInfos}>
 				<div className="input-form">
 					<label htmlFor="inp" className="inp">
