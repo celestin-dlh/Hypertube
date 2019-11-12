@@ -10,23 +10,28 @@ import Joi from '@hapi/joi';
 const schema = Joi.object({
     username: Joi.string()
         .alphanum()
-        .min(3)
+        .min(1)
         .max(30)
         .required(),
     email: Joi.string()
     	.regex(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
+        .min(6)
+        .max(320)
     	.required(),
     firstname: Joi.string()
     	.alphanum()
-        .min(3)
+        .min(1)
         .max(30)
         .required(),
     lastname: Joi.string()
         .alphanum()
-        .min(3)
+        .min(1)
         .max(30)
         .required(),
     password: Joi.string()
+        .regex(/^(?=.{8,}$)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).*$/)
+        .min(8)
+        .max(30)
     	.required()
 });
 
