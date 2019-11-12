@@ -3,6 +3,10 @@
     padding-left: 50px;
 }
 
+.dark-row {
+    height: calc(100vh - 65px);
+}
+
 .menu-settings .cell:hover {
     background-color: grey;
 }

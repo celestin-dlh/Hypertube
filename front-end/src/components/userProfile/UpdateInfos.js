@@ -13,42 +13,41 @@ const ProfilePicture = function(props) {
 	const handleOnChangeFile = (event) => {
 		const file = event.target.files[0];
 		setPicture(file)
-
 	}
 
 	const handleSubmitPicture = (event) => {
+		console.log(picture)
 		let formData = new FormData();
 			formData.append('avatar', picture);
 		updateProfilePic(formData)
 	}
 
 	return (
-		<div id="profilepicture-form">
-			<form onSubmit={handleSubmitPicture}>
-				<label htmlFor="file-input">
-					<div className="pictureContainer">
-						<img 
-							style={{backgroundColor: "black"}}
-							src={props.profilepicture !== '' ? 'http://localhost:5000/profile_pic/de604aa223dbd200b9988372fb14ca9f.png' : './images/default_avatar-white.png'}
-							id="avatar"
-							className="avatar"
-							alt="avatar" 
-						/>
-					</div>
-				</label>
-				<input
-					variant="outlined"
-					type="file"
-					id="file-input"
-					name="file"
-					onChange={handleOnChangeFile}
-					className="imageUpload"
-				/>		
-				<Button variant="primary" size="lg" block type="submit" className="submit-button">
-					Update profile pic
-				</Button>			
-			</form>
-		</div>
+		<form className="settings-form" onSubmit={handleSubmitPicture}>
+			<h1>current name image {props.profilepicture}</h1>
+			<label htmlFor="file-input">
+				<div className="pictureContainer">
+					<img 
+						style={{backgroundColor: "black"}}
+						src={props.profilepicture !== '' ? 'http://localhost:5000/profile_pic/de604aa223dbd200b9988372fb14ca9f.png' : './images/default_avatar-white.png'}
+						id="avatar"
+						className="avatar"
+						alt="avatar" 
+					/>
+				</div>
+			</label>
+			<input
+				variant="outlined"
+				type="file"
+				id="file-input"
+				name="file"
+				onChange={handleOnChangeFile}
+				className="imageUpload"
+			/>		
+			<Button variant="primary" size="lg" block type="submit" className="submit-button">
+				Update profile pic
+			</Button>			
+		</form>
 	)
 }
 
@@ -66,7 +65,6 @@ function UpdateInfos() {
 		email: '',
 		profilepicture: '',
 	});
-
 
 	useEffect(() => {
 		getUser('')
@@ -92,16 +90,10 @@ function UpdateInfos() {
 			})
 	}
 
-
-
 	return (
 		<div className="menu-settings" style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
 			<h3>Update your data</h3>
-			<img src="http://localhost:5000/profile_pic/4ddabd127bcfeb23dd5088a81a612b5b" alt="test"/>
-
-
-
-
+			<ProfilePicture/>
 			<form className="settings-form" onSubmit={handleSubmitInfos}>
 				<div className="input-form">
 					<label htmlFor="inp" className="inp">

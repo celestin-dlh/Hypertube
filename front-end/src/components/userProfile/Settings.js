@@ -20,7 +20,7 @@ function Settings() {
 	return (
 		<Container fluid style={{padding: "0px"}} className="settings" >
 			<Header/>
-			<Row className="justify-content-center" style={{height: "95vh"}}>
+			<Row className="justify-content-center dark-row">
 				<Col md="4" className="" style={{margin: "auto"}}>
 					<UpdateInfos />
 				</Col>
