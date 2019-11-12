@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import useForm from 'react-hook-form';
+import { Redirect } from 'react-router-dom';
 
 /* Style */
 import '../style/Auth.css';
@@ -56,7 +57,10 @@ function Register() {
 
         axios.post('http://localhost:5000/auth/register', formData)
             .then((res) => {
-                console.log(res)
+                console.log(inputs.username);
+                if (res.data === 'success') {
+                    return (<Redirect to='/login'  />);
+                }
             })
             .catch((err) => {
                 console.log(err)
@@ -208,7 +212,7 @@ function Register() {
                         </div>
                         <div className="login-social">
                             <p className="text-muted">Or Sign Up Using</p>
-                            <a href="/42">
+                            <a href="http://localhost:5000/auth/42">
                                 <div className="images"
                                      style={{width: "50px",
                                          height: "50px",
@@ -217,7 +221,7 @@ function Register() {
                                     <img alt="login with 42" src="./images/42-icon.png" />
                                 </div>
                             </a>
-                            <a href="/google">
+                            <a href="http://localhost:5000/auth/google">
                                 <div className="images"
                                      style={{width: "50px",
                                          height: "50px",
@@ -228,7 +232,7 @@ function Register() {
                             </a>
                         </div>
                         <div className="link">
-                            <p className="text-muted">Already have an account?</p><a href="/login">Auth</a>
+                            <p className="text-muted">Already have an account?</p><a href="/login">Login</a>
                         </div>
                     </div>
                 </Col>
