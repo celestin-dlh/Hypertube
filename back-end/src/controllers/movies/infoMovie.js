@@ -1,22 +1,20 @@
-const MovieDb = require('moviedb-promise');
-const moviedb = new MovieDb(process.env.MOVIEDB_API_KEY);
-import Movie from "../../models/movie.model";
-import newMovie from "./newMovie";
+const axios = require('axios');
 
-const infoMovie = function(req, result) {
+let movie;
+
+
+const infoMovie = async function(req, result) {
     const id = req.params.id;
 
-    moviedb.movieInfo({ id }).then(res => {
-        Movie.findOne({movieDbId: res.id}, function(err, movieFind)  {
-                        if (movieFind) {
-                             console.log('Search movie : ', movieFind.title);
-                         } else {
-                            console.log('New movie to save : ', movieFind.title);
-                             newMovie(res);
-                         }
-            result.json(movieFind);
+    await axios.get('https://api.themoviedb.org/3/movie/' + id + '?api_key=' + process.env.MOVIEDB_API_KEY + '&append_to_response=credits,similar')
+        .then(response => {
+            movie = response.data;
+        })
+        .catch(error => {
+            console.log(error);
         });
-    }).catch(console.error);
+
+    result.json(movie);
 };
 
 export default infoMovie;

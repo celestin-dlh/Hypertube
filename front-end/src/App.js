@@ -17,6 +17,9 @@ import ResetPassword from './components/auth/ResetPassword';
 import Profile from './components/userProfile/Profile';
 import Settings from './components/userProfile/Settings';
 
+import Movie from './components/movie/movie';
+import SearchMovies from './components/movie/searchMovies';
+
 // import ChangeLanguage from './components/services/ChangeLanguage';
 import './App.css';
 
@@ -27,7 +30,13 @@ function App() {
             <ReactNotification />
             <Router>
                 <Switch>
-                    <Route exact path="/jwt/:token/:username" >
+                    <Route exact path="/movie/:id">
+                        <Movie />
+                    </Route>
+                    <Route exact path="/search/:movie">
+                        <SearchMovies />
+                    </Route>
+                    <Route exact path="/jwt/:token" >
                         <Jwt />
                     </Route>
                     <Route exact path="/login">
