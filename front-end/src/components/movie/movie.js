@@ -4,6 +4,7 @@ import axios from 'axios';
 import {Cast} from './cast';
 import {InfoMovie} from './infoMovie';
 import {RelatedMovies} from './relatedMovies';
+import {Trailer} from './trailer';
 
 /* Bootstrap */
 import Container from 'react-bootstrap/Container';
@@ -32,8 +33,9 @@ function Movie(props) {
         <Container fluid style={{padding: "0px"}}>
             <Header/>
             <InfoMovie movie={movie}/>
-            <Cast id={id}/>
-            <RelatedMovies id={id}/>
+            <Trailer video={movie.videos}/>
+            <Cast cast={movie.credits}/>
+            <RelatedMovies movies={movie.similar}/>
         </Container>
     )
 

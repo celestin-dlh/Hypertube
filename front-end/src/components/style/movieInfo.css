@@ -7,12 +7,16 @@
 
 #poster {
     margin-top: 60px;
-    margin-left: 70px;
+    margin-left: 75px;
     margin-right: 60px;
 }
 
 #poster img{
     width: 350px;
+}
+
+#trailer {
+    margin: 10px 30%;
 }
 
 #infoBoxe {
@@ -40,7 +44,7 @@
 .actor, .movieSmall {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     margin: 5px;
 }
@@ -50,6 +54,9 @@
     border-radius: 100%;
 }
 
+.actor a {
+    color: white;
+}
 
 #yearRating {
     display: flex;

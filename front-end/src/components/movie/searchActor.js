@@ -16,26 +16,27 @@ function Movie(props) {
         </div>
     )
 }
-function SearchMovies() {
+function SearchActor() {
 
-    let {search} = useParams();
+    let {actorId} = useParams();
 
     const [movies, setMovies] = useState({});
 
-    useEffect(async () => {
-        await axios.get('http://localhost:5000/movies/search/' + search)
+    useEffect(() => {
+        axios.get('http://localhost:5000/movies/actor/' + actorId)
             .then((res) => {
-                setMovies(res.data);
+                console.log(res.data);
+                setMovies(res.data.cast);
             })
     }, []);
 
-    if (movies.results) {
+    if (movies[0]) {
         console.log(movies);
         return (
             <Container fluid style={{padding: "0px"}}>
                 <Header/>
                 <div id="films">
-                    {movies.results.map((movie) => {
+                    {movies.map((movie) => {
                         return (<Movie title={movie.title} img={"http://image.tmdb.org/t/p/w185" + movie.poster_path}
                                        imdb_id={movie.id}/>)
                     })}
@@ -46,4 +47,4 @@ function SearchMovies() {
     else
         return (<div>Loading</div>)
 }
-export default SearchMovies;
+export default SearchActor;

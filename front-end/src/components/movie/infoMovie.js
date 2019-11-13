@@ -2,11 +2,8 @@ import React from 'react';
 
 export function InfoMovie(props) {
 
-    console.log(props.movie);
     const movie = props.movie;
-
-
-
+    if (movie.runtime) {
     return (
         <div id="movieInfo">
             <div id="poster">
@@ -15,7 +12,7 @@ export function InfoMovie(props) {
             <div id="infoBoxe">
                 <h1>{movie.title}</h1>
                 <div id="yearRating">
-                    <h3>{movie.release_date}</h3>
+                    <h3>{movie.release_date.substring(0,4)}</h3>
                     <div id="rating">
                         <div>Popularity {movie.popularity}</div>
                         <div>Rated {movie.vote_average}</div>
@@ -29,4 +26,7 @@ export function InfoMovie(props) {
             </div>
         </div>
     );
+        }
+    else
+        return (<div>Loading</div>)
 }

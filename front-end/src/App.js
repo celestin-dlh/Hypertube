@@ -1,9 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 
-import ReactNotification from 'react-notifications-component'
-import 'react-notifications-component/dist/theme.css'
-
 /* Style */
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -19,6 +16,7 @@ import Settings from './components/userProfile/Settings';
 
 import Movie from './components/movie/movie';
 import SearchMovies from './components/movie/searchMovies';
+import SearchActor from './components/movie/searchActor';
 
 // import ChangeLanguage from './components/services/ChangeLanguage';
 import './App.css';
@@ -36,7 +34,6 @@ function getJwt() {
 function App() {
     return (
         <div className="App">
-            <ReactNotification />
             <Router>
                 <Switch>                    
                     <Route exact path="/movie/:id">
@@ -44,6 +41,9 @@ function App() {
                     </Route>
                     <Route exact path="/search/:search">
                         <SearchMovies />
+                    </Route>
+                    <Route exact path="/actor/:actorId">
+                        <SearchActor />
                     </Route>
                     <Route exact path="/jwt/:token" >
                         <Jwt />
@@ -63,7 +63,6 @@ function App() {
 
                     <Route exact path="/profile/:username" render={() => ( getJwt() ? ( <Profile/> ) : ( <Redirect to="/login" /> ) )} />
                     <Route exact path="/settings" render={() => ( getJwt() ? ( <Settings/> ) : ( <Redirect to="/login" /> ) )} />
-
 
                     <Route path="/">
                         <Profile />

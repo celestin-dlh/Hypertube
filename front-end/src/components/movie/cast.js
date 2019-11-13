@@ -1,12 +1,10 @@
-import React,{ useState, useEffect } from 'react';
-import axios from "axios";
+import React from 'react';
 
 function Actor(props) {
-
     return (
         <div className="actor">
-            <img src={props.img} alt={props.name + " img"}/>
-            <span>{props.name}</span>
+            <a href={"http://localhost:3000/actor/" + props.id}><img src={props.img} alt={props.name + " img"}/></a>
+                <a href=""><span>{props.name}</span></a>
             <span>as</span>
             <span>{props.character}</span>
         </div>
@@ -15,27 +13,25 @@ function Actor(props) {
 
 export function Cast(props) {
 
-    const [cast, setCast] = useState({});
+    let cast = props.cast;
+    let i = 0;
 
-    useEffect(() => {
-        axios.get('https://api.themoviedb.org/3/movie/' + props.id + '/credits?api_key=63f77bcd4f045f354e004ec092d0bbdc')
-            .then((res) => {
-                setCast(res.data.cast);
-            })}, []);
-
-    if (cast[0]) {
-        return (
-            <div id="actors">
-                {cast.map((actor) => {
-                    console.log("Entered");
-                    return (<Actor name={actor.name} img={"http://image.tmdb.org/t/p/w185" + actor.profile_path} character={actor.character}/>)
-                })}
-            </div>
-        );
-    }
-    else {
-        return (
-            <div>No Actors in this movie ????</div>
-        );
-    }
+        if (cast) {
+            console.log(cast);
+            let casting = cast['cast'];
+            return (
+                <div id="actors">
+                    {casting.map((actor) => {
+                        if (i++ < 10) {
+                            return (
+                                <Actor name={actor.name} img={"http://image.tmdb.org/t/p/w185" + actor.profile_path}
+                                           character={actor.character} id={actor.id}/>)
+                        }
+                    })}
+                </div>
+            );
+        }
+        else {
+            return (<div>Loading</div>)
+        }
 }
