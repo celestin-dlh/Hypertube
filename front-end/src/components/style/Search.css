@@ -1,0 +1,29 @@
+.moviecard {
+
+}
+
+.title {
+    color: #ECECEC;
+}
+
+.year, .score, .title {
+    margin-bottom: 4px;
+}
+
+.year, .score {
+    font-size: 14px;
+    color: #979B9A
+}
+
+.score img {
+    margin-bottom: 4px;
+    margin-left: -1px;
+}
+
+.triangle-seen {
+    position: relative;
+    width: 100%;
+    height: 5px;
+    bottom: 5px;
+    background: #CB7B18;
+}

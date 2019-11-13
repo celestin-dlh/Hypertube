@@ -28,6 +28,7 @@ function Profile({ history }) {
         getUser(username)
             .then((res) => {
                 setUserInfos(res.data)
+                document.title = `Profile of ${res.data.username}` 
             })
             .catch((err) => {
                 setUserInfos({error: 'User not found'})

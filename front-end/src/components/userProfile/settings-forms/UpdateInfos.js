@@ -24,12 +24,13 @@ const UpdateInfos = function(props) {
 	};
 
 	const handleSubmitInfos = (event) => {
+		console.log(inputs)
+		event.preventDefault();
 		updateInfos(inputs)
 			.then((res) => {
 				console.log(res)
 			})
 			.catch((error) => {
-				console.log(error.response.data)
 			})
 	}
 

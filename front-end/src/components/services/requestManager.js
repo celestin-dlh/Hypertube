@@ -13,7 +13,10 @@ export function getUser(username) {
 	return _axios.get('http://localhost:5000/user/getuser?username=' + username)
 }
 
+/* Settings part */
+
 export function updateInfos(infos) {
+	console.log('update infos')
 	return _axios.post('http://localhost:5000/user/updateinfos', infos)
 }
 
@@ -27,4 +30,10 @@ export function updatePassword(password) {
 
 export function updateProfilePic(profilePic) {
 	return _axios.post('http://localhost:5000/user/updateprofilepic', profilePic)
+}
+
+/* Movies part */
+
+export function searchmovies(research) {
+	return _axios.get('http://localhost:5000/movies/search/' + research)
 }

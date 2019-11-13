@@ -6,7 +6,6 @@ const UpdateInfos = function(req, res) {
 	if (firstname === "" || lastname === "" || email === "")
 		res.status(400);
 
-		console.log(firstname.length)
         if (firstname.length < 3 || lastname.length < 3 || !email.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
 			console.log('Inputs don t respect the regex')
 			return res.status(400).send('Inputs don t respect the regex')

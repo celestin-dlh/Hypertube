@@ -3,7 +3,7 @@ const moviedb = new MovieDb(process.env.MOVIEDB_API_KEY);
 import Movie from "../../models/movie.model";
 import newMovie from "./newMovie";
 
-const searchmovie = function(req, res) {
+const searchmovies = function(req, res) {
     const search = req.params.title;
 
     moviedb.searchMovie({ query: search }).then(result => {
@@ -23,4 +23,4 @@ const searchmovie = function(req, res) {
     })
 };
 
-export default searchmovie;
+export default searchmovies;

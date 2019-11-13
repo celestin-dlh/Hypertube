@@ -13,7 +13,7 @@
     position: absolute;
     top: 50px;
     left: 0;
-    height: calc(100vh - 65px);
+    min-height: calc(100vh - 65px);
     width: 72px;
     background-color: #272727;
 }
