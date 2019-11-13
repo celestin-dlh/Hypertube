@@ -5,22 +5,22 @@ import Movie from "../../models/movie.model";
 
 function addTorrent(imdb_id) {
 
-        request('https://yts.lt/api/v2/list_movies.json?query_term=' + imdb_id , function (error, response, body) {
-            if (!error && response.statusCode === 200) {
-                let info = JSON.parse(body);
-                let nbTorrent = info.data.movie_count;
-                if (nbTorrent !== 0) {
-                    let imdbId = info.data.movies[0].imdb_code;
-                    let torrent = info.data.movies[0].torrents;
+    request('https://yts.lt/api/v2/list_movies.json?query_term=' + imdb_id , function (error, response, body) {
+        if (!error && response.statusCode === 200) {
+            let info = JSON.parse(body);
+            let nbTorrent = info.data.movie_count;
+            if (nbTorrent !== 0) {
+                let imdbId = info.data.movies[0].imdb_code;
+                let torrent = info.data.movies[0].torrents;
 
-                    if (info.data.movie_count > 0) {
-                        Movie.updateOne({imdb_id: imdbId}, {
-                            torrents: torrent,
-                        }).then();
-                    }
+                if (info.data.movie_count > 0) {
+                    Movie.updateOne({imdb_id: imdbId}, {
+                        torrents: torrent,
+                    }).then();
                 }
             }
-        });
+        }
+    });
 }
 
 function updateMovie(movie) {
@@ -41,26 +41,40 @@ function updateMovie(movie) {
         });
         moviedb.movieInfo({id: movie}).then(res => {
             let imdbId = res.imdb_id;
+            let genres = [];
+            for (let i = 0; i < res.genres.length; i++) {
+                genres[i] = res.genres[i].name;
+            }
             Movie.updateOne({movieDbId: movie}, {
                 tagline: res.tagline,
                 imdb_id: res.imdb_id,
+                runtime: res.runtime,
+                genres:  genres,
             }).then(() => {addTorrent(imdbId)});
         });
     });
 }
 
 function newMovie(movie) {
+
+    let poster;
+    let backdroppath;
+    if (movie.poster_path) {
+        poster = 'http://image.tmdb.org/t/p/w500/' + movie.poster_path;
+    }
+    if (movie.backdrop_path) {
+        backdroppath = 'http://image.tmdb.org/t/p/w500/' + movie.backdrop_path;
+    }
+
     new Movie({
         movieDbId: movie.id,
         popularity: movie.popularity,
-        video: movie.video,
         vote_count: movie.vote_count,
-        poster_path: movie.poster_path,
+        poster_path: poster,
         adult: movie.adult,
-        backdrop_path: movie.backdrop_path,
+        backdrop_path: backdroppath,
         original_language: movie.original_language,
         original_title: movie.original_title,
-        genre_ids: movie.genre_ids,
         title: movie.title,
         tagline: movie.tagline,
         vote_average: movie.vote_average,
