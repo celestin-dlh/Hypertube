@@ -1,55 +1,46 @@
-import { UserManager } from '../../services/UserManager';
 import uploadPic from '../../services/uploadPic';
 import User from '../../models/user.model';
 import fs from 'fs';
 
-var path = require('path');
-var appDir = path.dirname(require.main.filename);
-
+const path = require('path');
+const appDir = path.dirname(require.main.filename);
+let currentFilename;
 
 const getNameOldProfilePicture = function(username) {
 	return new Promise((resolve, reject) => {
 		User.findOne({ username }, 'profilepicture', function(err, user) {
-			if (user) {
-				resolve(user.profilepicture)
-			} else {
+			if (!user.profilepicture || user.profilepicture === "") {
 				reject('No profile picture found');
+			} else {
+				resolve(user.profilepicture)
 			}
 		})
 	})
 }
 
-const asyncCall = async function (username) {
-	console.log('Calling')
-	let filename = await getNameOldProfilePicture(username);
-	return (appDir + '/public/profile_pic/' + filename)
-}
-
 const UpdateProfilePic = function(req, res) {
 	const { username } = req.user;
 
-	  asyncCall(username)
-	  /* delete old picture */
-	  	.then((filePath) => {
+	uploadPic(req, res)
+		.then((res) => {
+			currentFilename = res.filename;
+			return (getNameOldProfilePicture(username))
+		})
+		.then((filename) => {
+			const filePath = appDir + '/public/profile_pic/' + filename
 			fs.unlink(filePath, (err) => {
 				if (err) throw err;
 				console.log('Old profile picture was deleted');
 			});
 		})
-		/* upload new picture */
 		.then(() => {
-			console.log('come on')
-			return uploadPic(req, res)
-		})
-		/* change DB profile picture */
-		.then((res) => {
-			User.findOneAndUpdate({ username: username }, {profilepicture: res.filename}, function(err, user) {
-				console.log(user)
+			User.findOneAndUpdate({ username: username }, {profilepicture: currentFilename}, function(err) {
+				if (err) console.log(err)
 			})
-			return res.status(200).send('Profile picture updated')
+			console.log('Picture uploaded')
 		})
-		.catch(function (err) {
-			console.log("Promise Rejected: " + err);
+		.catch((err) => {
+			console.log(err)
 		})
 }
 

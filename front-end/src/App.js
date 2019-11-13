@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 
 import ReactNotification from 'react-notifications-component'
 import 'react-notifications-component/dist/theme.css'
@@ -24,12 +24,21 @@ import SearchMovies from './components/movie/searchMovies';
 import './App.css';
 
 
+function getJwt() {
+    const token = localStorage.getItem('token');
+    if (token) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 function App() {
     return (
         <div className="App">
             <ReactNotification />
             <Router>
-                <Switch>
+                <Switch>                    
                     <Route exact path="/movie/:id">
                         <Movie />
                     </Route>
@@ -48,15 +57,14 @@ function App() {
                     <Route exact path="/resetpassword/:token" >
                         <ResetPassword />
                     </Route>
-                    <Route exact path="/profile/:username">
-                        <Profile />
-                    </Route>
-                    <Route exact path="/settings">
-                        <Settings />
-                    </Route>
                     <Route exact path="/register">
                         <Register />
                     </Route>
+
+                    <Route exact path="/profile/:username" render={() => ( getJwt() ? ( <Profile/> ) : ( <Redirect to="/login" /> ) )} />
+                    <Route exact path="/settings" render={() => ( getJwt() ? ( <Settings/> ) : ( <Redirect to="/login" /> ) )} />
+
+
                     <Route path="/">
                         <Profile />
                     </Route>

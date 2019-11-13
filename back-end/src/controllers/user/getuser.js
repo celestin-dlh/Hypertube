@@ -5,7 +5,7 @@ const GetUser = function(req, res) {
 	let username = req.query.username;
 	if (username === "" || !username || username === 'undefined') {
 		username = req.user.username;
-		User.findOne({ username: username },'firstname lastname email username profilepicture', 
+		User.findOne({ username: username },'firstname lastname email username profilepicture language', 
 			function (err, user) {
 				if (user) {
 					return res.send(user)
@@ -28,7 +28,6 @@ const GetUser = function(req, res) {
 			}
 		);
 	}
-
-
 }
+
 export default GetUser;
