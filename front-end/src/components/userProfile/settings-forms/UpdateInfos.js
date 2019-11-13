@@ -15,8 +15,8 @@ const UpdateInfos = function(props) {
 	});
 
 	useEffect(() => {
-		setInputs(props.data)
-	}, [props])
+		setInputs(props.data);
+	}, [props]);
 
 	const handleOnChangeInfos = (event) => {
 		const {name, value} = event.target;
@@ -24,14 +24,15 @@ const UpdateInfos = function(props) {
 	};
 
 	const handleSubmitInfos = (event) => {
+		event.preventDefault();
 		updateInfos(inputs)
 			.then((res) => {
 				console.log(res)
 			})
 			.catch((error) => {
-				console.log(error.response.data)
+				console.log(error)
 			})
-	}
+	};
 
 	return (
 		<div className="menu-settings" style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
@@ -64,6 +65,6 @@ const UpdateInfos = function(props) {
 		</div>
 
 	)
-}
+};
 
 export default UpdateInfos;

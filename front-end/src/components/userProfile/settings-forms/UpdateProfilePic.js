@@ -13,18 +13,19 @@ const UpdateProfilePic = function(props) {
 	const handleOnChangeFile = (event) => {
 		const file = event.target.files[0];
 		setPicture(file)
-	}
+	};
 
 	const handleSubmitPicture = (event) => {
+        event.preventDefault();
 		let formData = new FormData();
 			formData.append('avatar', picture);
 		updateProfilePic(formData);
-	}
+	};
 
 	return (
 		<div className="menu-settings" style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
 			<h3>Update your data</h3>
-			<form className="settings-form" onSubmit={handleSubmitPicture}>
+			<form className="settings-form" onSubmit={handleSubmitPicture} >
 				<label htmlFor="file-input">
 					<div className="pictureContainer">
 						<img 

@@ -33,7 +33,7 @@ function Settings() {
 	useEffect(() => {
 		getUser()
 		.then((res) => {
-			setData(res.data)
+			setData(res.data);
 		})
 	}, []);
 

@@ -42,7 +42,7 @@ function App() {
                     <Route exact path="/movie/:id">
                         <Movie />
                     </Route>
-                    <Route exact path="/search/:movie">
+                    <Route exact path="/search/:search">
                         <SearchMovies />
                     </Route>
                     <Route exact path="/jwt/:token" >

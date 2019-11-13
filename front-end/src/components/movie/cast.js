@@ -1,4 +1,4 @@
-import React,{ Component, useState, useEffect } from 'react';
+import React,{ useState, useEffect } from 'react';
 import axios from "axios";
 
 function Actor(props) {
@@ -15,7 +15,6 @@ function Actor(props) {
 
 export function Cast(props) {
 
-    let nbActors;
     const [cast, setCast] = useState({});
 
     useEffect(() => {

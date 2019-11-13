@@ -1,26 +1,19 @@
-const MovieDb = require('moviedb-promise');
-const moviedb = new MovieDb(process.env.MOVIEDB_API_KEY);
-import Movie from "../../models/movie.model";
-import newMovie from "./newMovie";
+const axios = require('axios');
 
-const searchmovie = function(req, res) {
+let movie;
+
+const searchmovie = async function(req, result) {
     const search = req.params.title;
 
-    moviedb.searchMovie({ query: search }).then(result => {
-        for(let i= 0; i < result.results.length; i++)
-        {
+    await axios.get('https://api.themoviedb.org/3/search/movie/?api_key=' + process.env.MOVIEDB_API_KEY + '&query=' + search )
+        .then(response => {
+            movie = response.data;
+        })
+        .catch(error => {
+            console.log(error);
+        });
 
-           Movie.findOne({movieDbId: result.results[i].id}, function(err, movieFind)  {
-            if (movieFind) {
-                // already have the movie
-                console.log('movie is ', movieFind.title);
-            } else {
-                // if not save movie
-                newMovie(result.results[i]);
-            }});
-        }
-        res.json(result);
-    })
+    result.json(movie);
 };
 
 export default searchmovie;
