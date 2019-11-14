@@ -3,8 +3,7 @@ import React from 'react';
 export function Trailer(props) {
 
     const trailer = props.video;
-
-    if (trailer) {
+    if (trailer && props.video.results[0]) {
         const youtube = trailer.results[0]['key'];
         return (
             <div id="trailer">

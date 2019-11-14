@@ -16,18 +16,18 @@ import Header from '../templates/Header';
 import '../style/movieInfo.css';
 
 
-function Movie(props) {
+function Movie() {
 
-    let {id} = useParams();
+    let {id, lang} = useParams();
 
     const [movie, setMovie] =  useState({});
 
     useEffect(() => {
-        axios.get('http://localhost:5000/movies/infos/' + id)
+        axios.get('http://localhost:5000/movies/infos/' + id + '/' + lang)
             .then((res) => {
                 setMovie(res.data);
             })
-    }, []);
+    }, [id, lang]);
 
     return (
         <Container fluid style={{padding: "0px"}}>

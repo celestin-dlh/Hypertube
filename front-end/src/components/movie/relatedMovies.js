@@ -17,7 +17,7 @@ export function RelatedMovies(props) {
         return (
             <div id="films">
                 {movies.results.map((movie) => {
-                    return (<Movie title={movie.title} img={"http://image.tmdb.org/t/p/w185" + movie.poster_path} id={movie.id} overview={movie.overview}/>)
+                    return (<Movie title={movie.title} img={"http://image.tmdb.org/t/p/w185" + movie.poster_path} id={movie.id} overview={movie.overview} key={movie.id}/>)
                 })}
             </div>
         );

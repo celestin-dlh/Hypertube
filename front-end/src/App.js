@@ -17,10 +17,11 @@ import Settings from './components/userProfile/Settings';
 import Movie from './components/movie/movie';
 import SearchMovies from './components/movie/searchMovies';
 import SearchActor from './components/movie/searchActor';
+import Genre from './components/movie/genre';
+
 
 // import ChangeLanguage from './components/services/ChangeLanguage';
 import './App.css';
-
 
 function getJwt() {
     const token = localStorage.getItem('token');
@@ -35,12 +36,30 @@ function App() {
     return (
         <div className="App">
             <Router>
-                <Switch>                    
+                <Switch>
+                    <Route exact path="/genre/:genre/:lang">
+                    <Genre />
+                </Route>
+                    <Route exact path="/genre/:genre">
+                        <Genre />
+                    </Route>
+                    <Route exact path="/movie/:id/:lang">
+                        <Movie />
+                    </Route>
                     <Route exact path="/movie/:id">
                         <Movie />
                     </Route>
+                    <Route exact path="/search/:search/:lang/:page">
+                        <SearchMovies />
+                    </Route>
+                    <Route exact path="/search/:search/:lang">
+                        <SearchMovies />
+                    </Route>
                     <Route exact path="/search/:search">
                         <SearchMovies />
+                    </Route>
+                    <Route exact path="/actor/:actorId/:lang">
+                        <SearchActor />
                     </Route>
                     <Route exact path="/actor/:actorId">
                         <SearchActor />

@@ -22,6 +22,7 @@ import passport from './controllers/auth/passport';
 /* Movie */
 import searchMovies from './controllers/movies/searchMovies';
 import searchActor from './controllers/movies/searchActor';
+import searchGenre from './controllers/movies/searchGenre';
 import streamMovies from './controllers/movies/streamMovies';
 import infoMovie from "./controllers/movies/infoMovie";
 import updateMovie from "./controllers/movies/updateMovie";
@@ -94,10 +95,11 @@ class Router {
     static movies() {
         let router = express.Router();
 
-        router.get('/search/:title/', searchMovies);
-        router.get('/actor/:actorId/', searchActor);
+        router.get('/search/:title/:lang/:page', searchMovies);
+        router.get('/actor/:actorId/:lang', searchActor);
+        router.get('/genre/:genre/:lang', searchGenre);
 
-        router.get('/infos/:id/', infoMovie);
+        router.get('/infos/:id/:lang', infoMovie);
 
         router.get('/update/:id', updateMovie);
 
