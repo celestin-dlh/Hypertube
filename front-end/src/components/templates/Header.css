@@ -13,9 +13,10 @@
     position: absolute;
     top: 50px;
     left: 0;
-    height: calc(100vh - 65px);
+    height: calc(100vh - 45px);
     width: 72px;
     background-color: #272727;
+
 }
 
 .menu a {

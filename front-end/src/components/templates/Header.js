@@ -18,13 +18,12 @@ export default function Profile() {
         else {
             setEnableMenu('none')            
         }
-    }
+    };
 
     return (
         <Navbar className="navbar">
-
             <div id="brand-toggle">
-                <img className="toggle-img" onClick={handleClick} width="24" src="./images/toggle-button.png" alt="toggle" /> 
+                <img className="toggle-img" onClick={handleClick} width="24" src="/images/toggle-button.png" alt="toggle" />
                 <a href="/" className="brand">Hypertube</a>        
             </div>
 

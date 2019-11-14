@@ -25,11 +25,13 @@ import './App.css';
 
 function getJwt() {
     const token = localStorage.getItem('token');
-    if (token) {
-        return true;
-    } else {
-        return false;
-    }
+    return !!token;
+}
+
+function PrivateRoute({ children }) {
+    return (
+        <Route render={() =>  getJwt() ? (children) : (<Redirect to="/login"/>)}/>
+    );
 }
 
 function App() {
@@ -37,9 +39,12 @@ function App() {
         <div className="App">
             <Router>
                 <Switch>
+                    <PrivateRoute path="/protected">
+                        <Genre />
+                    </PrivateRoute>
                     <Route exact path="/genre/:genre/:lang">
-                    <Genre />
-                </Route>
+                        <Genre />
+                    </Route>
                     <Route exact path="/genre/:genre">
                         <Genre />
                     </Route>

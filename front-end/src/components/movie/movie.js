@@ -6,23 +6,18 @@ import {InfoMovie} from './infoMovie';
 import {RelatedMovies} from './relatedMovies';
 import {Trailer} from './trailer';
 
-/* Bootstrap */
-import Container from 'react-bootstrap/Container';
-
 /* Templates */
 import Header from '../templates/Header';
 
 /* Style */
 import '../style/movieInfo.css';
 
-
 function Movie() {
 
     let {id, lang} = useParams();
-
     const [movie, setMovie] =  useState({});
 
-    useEffect(() => {
+    useEffect( () => {
         axios.get('http://localhost:5000/movies/infos/' + id + '/' + lang)
             .then((res) => {
                 setMovie(res.data);
@@ -30,15 +25,14 @@ function Movie() {
     }, [id, lang]);
 
     return (
-        <Container fluid style={{padding: "0px"}}>
+        <div>
             <Header/>
-            <InfoMovie movie={movie}/>
+            <InfoMovie {...movie}/>
             <Trailer video={movie.videos}/>
             <Cast cast={movie.credits}/>
             <RelatedMovies movies={movie.similar}/>
-        </Container>
+        </div>
     )
-
 }
 
 export default Movie;

@@ -23,7 +23,7 @@ export function Cast(props) {
                         if (i++ < 10) {
                             return (
                                 <Actor name={actor.name} img={"http://image.tmdb.org/t/p/w185" + actor.profile_path}
-                                           character={actor.character} id={actor.id} key={actor.id}/>)
+                                           character={actor.character} id={actor.id} key={'a' + actor.id}/>)
                         }
                         else {
                             return (<span key={i++}></span>)

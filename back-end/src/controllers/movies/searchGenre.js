@@ -1,5 +1,3 @@
-import {lang} from "../../../../front-end/src/components/services/textLang";
-
 const axios = require('axios');
 
 let movies;
