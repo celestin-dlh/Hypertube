@@ -3,15 +3,37 @@ import React from 'react';
 function Poster(movie) {
     return (
         <div id="poster">
-            <img src={"http://image.tmdb.org/t/p/original" + movie.poster_path} alt="movie poster"/>
+            <img src={process.env.REACT_APP_BASE_URL + "/original" + movie.poster_path} alt="movie poster"/>
         </div>
     )
+}
+
+function Title(movie) {
+        if (movie.title === "") {
+            return (
+                <div>
+                    <h1>{movie.original_title}</h1>
+                </div>
+            )
+        }
+        else {
+            return (
+                <div>
+                    <h1>{movie.title}</h1>
+                </div>
+            )
+        }
 }
 
 function Genres(movie) {
     return(<div id="genres">
         {movie.genres.map((genre) => {
-            return (<a href={"http://localhost:3000/genre/" + genre.id } key={genre.id}><div key={genre.id} className={'genre'}>{genre.name}</div></a>)})}
+                return (
+                    <a href={process.env.REACT_APP_URL_FRONT + "/genre/" + genre.id } key={genre.id}>
+                        <div key={genre.id} className={'genre'}>{genre.name}</div>
+                    </a>
+                )})
+        }
     </div>)
 }
 
@@ -28,29 +50,28 @@ function YearRating(movie) {
 
 function LengthGenres(movie) {
     return (
-    <div id="lengthGenres">
-        <h5 id="movieLenght">{Math.trunc(movie.runtime / 60)} h {movie.runtime % 60} min</h5>
-        <Genres genres={movie.genres}/>
-    </div>)
+        <div id="lengthGenres">
+            <h5 id="movieLenght">{Math.trunc(movie.runtime / 60)} h {movie.runtime % 60} min</h5>
+            <Genres genres={movie.genres}/>
+        </div>)
 }
 
 function Tagline(movie) {
     return (
-    <div className="tagline">
-        <h1>{movie.tagline}</h1>
-    </div>)
+        <div className="tagline">
+            <h1>{movie.tagline}</h1>
+        </div>)
 }
 
 export function InfoMovie(movie) {
-    console.log(movie);
-    if (movie.runtime) {
-        let background_path = "http://image.tmdb.org/t/p/original" + movie.backdrop_path;
+    if (movie.id) {
+        let background_path = process.env.REACT_APP_BASE_URL + "/original" + movie.backdrop_path;
         return (
             <div id="movieInfo" style={{backgroundImage: `url(${background_path})`}}>
                 <div id="infoBoxe">
                     <Poster {...movie} />
                     <div id="infos">
-                        <h1>{movie.title}</h1>
+                        <Title {...movie} />
                         <div>
                             <YearRating {...movie} />
                             <LengthGenres {...movie} />

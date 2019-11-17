@@ -25,6 +25,6 @@ const login = function(req, res) {
         }
             
     });
-}
+};
 
 export default login;

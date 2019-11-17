@@ -1,7 +1,7 @@
 import passport from 'passport';
 import GoogleStrategy from 'passport-google-oauth20';
 import FortyTwoStrategy from 'passport-42';
-import LocalStrategy from 'passport-local';
+
 import User from '../../models/user.model';
 
 require('dotenv').config();

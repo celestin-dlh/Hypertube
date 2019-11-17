@@ -3,8 +3,12 @@ import React from 'react';
 function Actor(props) {
     return (
         <div className="actor">
-            <a href={"http://localhost:3000/actor/" + props.id}><div style={{ backgroundImage: `url(${props.img})`}}/></a>
-                <a href={"http://localhost:3000/actor/" + props.id}><span>{props.name}</span></a>
+            <a href={process.env.REACT_APP_URL_FRONT + "/actor/" + props.id}>
+                <div style={{ backgroundImage: `url(${props.img})`}}/>
+            </a>
+                <a href={process.env.REACT_APP_PORT_FRONT + "/actor/" + props.id}>
+                    <span>{props.name}</span>
+                </a>
             <span style={{color: "darkgrey"}}>{props.character}</span>
         </div>
     )
@@ -22,12 +26,11 @@ export function Cast(props) {
                     {casting.map((actor) => {
                         if (i++ < 10) {
                             return (
-                                <Actor name={actor.name} img={"http://image.tmdb.org/t/p/w185" + actor.profile_path}
+                                <Actor name={actor.name} img={process.env.REACT_APP_BASE_URL + "/w185/" + actor.profile_path}
                                            character={actor.character} id={actor.id} key={'a' + actor.id}/>)
                         }
-                        else {
-                            return (<span key={i++}></span>)
-                        }
+                        else
+                            return null;
                     })}
                 </div>
             );

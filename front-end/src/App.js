@@ -23,6 +23,9 @@ import Genre from './components/movie/genre';
 // import ChangeLanguage from './components/services/ChangeLanguage';
 import './App.css';
 
+// .env
+require('dotenv').config();
+
 function getJwt() {
     const token = localStorage.getItem('token');
     return !!token;

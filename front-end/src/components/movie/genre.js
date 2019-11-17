@@ -14,7 +14,9 @@ import '../style/movieInfo.css';
 function Movie(props) {
     return (
         <div className="movieSmall">
-            <a href={'http://localhost:3000/movie/' + props.imdb_id}><img src={props.img} alt={props.title + " img"}/></a>
+            <a href={process.env.REACT_APP_URL_FRONT + "/movie/" + props.imdb_id}>
+                <img src={props.img} alt={props.title + " img"}/>
+            </a>
         </div>
     )
 }
@@ -26,7 +28,7 @@ function Genre() {
     const [movies, setMovies] =  useState({});
 
     useEffect(() => {
-        axios.get('http://localhost:5000/movies/genre/' + genre + '/' + lang)
+        axios.get(process.env.REACT_APP_URL_BACK + '/movies/genre/' + genre + '/' + lang)
             .then((res) => {
                 setMovies(res.data);
             })
@@ -38,7 +40,7 @@ function Genre() {
                 <Header/>
                 <div id="films">
                     {movies.results.map((movie) => {
-                        return (<Movie title={movie.title} img={"http://image.tmdb.org/t/p/w185" + movie.poster_path}
+                        return (<Movie title={movie.title} img={process.env.REACT_APP_BASE_URL + "/w185" + movie.poster_path}
                                        imdb_id={movie.id} key={movie.id}/>)
                     })}
                 </div>

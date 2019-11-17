@@ -10,17 +10,17 @@ const UpdateLanguage = function(props) {
 
 	const [language, setLanguage] = useState({
 		language: '',
-	})
+	});
 
 	useEffect(() => {
 		setLanguage(props.language)
-	}, [props])
+	}, [props]);
 
 	const handleOnChange = (event) => {
 		setLanguage({language: event.target.value})
-	}
+	};
 
-	const handleSubmit = (event) => {
+	const handleSubmit = () => {
 		updateLanguage(language)
 			.then((res) =>{
 				console.log(res)
@@ -28,7 +28,7 @@ const UpdateLanguage = function(props) {
 			.catch((err) => {
 				console.log(err)
 			})
-	}
+	};
 
 
 	return (
@@ -50,6 +50,6 @@ const UpdateLanguage = function(props) {
 		</div>
 
 	)
-}
+};
 
 export default UpdateLanguage;

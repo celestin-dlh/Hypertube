@@ -17,9 +17,10 @@ function Movie() {
     let {id, lang} = useParams();
     const [movie, setMovie] =  useState({});
 
-    useEffect( () => {
-        axios.get('http://localhost:5000/movies/infos/' + id + '/' + lang)
+    useEffect(() => {
+        axios.get(process.env.REACT_APP_URL_BACK + '/movies/infos/' + id + '/' + lang)
             .then((res) => {
+                console.log("movie req => id : " + id + " lang : " + lang);
                 setMovie(res.data);
             })
     }, [id, lang]);

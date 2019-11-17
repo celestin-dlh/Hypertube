@@ -29,7 +29,7 @@ function Profile({ history }) {
             .then((res) => {
                 setUserInfos(res.data)
             })
-            .catch((err) => {
+            .catch(() => {
                 setUserInfos({error: 'User not found'})
             })
     }, [username]);

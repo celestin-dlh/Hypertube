@@ -1,7 +1,7 @@
 const initialState = {
 	isLogged: false,
 	data: null
-}
+};
 
 const userData = (user = initialState, action) => {
 	console.log(user, action);
@@ -11,6 +11,6 @@ const userData = (user = initialState, action) => {
 		default:
 			return { ...user };
 	}
-}
+};
 
 export default userData

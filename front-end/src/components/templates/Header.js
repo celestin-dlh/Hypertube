@@ -20,22 +20,24 @@ export default function Profile() {
         }
     };
 
+    function handleSubmit(event) {
+        alert('Search: ' + this.state.value);
+        event.preventDefault();
+    }
+
     return (
         <Navbar className="navbar">
             <div id="brand-toggle">
                 <img className="toggle-img" onClick={handleClick} width="24" src="/images/toggle-button.png" alt="toggle" />
                 <a href="/" className="brand">Hypertube</a>        
             </div>
-
-            <form className="form-search" >
+            <form className="form-search" onSubmit={handleSubmit}>
                 <input type="text" placeholder="Search a movie..." className="input-search" />
                 <button className="button-search"><img width="25" src="/images/search-icon.png" alt="search"/></button>
             </form>
-            
             <div className="profile-avatar" >
                 <img width="32" src="/images/default_avatar-white.png" alt="avatar" />
             </div>
-
             <div className="menu" style={{display: enableMenu}}>  
                 <a href="/">
                     <div className="menuCell">
@@ -70,7 +72,7 @@ export default function Profile() {
                     </div>
                 </a>
             </div>
-            
+
         </Navbar>
     )
 }

@@ -5,6 +5,6 @@ import userData from './userData';
 const allReducers = combineReducers({
 	isLogged: isLogged,
 	userData: userData,
-})
+});
 
 export default allReducers;

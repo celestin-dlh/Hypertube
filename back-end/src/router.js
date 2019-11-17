@@ -95,7 +95,10 @@ class Router {
     static movies() {
         let router = express.Router();
 
-        router.get('/search/:title/:lang/:page', searchMovies);
+        router.get('/search/:query/:lang/:page', searchMovies);
+        router.get('/search/:query/:lang/', searchMovies);
+        router.get('/search/:query/', searchMovies);
+
         router.get('/actor/:actorId/:lang', searchActor);
         router.get('/genre/:genre/:lang', searchGenre);
 

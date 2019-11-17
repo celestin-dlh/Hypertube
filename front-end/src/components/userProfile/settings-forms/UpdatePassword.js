@@ -11,7 +11,7 @@ function UpdatePassword() {
 	const [inputs, setInputs] = useState({
 		password: '',
 		new_password: ''
-	})
+	});
 
 	const handleOnChange = (event) => {
 		const {name, value} = event.target;
@@ -27,7 +27,7 @@ function UpdatePassword() {
 			.catch((err) => {
 				console.log(err)
 			})
-	}
+	};
 
 	return (
 		<div className="menu-settings" style={{display: "flex", flexDirection: "column", alignItems: "center"}}>

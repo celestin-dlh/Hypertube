@@ -5,6 +5,6 @@ const isLogged = (logged = false, action) => {
 		default:
 			return logged;
 	}
-}
+};
 
 export default isLogged
