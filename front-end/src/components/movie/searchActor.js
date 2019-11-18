@@ -33,7 +33,7 @@ function Deathday(props) {
 function InfoActor(props) {
     return (
         <div className="actorInfo">
-            <img src={process.env.REACT_APP_BASE_URL + "/original" + props.img} alt="Actor img missing" />
+            <img src={process.env.REACT_APP_BASE_URL + "/w185" + props.img} alt="Actor img missing" />
             <div>
                 <h2>{props.name}</h2>
                 <h4>Birthday : {props.birthday}</h4>

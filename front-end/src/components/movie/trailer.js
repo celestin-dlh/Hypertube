@@ -10,19 +10,16 @@ export function Trailer(props) {
                style={{height: "100vh"}}
                 id="trailer">
                 <iframe
-                    style={{position: "absolute", top: "0", left: "35", zIndex: "0"}}
-                    title="youtubeTrailer"
-                    width="800px"
-                    height="400px"
-                    src={"https://www.youtube.com/embed/" + youtube + "?wmode=opaque&controls=0&autohide=1&autoplay=1&volume=0&&mute=1"}
+                    id="youtubeTrailerBackground"
+                    title="youtubeTrailerBackground"
+                    src={"https://www.youtube.com/embed/" + youtube + "?wmode=opaque&controls=0&autohide=1&loop=1&rel=1&rel=1&autoplay=1&volume=0&&mute=1"}
                     frameBorder="-1"
-                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                >youtube trailer</iframe>
+                >youtube trailer background</iframe>
                 <iframe
-                    title="youtubeTrailer" width="800px" height="400px" src={"https://www.youtube.com/embed/" + youtube + "?wmode=opaque&autohide=1"} frameBorder="-1"
-                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
+                    id="youtubeTrailer"
+                    title="youtubeTrailer"
+                    src={"https://www.youtube.com/embed/" + youtube + "?wmode=opaque&autohide=1"}
+                    frameBorder="5" allowFullScreen
                 >youtube trailer</iframe>
             </div>
         );

@@ -1,49 +1,44 @@
 import React, { useState } from 'react';
+import { withRouter } from "react-router";
 
 /* Bootstrap */
 import Navbar from 'react-bootstrap/Navbar';
-
 import { logout } from '../services/requestManager';
 
 /* Style */
 import './Header.css';
 
-export default function Profile() {
+const Header = function({ history }) {
+    const [research, setResearch] = useState('');
     const [enableMenu, setEnableMenu] = useState('');
 
-    const handleClick = () => {
-        if (enableMenu === "none") {
-            setEnableMenu('')            
-        }
-        else {
-            setEnableMenu('none')            
-        }
-    };
-
-    function handleSubmit(event) {
-        alert('Search: ' + this.state.value);
-        event.preventDefault();
-    }
+    const handleOnChange = (event) => setResearch(event.target.value);
+    const handleSubmit = () => history.push('/search/' + research);
+    const handleClick = () => setEnableMenu(enableMenu === "none" ? '' : 'none');
 
     return (
         <Navbar className="navbar">
+            ​
             <div id="brand-toggle">
                 <img className="toggle-img" onClick={handleClick} width="24" src="/images/toggle-button.png" alt="toggle" />
-                <a href="/" className="brand">Hypertube</a>        
+                <a href="/" className="brand">Hypertube</a>
             </div>
+            ​
             <form className="form-search" onSubmit={handleSubmit}>
-                <input type="text" placeholder="Search a movie..." className="input-search" />
+                <input type="text" placeholder="Search a movie..." className="input-search" onChange={handleOnChange} value={research} />
                 <button className="button-search"><img width="25" src="/images/search-icon.png" alt="search"/></button>
             </form>
+
             <div className="profile-avatar" >
                 <img width="32" src="/images/default_avatar-white.png" alt="avatar" />
             </div>
-            <div className="menu" style={{display: enableMenu}}>  
+            ​
+            <div className="menu" style={{display: enableMenu}}>
                 <a href="/">
                     <div className="menuCell">
                         <div className="content">
                             <img width="24" src="/images/home-white.png" alt="home" />
-                            <p>Accueil</p>                                  
+                            <p>Accueil</p>
                         </div>
                     </div>
                 </a>
@@ -51,7 +46,7 @@ export default function Profile() {
                     <div className="menuCell">
                         <div className="content">
                             <img width="24" src="/images/default_avatar-white.png" alt="profile" />
-                            <p>Profile</p>                                  
+                            <p>Profile</p>
                         </div>
                     </div>
                 </a>
@@ -59,7 +54,7 @@ export default function Profile() {
                     <div className="menuCell">
                         <div className="content">
                             <img width="24" src="/images/settings-white.png" alt="settings" />
-                            <p>Parametres</p>                                  
+                            <p>Parametres</p>
                         </div>
                     </div>
                 </a>
@@ -67,7 +62,7 @@ export default function Profile() {
                     <div className="menuCell">
                         <div className="content">
                             <img width="24" src="/images/logout-white.png" alt="logout" />
-                            <p>Logout</p>                                  
+                            <p>Logout</p>
                         </div>
                     </div>
                 </a>
@@ -75,4 +70,6 @@ export default function Profile() {
 
         </Navbar>
     )
-}
+};
+
+export default withRouter(Header);

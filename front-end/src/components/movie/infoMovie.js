@@ -11,16 +11,12 @@ function Poster(movie) {
 function Title(movie) {
         if (movie.title === "") {
             return (
-                <div>
                     <h1>{movie.original_title}</h1>
-                </div>
             )
         }
         else {
             return (
-                <div>
                     <h1>{movie.title}</h1>
-                </div>
             )
         }
 }
@@ -58,9 +54,8 @@ function LengthGenres(movie) {
 
 function Tagline(movie) {
     return (
-        <div className="tagline">
-            <h1>{movie.tagline}</h1>
-        </div>)
+            <h1 className="tagline">{movie.tagline}</h1>
+        )
 }
 
 export function InfoMovie(movie) {

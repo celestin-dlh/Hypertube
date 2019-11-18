@@ -26,11 +26,20 @@
     width: 350px;
 }
 
-#trailer iframe {
+#youtubeTrailerBackground {
+    z-index: 0;
+    position: absolute;
+    top: 0;
+    left: 35;
+    width: 100%;
+    height: 100%;
+}
+
+#youtubeTrailer {
     position: absolute;
     top: 100%;
     left: 0;
-    width: 100%;
+    width: 75%;
     height: 100%;
 }
 
