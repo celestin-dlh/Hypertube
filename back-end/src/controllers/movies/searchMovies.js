@@ -9,11 +9,11 @@ const searchmovies = function(req, res) {
     moviedb.searchMovie({ query: search }).then(result => {
         for(let i= 0; i < result.results.length; i++)
         {
+
            Movie.findOne({movieDbId: result.results[i].id}, function(err, movieFind)  {
             if (movieFind) {
                 // already have the movie
                 console.log('movie is ', movieFind.title);
-                console.log('movie imdbid is ', movieFind.id);
             } else {
                 // if not save movie
                 newMovie(result.results[i]);

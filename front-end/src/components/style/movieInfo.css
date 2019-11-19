@@ -1,0 +1,75 @@
+#movieInfo, #actor, #film {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    color: white;
+}
+
+#poster {
+    margin-top: 60px;
+    margin-left: 70px;
+    margin-right: 60px;
+}
+
+#poster img{
+    width: 350px;
+}
+
+#infoBoxe {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+}
+
+.tagline {
+    align-self: center;
+    margin: 40px auto;
+}
+
+#actors, #films, #crew, #comments {
+    margin: 75px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.actor, .movieSmall {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px;
+}
+
+.actor img {
+    width: 100px;
+    border-radius: 100%;
+}
+
+
+#yearRating {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 98%;
+}
+
+#rating {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 15%;
+}
+#movieLenght {
+    border-bottom: 4px solid black;
+    padding-bottom: 10px;
+    width: 99%;
+}
+
+#subtitle {
+    margin-bottom: 20px;
+}
