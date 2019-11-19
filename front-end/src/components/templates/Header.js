@@ -10,27 +10,12 @@ import { logout } from '../services/requestManager';
 import './Header.css';
 
 const Header = function({ history }) {
-
     const [research, setResearch] = useState('');
-
-    const handleOnChange = (event) => {
-        setResearch(event.target.value)
-    }
-
-    const handleSubmit = (event) => {
-        history.push('/search/' + research);
-    }
-
     const [enableMenu, setEnableMenu] = useState('');
 
-    const handleClick = () => {
-        if (enableMenu === "none") {
-            setEnableMenu('')            
-        }
-        else {
-            setEnableMenu('none')            
-        }
-    }
+    const handleOnChange = (event) => setResearch(event.target.value)
+    const handleSubmit = () => history.push('/search/' + research);
+    const handleClick = () => setEnableMenu(enableMenu === "none" ? '' : 'none')
 
     return (
         <Navbar className="navbar">
@@ -49,7 +34,7 @@ const Header = function({ history }) {
                 <img width="32" src="/images/default_avatar-white.png" alt="avatar" />
             </div>
 
-            <div className="menu" style={{display: enableMenu}}>  
+            <div className="menu" style={{display: enableMenu}}>
                 <a href="/">
                     <div className="menuCell">
                         <div className="content">

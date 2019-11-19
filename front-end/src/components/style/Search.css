@@ -27,3 +27,21 @@
     bottom: 5px;
     background: #CB7B18;
 }
+
+
+/* print les movies */
+
+.moviesList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.movieCard {
+    margin: 10px;
+}
+
+.movieCard img {
+    margin-bottom: 5px;
+}
