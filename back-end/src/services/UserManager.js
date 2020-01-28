@@ -1,7 +1,5 @@
 import User from '../models/user.model';
 
-/*  j ai retiré les champs email: email => email  si ca beug c est ca !*/
-
 class UserManager {
 	static usernameExists(username) {
 		return new Promise((resolve, reject) => {
@@ -11,7 +9,7 @@ class UserManager {
 				resolve(res);
 			})
 			.catch(reject)
-		})
+		}).catch(error => {console.log(error)});
 	}
 
 	static emailExists(email) {
@@ -22,7 +20,7 @@ class UserManager {
 				resolve(res);
 			})
 			.catch(reject)
-		})
+		}).catch(error => {console.log(error)});
 	}
 
 	static updateInfos(username, firstname, lastname, email) {
@@ -32,17 +30,17 @@ class UserManager {
 		    resolve();
 		  })
 		  .catch(reject);
-		})
+		}).catch(error => {console.log(error)});
 	}
 
-	static updateLanguage(username, language) {
+	static updateLanguage(username, lang) {
 		return new Promise((resolve, reject) => {
-		  User.updateOne({ username }, { language })
+		  User.updateOne({ username }, { lang })
 		  .then(() => {
 		    resolve();
 		  })
 		  .catch(reject);
-		})
+		}).catch(error => {console.log(error)});
 	}
 
 	static updatePassword(username, password) {
@@ -52,7 +50,7 @@ class UserManager {
 		    resolve();
 		  })
 		  .catch(reject);
-		})
+		}).catch(error => {console.log(error)});
 	}
 
 	static updateProfilePic(username) {
@@ -62,7 +60,27 @@ class UserManager {
 		    resolve();
 		  })
 		  .catch(reject);
-		})
+		}).catch(error => {console.log(error)});
+	}
+
+	static getMoviesSeen(username) {
+		return new Promise((resolve, reject) => {
+			User.findOne({ username }, 'moviesWatched')
+			.then((res) => {
+			  resolve(res.moviesWatched);
+			})
+			.catch(reject);
+		  }).catch(error => {console.log(error)});
+	}
+
+	static setMovieSeen(imdb_id, username) {
+		return new Promise((resolve, reject) => {
+			User.updateOne({ username }, { $addToSet: { moviesWatched: imdb_id }} )
+			.then(() => {
+			  resolve();
+			})
+			  .catch(reject);
+		  }).catch(error => {console.log(error)});
 	}
 }
 

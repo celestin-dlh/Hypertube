@@ -1,203 +1,193 @@
-export const lang = {
-    'en' : 'en',
-    'fr' : 'fr',
-    'es' : 'es'
-}
+/* auth part */
+/* Login Page */ 
 
-export const welcome = {
-    'en' : 'Welcome',
-    'fr' : 'Bienvenue',
-    'es' : 'Bienvenidos'
-}
-
-export const films = {
-    'en' : 'Films',
-    'fr' : 'Films', 
-    'es' : 'Películas'
-}
-
-export const signin = {
-    'en' : 'Sign In',
+export const login = {
+    'en' : 'Log In',
     'fr' : `S'Identifier`,
     'es' : 'Iniciar Sesión'
-}
-
-export const signup = {
-    'en' : 'Sign Up',
-    'fr' : `S'Inscrire`, 
-    'es' : 'Regístrate'
-}
-
-export const myprofile = {
-    'en' : 'Profile',
-    'fr' : 'Profil',
-    'es' : 'Perfil'
-}
+};
 
 export const username = {
     'en' : "Username",
     'fr' : `Nom d'Utilisateur`,
     'es' : 'Nombre de Usuario'
-}
-
-export const firstname = {
-    'en' : 'First Name',
-    'fr' : 'Prénom',
-    'es' : 'Nombre de Pila'
-}
-
-export const lastname = {
-    'en' : 'Last Name',
-    'fr' : 'Nom de Famille', 
-    'es' : 'Apellido'
-}
+};
 
 export const password = {
     'en' : 'Password',
     'fr' : 'Mot de Passe',
     'es' : 'Contraseña'
-}
-
-export const submit = {
-    'en' : 'Submit',
-    'fr' : 'Soumettre',
-    'es' : 'Enviar'
-}
-
-export const contact = {
-    'en' : 'Contact',
-    'fr' : 'Contact',
-    'es' : 'Contacto'
-}
-
-export const name = {
-    'en' : 'Name',
-    'fr' : 'Nom', 
-    'es' : 'Nombre'
-}
+};
 
 export const email = {
     'en' : 'Email',
     'fr' : 'Email',
     'es' : 'Correo Electrónico'
-}
+};
 
 export const forget = {
     'en' : 'Forget Password',
     'fr' : 'Mot de Passe Oublié', 
     'es' : 'Contraseña Olvidada'
+};
+
+export const LoginUsing = {
+    'en' : 'Login Using',
+    'fr' : 'Se Connecter en Utilisant',
+    'es' : 'Conectar Usando'
 }
 
-export const notfound = {
-    'en' : 'Page Not Found',
-    'fr' : 'Page Non Trouvé',
-    'es' : 'Página No Encontrada'
+export const RegisterHere = {
+    'en' : 'Or Register Here',
+    'fr' : `Ou S'Inscrire Ici`,
+    'es' : 'O Regístrese Aquí'
 }
 
-export const message = {
-    'en' : 'Message', 
-    'fr' : 'Message',
-    'es' : 'Mensaje'
+
+/* Register Page */
+
+export const Register = {
+    'en' : 'Register',
+    'fr' : `S'Inscrire`, 
+    'es' : 'Regístrate'
+};
+
+export const firstname = {
+    'en' : 'First Name',
+    'fr' : 'Prénom',
+    'es' : 'Nombre de Pila'
+};
+
+export const lastname = {
+    'en' : 'Last Name',
+    'fr' : 'Nom de Famille', 
+    'es' : 'Apellido'
+};
+
+export const RegisterUsing = {
+    'en' : 'Or Register Using',
+    'fr' : `Ou S'Inscrire Avec`,
+    'es' : 'O Regístrese Con'
 }
 
-export const editinfo = {
-    'en' : 'Edit My Information',
-    'fr' : 'Editer Mes Infos',
-    'es' : 'Editar Mi Información'
+export const AlreadyHaveAnAccount = {
+    'en' : 'Already have an account?',
+    'fr' : `Vous avez deja un compte`,
+    'es' : 'Ya tengo una cuenta'  
 }
 
-export const github = {
-    'en' : 'Sign up with Github',
-    'fr' : 'Enregistrer avec Github',
-    'es' : 'Registrar con Github'
+/*  Forgot password page */
+
+export const SendEmail = {
+    'en' : 'Send Email',
+    'fr' : 'Envoyer Email',
+    'es' : 'Enviar Email'
+};
+
+export const BackToLoginPage = {
+    'en' : 'Back to Login Page',
+    'fr' : 'Retourner a la page de Connection',
+    'es' : 'Volver a la página de inicio de sesión'
 }
 
-export const account42 = {
-    'en' : 'Sign up with 42',
-    'fr' : 'Enregistrer avec 42',
-    'es' : 'Registrar con 42'
+/*  Reset password page */
+
+export const ResetYourPassword = {
+    'en' : 'Reset Password',
+    'fr' : 'Réinitialiser Mot de passe',
+    'es' : 'Restablecer Contraseña'
+};
+
+export const NewPassword = {
+    'en' : 'New Password',
+    'fr' : 'Nouveau Mot de passe',
+    'es' : 'Nuevo Contraseña'
 }
 
-export const already = {
-    'en' : 'Already have an account',
-    'fr' : 'Vous avez déjà un compte',
-    'es' : 'Tienes ya un cuenta'
+
+/* Header */
+
+export const Home = {
+    'en' : 'Home',
+    'fr' : 'Accueil',
+    'es' : 'Home'
 }
 
-export const newuser = {
-    'en' : 'New to Hypertube',
-    'fr' : 'Nouveau sur Hypertube',
-    'es' : 'Nuevo en Hypertube'
+export const Profile = {
+    'en' : 'Profile',
+    'fr' : 'Profil',
+    'es' : 'Perfil'
+};
+
+export const Settings = {
+    'en' : 'Settings',
+    'fr' : 'Parametres',
+    'es' : 'Ajustes' 
 }
 
-export const play = {
-    'en' : 'Play',
-    'fr' : 'Commencer',
-    'es' : 'Comienzo'
+export const Logout = {
+    'en' : 'Logout',
+    'fr' : 'Deconnection',
+    'es' : 'Cerrar Sesión'
 }
 
-export const reset = {
-    'en' : 'Reset Password', 
-    'fr' : 'Réinitialiser Votre Mot de Passe',
-    'es' : 'Reiniciar Su Contraseña' 
+export const SearchMovie = {
+    'en' : 'Search a Movie', 
+    'fr' : 'Chercher un Film',
+    'es' : 'Busca una Pelicula'
 }
 
-export const newpassword = {
-    'en' : 'New Password', 
-    'fr' : 'Nouveau Mot de Passe', 
-    'es' : 'Nueva Contraseña'
+/* Settings page */
+
+export const Update = {
+    'en' : 'Update', 
+    'fr' : 'Modifier',
+    'es' : 'Modificado'
 }
 
-export const confirm = {
-    'en' : 'Confirm Your New Password',
-    'fr' : 'Confirmez Votre Nouveau Mot de Passe',
-    'es' : 'Confirma Su Nueva Contraseña'
+export const Picture = {
+    'en' : 'Picture', 
+    'fr' : 'Photo',
+    'es' : 'Imagen'
+}
+export const Lang = {
+    'en' : 'Language', 
+    'fr' : 'Langue',
+    'es' : 'Langua'
 }
 
-export const logout = {
-    'en' : 'Log Out',
-    'fr' : 'Déconnecter',
-    'es' : 'Desconectar'
+export const Infos = {
+    'en' : 'Infos', 
+    'fr' : 'Informations',
+    'es' : 'informaciones'
 }
 
-export const search = {
-    'en' : 'Search', 
-    'fr' : 'Rechercher', 
-    'es' : 'Buscar'
+/* Profile page */
+
+export const ProfileOf = {
+    'en' : 'Profile Of', 
+    'fr' : 'Profil de',
+    'es' : 'Perfil de'
 }
 
-export const keyword = {
-    'en' : 'Keyword...', 
-    'fr' : 'Mot-Clé...',
-    'es' : 'Palabra Clave...'
-}
- 
-export const filter = {
-    'en' : 'Filter by',
-    'fr' : 'Tirer par',
-    'es' : 'Ordenar por'
+/* Movies part */
+
+export const Birthday = {
+    'en' : 'Birthday', 
+    'fr' : 'Né le',
+    'es' : 'Cumpleaños'
 }
 
-export const score = {
-    'en' : 'Score',
-    'fr' : 'Note', 
-    'es' : 'Nota'
+export const Deathday = {
+    'en' : 'Deathday', 
+    'fr' : 'Mort le',
+    'es' : 'Dia muerto'
 }
 
-export const year = {
-    'en' : 'Year',
-    'fr' : 'Année',
-    'es' : 'Año'
-}
+/* Comment part */
 
-export const genre = {
-    'en' : 'Genre', 
-    'fr' : 'Genre', 
-    'es' : 'Género'
-}
-
-export const clear = {
-    'en' : 'Clear Filters',
-    'fr' : 'Enlever les Filtres',
-    'es' : 'Eliminar Filtros'
+export const Comment = {
+    'en' : 'Comment', 
+    'fr' : 'Commenter',
+    'es' : 'Commentar'
 }

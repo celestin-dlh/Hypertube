@@ -72,13 +72,10 @@ const register = function(req, res) {
 			return res.json('success')
 		})
 		.catch((err) => {
-
-			console.log(err);
-
 			if (file) {
 				trydelete(file.path)
 			}
-			return res.json(err);
+			return res.status(400).send(err);
 		});
 };
 

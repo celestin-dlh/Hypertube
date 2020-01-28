@@ -1,20 +1,13 @@
 const axios = require('axios');
 
-let movie;
-
-
 const infoMovie = async function(req, result) {
-    const id = req.params.id;
-
-    await axios.get('https://api.themoviedb.org/3/movie/' + id + '?api_key=' + process.env.MOVIEDB_API_KEY + '&append_to_response=credits,similar')
-        .then(response => {
-            movie = response.data;
-        })
-        .catch(error => {
-            console.log(error);
-        });
-
-    result.json(movie);
+   try {
+      await axios.get('https://api.themoviedb.org/3/movie/' + req.params.id + '?api_key=' + process.env.MOVIEDB_API_KEY + '&language=' + req.params.lang +'&append_to_response=credits,similar,videos')
+           .then(response => result.json(response.data));
+   } catch (error) {
+       console.error(error);
+       result.send('404');
+   }
 };
 
 export default infoMovie;

@@ -1,6 +1,5 @@
 import jwt from 'jsonwebtoken';
 
-/* check if the JWT if valid */
 const session = (req, res, next) => {
     const tokenHeader = req.get('Authorization');
     if (!tokenHeader) return res.status(401);
@@ -10,7 +9,6 @@ const session = (req, res, next) => {
         req.user = user;
         next();
     })
-
 };
 
 export default session;

@@ -1,13 +1,22 @@
-#movieInfo, #actor, #film {
+#movieInfo, #actor, #film, .actorInfo {
     display: flex;
     flex-direction: row;
     align-content: center;
     color: white;
 }
 
+#movieInfo {
+    height: 100vh;
+    background-size: cover; /* Resize the background image to cover the entire container */
+    background: no-repeat fixed center;
+    text-shadow: 1px 1px black;
+    font-size: 1.2em;
+}
+
 #poster {
+    z-index: 2;
     margin-top: 60px;
-    margin-left: 70px;
+    margin-left: 75px;
     margin-right: 60px;
 }
 
@@ -15,19 +24,12 @@
     width: 350px;
 }
 
-#infoBoxe {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: center;
+#youtubeTrailer {
+    width: 50%;
+    height: 50vh;
 }
 
-.tagline {
-    align-self: center;
-    margin: 40px auto;
-}
-
-#actors, #films, #crew, #comments {
+#films, #crew, #comments {
     margin: 75px;
     display: flex;
     flex-direction: row;
@@ -37,19 +39,53 @@
     color: white;
 }
 
+#actors {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: baseline;
+    color: white;
+    width: 100%;
+    padding-top: 50px;
+    flex-wrap: wrap;
+}
+
 .actor, .movieSmall {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     margin: 5px;
+    flex-wrap: wrap;
 }
 
-.actor img {
+.actor {
+    min-width: 80px;
+    max-width: 100px;
+    margin: 15px;
+}
+
+.actor span {
+    text-overflow: ellipsis;
+}
+
+.actor div {
     width: 100px;
+    height: 100px;
     border-radius: 100%;
+    border: 2px solid black;
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
 }
 
+.actor div:hover {
+    border: 2px solid #CC7B19;
+}
+
+.actor a {
+    color: white;
+}
 
 #yearRating {
     display: flex;
@@ -62,14 +98,145 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 15%;
 }
+
+#rating div {
+    margin: 5px;
+    justify-content: space-between;
+    text-align: right;
+}
+
 #movieLenght {
-    border-bottom: 4px solid black;
-    padding-bottom: 10px;
     width: 99%;
 }
 
 #subtitle {
     margin-bottom: 20px;
+}
+
+.actorInfo {
+    margin-left: 75px;
+}
+
+.actorInfo img {
+    height: 300px;
+    margin: 0 5% 0 0;
+}
+
+.actorInfo p {
+    margin-top: 10px;
+}
+
+#synopsis {
+    border-top: 4px solid #CC7B19;
+    padding-top: 10px;
+}
+
+#lengthGenres {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#genres {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.genre {
+    margin: 0 10px;
+}
+
+#genres a {
+    color: white;
+}
+
+#searchSort {
+    color: white;
+    margin-left: 75px;
+}
+
+.posterSide {
+    position: relative;
+    text-align: center;
+    color: white;
+  }
+
+.overview {
+    position: absolute;
+    top: 50%;
+}
+
+.overview p {
+    font-size: 1vw;
+}
+
+.tagline {
+    position: absolute;
+    top: 80%;
+}   
+
+.genres {
+    text-decoration: none;
+    color: white;
+}
+
+.genres p {
+    color: white;
+}
+
+@media (max-width: 992px) {
+    .posterSide {
+        display: none;
+    }
+    .trailer {
+        display: none;
+    }
+}
+
+/* Comment Part */
+
+.commentForm {
+    width: 60%;
+}
+
+.commentForm input {
+    width: 100%;
+    color: white;
+}
+
+.commentForm button {
+    width: 100%;
+}
+
+.commentDiv {
+    color: white;
+    width: 80%;
+    margin: 5px auto;
+    border: 1px solid grey;
+    border-radius: 24px;
+}
+
+.commentAuthor {
+    text-align: left;
+    margin-left: 15px; 
+}
+
+.commentContent {
+    text-align: center;
+    font-size: 22px;
+}
+
+/* Profil */
+.profilPic {
+    display: block;
+    width: 300px;
+    height: 300px;
+    border-radius: 100%;
+    border: 2px solid black;
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
 }

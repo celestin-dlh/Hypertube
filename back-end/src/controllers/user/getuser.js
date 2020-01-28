@@ -5,7 +5,7 @@ const GetUser = function(req, res) {
 	let username = req.query.username;
 	if (username === "" || !username || username === 'undefined') {
 		username = req.user.username;
-		User.findOne({ username: username },'firstname lastname email username profilepicture language', 
+		User.findOne({ username: username },'firstname lastname email username profilepicture language url_profilepicture', 
 			function (err, user) {
 				if (user) {
 					return res.send(user)
@@ -17,13 +17,13 @@ const GetUser = function(req, res) {
 		);		
 	}
 	else {
-		User.findOne({ username: username },'firstname lastname username profilepicture', 
+		User.findOne({ username: username },'firstname lastname username profilepicture url_profilepicture', 
 			function (err, user) {
-				if (user === null) {
-					return res.status(401).send('Username not found')
+				if (user) {
+					return res.send(user)
 				}
 				else {
-					return res.send(user)
+					return res.status(400).send('Username not found')
 				}
 			}
 		);

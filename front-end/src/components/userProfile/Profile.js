@@ -8,16 +8,19 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 import { getUser } from '../services/requestManager';
+import { ProfileOf } from '../services/textLang';
 
-/* Templates */ 
-import Header from '../templates/Header';
- 
-function Profile({ history }) {
+/* Style */
+import '../style/movieInfo.css';
+
+function Profile() {
+	const lang = (localStorage.getItem('lang') ? localStorage.getItem('lang') : 'en');
 
     const [userInfos, setUserInfos] = useState({
         firstname: '',
         lastname: '',
         profilepicture: '',
+        url_profilepicture: '',
         error: ''
     });
 
@@ -27,26 +30,30 @@ function Profile({ history }) {
     useEffect(() => {
         getUser(username)
             .then((res) => {
-                setUserInfos(res.data)
-                document.title = `Profile of ${res.data.username}` 
+                setUserInfos(res.data);
             })
-            .catch((err) => {
-                setUserInfos({error: 'User not found'})
+            .catch(() => {
+                setUserInfos({error: "User not found"})
             })
     }, [username]);
 
+
 	return (
-		<Container fluid style={{padding: "0px"}} className="settings" >
-			<Header />
-			<Row className="justify-content-center" style={{height: "95vh"}}>
+		<Container fluid className="settings" >
+			<Row className="justify-content-center" style={{height: "96vh"}}>
 				<Col md="4" className="" style={{margin: "auto"}}>
                     <div className="menu-settings" style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
                         {userInfos.error === 'User not found' ? 
                             <div><h3>{userInfos.error}</h3></div> :
                             <div>
-                                <h3>Profile of {userInfos.username}</h3>
+                                <h3>{ProfileOf[lang]} {userInfos.username}</h3>
                                 <h3>{userInfos.firstname + ' ' + userInfos.lastname}</h3>
-                                <img src={"http://localhost:5000/profile_pic/" + userInfos.profilepicture   }  alt="avatar" />
+                                <span className="profilPic"
+                                      style={{backgroundImage: `url(${userInfos.url_profilepicture === "" ?
+                                              userInfos.profilepicture : (!userInfos.profilepicture ?
+                                                  userInfos.url_profilepicture : (process.env.REACT_APP_URL_BACK
+                                                      + "/profile_pic/" + userInfos.profilepicture))})`}}>
+                                </span>
                             </div>
                         }   
                     </div>

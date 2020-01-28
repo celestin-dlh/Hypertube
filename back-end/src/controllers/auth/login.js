@@ -9,12 +9,12 @@ const login = function(req, res) {
 
     if (username === "" || password === "")
         return res.status(400);
-    User.findOne({ username: username }, 'password', function (err, user) {
+    User.findOne({ username: username }, 'password lang', function (err, user) {
         if (user) {        
             bcrypt.compare(password, user.password, function(err, result) {
                 if (result) {
                     const accessToken = jwt.sign({ username }, process.env.ACCESS_TOKEN_SECRET);
-                    res.json({ accessToken })
+                    return res.json({ accessToken , "lang": user.lang })
                 }
                 else {
                     return res.status(403).send('Bad credentials')
@@ -25,6 +25,6 @@ const login = function(req, res) {
         }
             
     });
-}
+};
 
 export default login;

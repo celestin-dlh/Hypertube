@@ -3,9 +3,9 @@ import React from 'react';
 export default function ChangeLanguage() {
 
     const changeLang = (lang) => {
-        localStorage.setItem('language', lang)
+        localStorage.setItem('language', lang);
         window.location.reload();
-    }
+    };
 
     return (
         <React.Fragment>

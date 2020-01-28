@@ -3,8 +3,8 @@
     padding-left: 50px;
 }
 
-.dark-row {
-    min-height: calc(100vh - 65px);
+.full {
+    min-height: calc(50vh);
 }
 
 .menu-settings .cell:hover {
@@ -15,14 +15,19 @@ h3 {
     color: white;
 }
 
-.settings .input-form label .label {
+.settings .input-form label .label, .settings .input-form input {
     color: white;
 }
 
-.settings .input-form input {
-    color: white;
+.settings-form .labelImage {
+    display: block;
+    margin: auto;
 }
 
+.label-language {
+    display: block;
+    color: white;
+}
 
 .menu-settings p {
     color: white;

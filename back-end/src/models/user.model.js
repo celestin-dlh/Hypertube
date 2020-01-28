@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const uniqueValidator = require('mongoose-unique-validator');
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
@@ -24,6 +25,9 @@ const userSchema = new Schema({
     ftId: {
         type: String,
     },
+    githubId: {
+      type: String,
+    },
     email: {
         type: String,
         unique: true,
@@ -33,21 +37,28 @@ const userSchema = new Schema({
     password: {
         type: String,
     },
-    language: {
+    lang: {
         type: String,
         default: 'en'
     },
     profilepicture: {
         type: String,
-        required: true,
+    },
+    url_profilepicture: {
+        type: String,
     },
     reset_password_token: {
         type: String,
+    },
+    moviesWatched:{
+        type: Array,
     }
 
 }, {
     timestamps: true,
 });
+
+userSchema.plugin(uniqueValidator);
 
 const User = mongoose.model('user', userSchema);
 

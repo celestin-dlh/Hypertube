@@ -1,26 +1,31 @@
-const MovieDb = require('moviedb-promise');
-const moviedb = new MovieDb(process.env.MOVIEDB_API_KEY);
-import Movie from "../../models/movie.model";
-import newMovie from "./newMovie";
+const axios = require('axios');
+const PirateBay = require('thepiratebay');
 
-const searchmovies = function(req, res) {
-    const search = req.params.title;
+const searchMovie = async function(req, result) {
+    let page;
+    let sortby;
+    let orderBy = 'asc';
+    let query = req.params.query.replace(/[^\w\s]/gi, '');
 
-    moviedb.searchMovie({ query: search }).then(result => {
-        for(let i= 0; i < result.results.length; i++)
-        {
+    req.params.page ? page = req.params.page : page = 1;
+    req.params.sortBy ? sortby = req.params.sortBy : sortby = 'title';
+    req.params.sortBy === "rating" ? orderBy = 'desc' : orderBy = 'asc';
 
-           Movie.findOne({movieDbId: result.results[i].id}, function(err, movieFind)  {
-            if (movieFind) {
-                // already have the movie
-                console.log('movie is ', movieFind.title);
-            } else {
-                // if not save movie
-                newMovie(result.results[i]);
-            }});
-        }
-        res.json(result);
-    })
+    await axios.get('https://yts.lt/api/v2/list_movies.jsonp?&limit=25&page=' + page + '&sort_by=' + sortby + '&order_by=' + orderBy
+        + '&query_term=' + query)
+        .then(response => {
+            if (!response.data) {
+                PirateBay.search(query, {
+                    category: 'video',
+                    orderBy: 'seeds',
+                    sortBy: 'desc'
+                }).catch(e => null);
+            }
+            result.json(response.data);
+        })
+        .catch(error => {
+            console.log(error);
+        });
 };
 
-export default searchmovies;
+export default searchMovie;

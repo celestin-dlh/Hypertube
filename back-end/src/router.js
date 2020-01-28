@@ -1,13 +1,17 @@
 import express from 'express';
-import jwt from "jsonwebtoken";
-
 import session from './middlewares/session';
 
 /* Auth */
 import register from './controllers/auth/register';
 import login from './controllers/auth/login';
+import ftAuth from './controllers/auth/ftAuth';
+import googleAuth from './controllers/auth/googleAuth';
+import githubAuth from './controllers/auth/githubAuth';
 import forgetpassword from './controllers/auth/forgot/forgetpassword';
 import resetpassword from './controllers/auth/forgot/resetpassword';
+
+/* Passport */
+import passport from './controllers/auth/passport';
 
 /* User */
 import getuser from './controllers/user/getuser';
@@ -15,66 +19,36 @@ import updateInfos from './controllers/user/updateInfos';
 import updateLanguage from './controllers/user/updateLanguage';
 import updatePassword from './controllers/user/updatePassword';
 import updateProfilePic from './controllers/user/updateProfilePic';
-
-/* Passport */
-import passport from './controllers/auth/passport';
+import setMovieSeen from './controllers/user/setMovieSeen';
 
 /* Movie */
-import searchMovies from './controllers/movies/searchMovies';
-import streamMovies from './controllers/movies/streamMovies';
+import searchMovie from './controllers/movies/searchMovies';
+import searchActor from './controllers/movies/searchActor';
+import searchGenre from './controllers/movies/searchGenre';
+import torrentStream from './controllers/movies/torrentStream';
+import popular from "./controllers/movies/popular";
+import getLastSeen from "./controllers/movies/getLastSeen";
 import infoMovie from "./controllers/movies/infoMovie";
-import updateMovie from "./controllers/movies/updateMovie";
-import ddlMovie from "./controllers/movies/ddlMovie";
+import getSubtitle from './controllers/movies/getSubtitles';
+import getTorrents from "./controllers/movies/getTorrents";
+import postComment from './controllers/movies/postComment'
+import getComments from './controllers/movies/getComments';
 
 class Router {
 
 	static auth() {
 		let router = express.Router();
-		router.post('/register', register);		
+		router.post('/register', register);		    
 		router.post('/login', login);
 		router.post('/forgetpassword', forgetpassword);
 		router.post('/resetpassword', resetpassword);
+        router.get('/google', passport.authenticate('google', {scope: ['profile', 'email']}, null));
+        router.get('/google/redirect', googleAuth);
+        router.get('/42', passport.authenticate('42', '', null));
+        router.get('/42/redirect', ftAuth);
 
-		// google
-        router.get('/google', passport.authenticate('google', {
-            scope: ['profile', 'email']
-        }));
-        router.get('/google/redirect', function (req, res) {    passport.authenticate('google', {session: false}, (err, user, info) => {
-            if (err || !user) {
-                return res.status(400).json({
-                    message: 'Something is not right',
-                    user   : user
-                });
-            }       req.login(user, {session: false}, (err) => {
-                if (err) {
-                    res.send(err);
-                }
-                const username = user.username;
-                const accessToken = jwt.sign({ username }, process.env.ACCESS_TOKEN_SECRET);
-                res.redirect(process.env.URL + ':' + process.env.PORT_FRONT + '/jwt/' + accessToken)
-            });
-        })(req, res);
-        });
-
-        // 42
-        router.get('/42', passport.authenticate('42'));
-        router.get('/42/redirect', function (req, res) {    passport.authenticate('42', {session: false}, (err, user, info) => {
-            if (err || !user) {
-                return res.status(400).json({
-                    message: 'Something is not right',
-                    user   : user
-                });
-            }       req.login(user, {session: false}, (err) => {
-                if (err) {
-                    res.send(err);
-                }
-                const username = user.username;
-                const accessToken = jwt.sign({ username }, process.env.ACCESS_TOKEN_SECRET);
-                res.redirect(process.env.URL + ':' + process.env.PORT_FRONT + '/jwt/' + accessToken)
-            });
-        })(req, res);
-        });
-
+		router.get('/github', passport.authenticate('github', '', null));
+		router.get('/github/redirect', githubAuth);
 
         return router;
 	}
@@ -92,27 +66,37 @@ class Router {
 
     static movies() {
         let router = express.Router();
-
-        router.get('/search/:title/', searchMovies);
-
-        router.get('/infos/:id/', infoMovie);
-
-        router.get('/update/:id', updateMovie);
-
-        router.get('/stream/', streamMovies);             // todo
-        router.get('/ddl/', ddlMovie);                    // todo
-
+        router.get('/stream/:imdb_id/:quality', torrentStream);
+        router.get('/getsubtitles/:imdb_id/:lang', getSubtitle);
+        router.use('/', session);
+		//torrents
+        router.get('/setMovieSeen/:imdb_id', setMovieSeen)
+		router.get('/torrents/:imdb_id', getTorrents);
+        //search
+        router.get('/search/:query/:lang/:sortBy/:page', searchMovie);
+        //popular
+        router.get('/popular', popular);
+        router.get('/getLastSeen', getLastSeen);
+        //movie by actor
+        router.get('/actor/:actorId/:lang', searchActor);
+        //movie by genre
+        router.get('/genre/:genre/:lang', searchGenre);
+        //infos for 1 movie
+        router.get('/infos/:id/:lang', infoMovie);
+        //comment
+        router.post('/postcomment', postComment);
+        router.get('/getcomments/:imdb_id', getComments);
+		//stream
         return router;
     }
 
 	static getRouter() {
 		let router = express.Router();
-
+		console.log('starting all routes');
         router.post('/getuser', getuser);
 		router.use('/auth/', Router.auth());
 		router.use('/user/', Router.user());
 		router.use('/movies/', Router.movies());
-
 		return router;
 	}
 }
